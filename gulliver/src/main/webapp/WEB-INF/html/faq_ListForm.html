@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>걸리버서점 프로젝트</title>
+<style>
+#jb-container {
+	width: 1200px; margin : 0px auto;
+	padding: 2px;
+	border: 1px solid #ffffff;
+	margin: 0px auto;
+}
+
+#jb-header {
+	padding: 20px;
+	margin-bottom: 10px;
+	border: 1px solid #bcbcbc;
+}
+
+#jb-sidebar {
+	width: 235px;
+	padding: 0px;
+	margin-bottom: 10px;
+	float: left;
+	border: 1px solid #bcbcbc;
+}
+
+#jb-content {
+	width: 950px;
+	padding: 0px;
+	margin-bottom: 10px;
+	float: right;
+	border: 1px solid #bcbcbc;
+}
+
+#jb-footer {
+	clear: both;
+	padding: 2px;
+	border: 1px solid #bcbcbc;
+	background-color: #009AFF
+}
+</style>
+
+<style>
+.menu a {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu .hide li{
+	display: none;
+}
+ul{
+list-style-type: none;
+padding-left: 0;
+
+}
+li{
+
+padding-left: 20px }
+</style>
+<style>
+#topMenu {
+	height: 30px; /* 메인 메뉴의 높이 */
+	width: 100%; /* 메인 메뉴의 넓이 */
+	float: left; /* 왼쪽으로 나열되도록 설정 */
+	background: #00A5FF;
+}
+
+#topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
+	list-style-type: none; /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
+	margin: 0px; /* 메인 메뉴 안의 ul의 margin을 없앰 */
+	padding: 0px; /* 메인 메뉴 안의 ul의 padding을 없앰 */
+	text-align: center;
+}
+
+#topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
+	color: white; /* 글씨 색을 흰색으로 설정 */
+	background-color: #00A5FF; /* 배경 색을 RGB(2D2D2D)로 설정 */
+	line-height: 30px; /* 텍스트 한 줄의 높이를 30px로 설정 */
+	vertical-align: middle; /* 세로 정렬을 가운데로 설정 */
+	text-align: center; /* 텍스트를 가운데로 정렬 */
+	position: relative; /* 해당 li 태그 내부의 top/left 포지션 초기화 */
+	display: inline-block;
+}
+
+.menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
+	text-decoration: none; /* a 태그의 꾸밈 효과 제거 */
+	display: block; /* a 태그의 클릭 범위를 넓힘 */
+	width: 100px; /* 기본 넓이를 설정 */
+	font-size: 12px; /* 폰트 사이즈를 12px로 설정 */
+	font-weight: bold; /* 폰트를 굵게 설정 */
+	font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+}
+
+.menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
+	color: white;
+}
+
+.topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
+	color: black; /* 글씨 색  */
+	/*  background-color: #000000;  /* 배경색을 밝은 회색으로 설정 */
+	*/
+}
+
+.submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
+	color: #000000; /* 글씨 색을 RGB(2D2D2D)로 설정 */
+	background-color: #FFDC3C; /* 배경색을 흰색으로 설정 */
+	border: solid 0px black; /* 테두리를 설정 */
+	margin-top: -1px; /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설덩 */
+}
+
+.longLink { /* 좀 더 긴 메뉴 스타일 설정 */
+	width: 190px; /* 넓이는 190px로 설정 */
+}
+
+.submenu { /* 하위 메뉴 스타일 설정 */
+	position: absolute; /* html의 flow에 영향을 미치지 않게 absolute 설정 */
+	height: 0px; /* 초기 높이는 0px로 설정 */
+	overflow: hidden; /* 실 내용이 높이보다 커지면 해당 내용 감춤 */
+	transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */
+	-webkit-transition: height .2s;
+	/* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 크롬/사파라ㅣ) */
+	-moz-transition: height .2s;
+	/* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 파폭) */
+	-o-transition: height .2s;
+	/* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */
+}
+
+.topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
+	height: 150px; /* 높이를 93px로 설정 */
+}
+
+.submenuLink:hover { /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
+	color: red; /* 글씨색을 빨간색으로 설정 */
+	/*     background-color: #dddddd;  /* 배경을 RGB(DDDDDD)로 설정 */
+	*/
+}
+</style>
+
+<!-- <script src="jquery-1.12.1.js"></script> -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	// html dom 이 다 로딩된 후 실행된다.
+	$(document).ready(function() {
+		// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+		$(".menu>a").click(function() {
+			// 현재 클릭한 태그가 a 이기 때문에
+			// a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
+			$(this).next("ul").toggleClass("hide");
+		});
+	});
+</script>
+
+</head>
+<body>
+	
+	<div id="jb-container">
+		<nav id="topMenu">
+		<ul>
+			<li class="topMenuLi"><a class="menuLink" href="#">H O M E</a>
+			</li><li>|</li>
+			<li class="topMenuLi"><a class="menuLink" href="#">고객센터</a>
+				<ul class="submenu">
+					<li><a class="submenuLink" href="#">회사소개</a></li>
+					<li><a class="submenuLink" href="#">오시는길</a></li>
+					<li><a class="submenuLink" href="#">Q & A</a></li>
+				</ul></li>
+			<li>|</li>
+				<li class="topMenuLi"><a class="menuLink" href="#">관리자</a></li>
+			<li>|</li>
+			<li class="topMenuLi"><a class="menuLink" href="#">로그인</a></li>
+			<li>|</li>
+			<li class="topMenuLi"><a class="menuLink" href="#">회원가입</a></li>
+			<li>|</li>
+			
+			<li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
+				<ul class="submenu">
+					<li><a class="submenuLink" href="#">나의정보</a></li>
+					<li><a class="submenuLink" href="#">배송조회</a></li>
+				</ul></li>
+		</ul>
+	</nav>
+	
+	<div id="jb-header" style="text-align: center;">
+		<br><br>
+		<form style="text-align: center;; padding-bottom: 5px ;padding-right:10px;">
+			<select style="font-size: large;">
+				<option name="" selected="selected">국내도서</option>
+				<option name="">외국도서</option>
+			</select> <input type="text" name="" value="" style="font-size: large;">
+		<input type="button" name="" value="검색" style="font-size: large;">
+		</form>
+	</div>
+		<div id="jb-sidebar">
+			<ul>
+				<li class="menu" style="font-size: medium;; "><a>국내도서</a>
+					<ul class="hide">
+					<li>유아</li>
+					<li>어린이</li>
+					<li>전집/중고전집</li>
+					<li>청소년</li>
+					<li>좋은부모</li>
+					<li>초등학교참고서</li>
+					<li>중학교참고서</li>
+					<li>고등학교참고서</li>
+					<li>여행</li>
+					<li>가정/요리/뷰티</li>
+					<li>건강/취미/레저</li>
+					<li>사전/기타</li>
+					<li>잡지</li>
+					<li>만화</li>
+					<li>고전</li>
+					<li>소설/시/희곡</li>
+					<li>장르소설</li>
+					<li>에세이</li>
+					<li>인문학</li>
+					<li>사회과학</li>
+					<li>역사</li>
+					<li>과학</li>
+					<li>예술/대중문화</li>
+					<li>종교/역학</li>
+					<li>경제경영</li>
+					<li>자기계발</li>
+					<li>외국어</li>
+					<li>컴퓨터/모바일</li>
+					<li>대학교재</li>
+					<li>수험서/자격증</li>
+					</ul>
+					
+					</li>
+
+				<li class="menu"><a>외국도서</a>
+					<ul class="hide">
+						<li>소설/시/희곡</li>
+						<li>ELT/어학/사전</li>
+						<li>인문/사회</li>
+						<li>경제경영</li>
+						<li>자기계발</li>
+						<li>자연과학</li>
+						<li>컴퓨터</li>
+						<li>예술/대중문화</li>
+						<li>가정/원예/인테리어</li>
+						<li>공예/취미/수집</li>
+						<li>여행</li>
+						<li>건강/스포츠</li>
+						<li>청소년</li>
+						<li>해외잡지</li>
+
+					</ul></li>
+			</ul>
+
+		</div>
+
+
+
+		<div id="jb-content">
+
+	<form action="" method="post" name="frm">
+	<br><br>
+		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:900px;">
+<tr>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7593/26/coversum/8994040811_1.jpg" style="width: 85px; height: 137px;" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=75932687" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>캐롤</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">퍼트리샤 하이스미스 | 그책&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">11,700</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7741/92/coversum/8932028400_1.jpg" style="width: 85px; height: 128px;" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=77419279" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>비단길</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">김원일 | 문학과지성사&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">11,700</span>원</span></p>
+
+			<p style="text-align: center;">&nbsp;</p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7717/73/coversum/8932028419_1.jpg" style="width: 85px; height: 134px;" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=77177394" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>오십 미터</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">허연 | 문학과지성사&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">7,200</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7744/9/coversum/8954639682_1.jpg" style="width: 85px; height: 120px;" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=77440982" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>처럼</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">김응교 | 문학동네&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">18,000</span>원</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7619/49/coversum/8974564904_1.jpg" style="width: 85px; height: 121px;" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=76194992" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>너는 물처럼 내게 밀려오라</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">이정하 | 문이당&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">11,700</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7615/34/coversum/k812434417_1.jpg" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=76153447" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>논픽션 쓰기의 모든 것</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">에릭 메이젤 | 다른&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">18,000</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7558/60/coversum/8972757519_1.jpg" style="width: 85px; height: 121px;" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=75586088" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>오에 겐자부로</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">오에 겐자부로 | 현대문학&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">16,200</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7610/96/coversum/8984319589_1.jpg" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=76109643" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>응달 너구리</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">이시백 | 한겨레출판&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">11,700</span>원</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7515/96/coversum/8998274639_1.jpg" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=75159644" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>언틸유아마인</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">사만다 헤이즈 | 북플라자&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">13,500</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7492/5/coversum/892555836x_1.jpg" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=74920566" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>파기환송</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">마이클 코넬리 | 알에이치코리아(RHK)&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">13,500</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7288/55/coversum/8972757578_1.jpg" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=72885569" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>라플라스의 마녀</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">히가시노 게이고 | 현대문학&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">13,320</span>원</span></p>
+			</td>
+			<td>
+			<p style="text-align: center;"><img alt="" src="http://image.aladin.co.kr/product/7554/49/coversum/8954639348_1.jpg" /></p>
+
+			<p style="text-align: center;"><a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=75544948" style="color: rgb(68, 68, 68); text-decoration: none; font-size: 12px; line-height: 18px; font-family: 돋움, Dotum, AppleGothic, sans-serif; text-align: center; background-color: rgb(255, 255, 255);"><strong>블랙랜드</strong></a><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="author" style="color: rgb(145, 145, 145); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);">벨린다 바우어 | 문학동네&nbsp;</span><br style="color: rgb(68, 68, 68); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);" />
+			<span class="p1" style="color: rgb(181, 74, 114); font-family: 돋움, Dotum, AppleGothic, sans-serif; font-size: 12px; line-height: 18px; text-align: center; background-color: rgb(255, 255, 255);"><span class="p1_bold" style="font-weight: bold;">11,700</span>원</span></p>
+			</td>
+		</tr>
+
+		</table>
+		
+		<br>
+		<div style="text-align: center;">
+			1 2 3 4 5 6 7 8 9 10
+		</div>
+		
+	</form>
+	
+	</div>
+	<div id="jb-footer">
+		<div style="width: 100%; background-color: #009AFF; text-align: center; margin-top: auto;; color: white;">
+
+			<p align="center">
+				사업자등록번호 : 101-86-50485 통신판매업신고번호 : 제 2009-서울종로-1141호 (주)걸리버<br>
+				대표전화 : 02-6901-7045 안내 주소 : 서울시 종로구 관철동 13-13 종로코아빌딩 5층 SOLDESK
+				LIBRARY <br> Copyright SOLDESK Corp. All right reserved.
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

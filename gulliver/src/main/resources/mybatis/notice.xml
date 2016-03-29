@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+	
+	<!-- 글 목록 -->
+	<select id="list" parameterType="Map" resultType="NoticeDTO">
+		SELECT noticeno, title, content, writer, notice_cnt, in_date, r
+			FROM(
+			    SELECT noticeno, title, content, writer, in_date, notice_cnt, rownum r
+			    FROM(
+			        SELECT noticeno, title, content, writer, notice_cnt, in_date 
+			        FROM T_NOTICE
+			        <where>
+				        <choose>
+					        <when test="col=='title'">
+								title LIKE '%'|| #{word} ||'%' 
+					        </when>
+					        <when test="col=='content'">
+								content LIKE '%'|| #{word} ||'%' 
+					        </when>
+					        <when test="col=='writer'">
+								writer LIKE '%'|| #{word} ||'%'
+					        </when>
+				        </choose>
+			        </where>
+			        ORDER BY noticeno DESC
+				    )
+				)
+		<![CDATA[WHERE r >= #{sno} and r <= #{eno}]]>		
+	
+	</select>
+
+	<!-- 글 등록 -->
+	<insert id="create" parameterType="NoticeDTO">
+		INSERT INTO T_NOTICE(noticeno, title, content, writer, in_date) 
+		VALUES((SELECT NVL(MAX(noticeno),0) + 1 as noticeno FROM T_NOTICE), #{title}, #{content}, #{writer}, sysdate)
+	</insert>
+
+
+	<!-- 글 읽기 -->
+	<select id="read" parameterType="int" resultType="NoticeDTO">
+		SELECT noticeno, title, content, writer, notice_cnt, in_date
+		FROM T_NOTICE 
+		WHERE noticeno = #{noticeno}
+	</select>
+
+	<!-- 글 수정 -->
+	<update id="update" parameterType="NoticeDTO">
+		UPDATE T_NOTICE 
+		SET title = #{title},
+			content = #{content}, 
+			writer = #{writer},
+			in_date = sysdate
+		WHERE noticeno = #{noticeno}
+	</update>
+
+
+	<!-- 조회수 증가 -->
+	<update id="readCnt">
+		UPDATE T_NOTICE SET 
+		notice_cnt = notice_cnt + 1
+		WHERE noticeno = #{noticeno}
+	</update>
+	
+	<!-- 글 총갯수 -->
+	<select id="total" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+		FROM T_NOTICE
+        <where>
+	        <choose>
+		        <when test="col=='title'">
+					title LIKE '%'|| #{word} ||'%' 
+		        </when>
+		        <when test="col=='content'">
+					content LIKE '%'|| #{word} ||'%' 
+		        </when>
+		        <when test="col=='writer'">
+					writer LIKE '%'||#{word} ||'%'
+		        </when>
+	        </choose>
+        </where>
+	</select>
+	
+	<!-- 글 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM T_NOTICE
+		WHERE noticeno = #{noticeno}
+	</delete>
+	
+</mapper>
+ 
+

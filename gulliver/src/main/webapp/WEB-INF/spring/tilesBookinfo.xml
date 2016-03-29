@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="main" template="/WEB-INF/views/template/template.jsp"	preparer="bookCate">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp" />
+		<put-attribute name="sideBar" value="/WEB-INF/views/template/sideBar.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
+	</definition>
+<!-- 	<definition name="/home" extends="main">
+		<put-attribute name="title" value="기본페이지"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/home.jsp" />
+	</definition> -->
+	<definition name="/home" extends="main">
+		<put-attribute name="title" value="기본페이지"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/bookinfoList.jsp" />
+	</definition>
+	<definition name="/bookcate/listTopCate" extends="main">
+		<put-attribute name="title" value="기본페이지"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookcate/listTopCate.jsp" />
+	</definition>
+	<definition name="/bookinfo/create" extends="main">
+		<put-attribute name="title" value="책등록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/admin_bookinfoCreate.jsp" />
+	</definition>
+	<definition name="/bookinfo/admin_bookinfoList" extends="main">
+		<put-attribute name="title" value="책목록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/admin_bookinfoList.jsp" />
+	</definition>
+	<definition name="/bookinfo/list" extends="main">
+		<put-attribute name="title" value="책목록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/bookinfoList.jsp" />
+	</definition>
+	<definition name="/bookinfo/read" extends="main">
+		<put-attribute name="title" value="책정보"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/bookinfoRead.jsp" />
+	</definition>
+	<definition name="/bookinfo/tempServer" extends="main">
+		<put-attribute name="title" value="책등록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/tempServer.jsp" />
+	</definition>
+
+</tiles-definitions> 

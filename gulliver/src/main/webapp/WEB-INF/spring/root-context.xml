@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+     
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd
+	">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- MyBatis SQL 실행 클래스  --> 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 아래부분은 매핑할 xml파일이 있는 패키지경로를 설정한다. -->
+		<property name="typeAliasesPackage" value="spring.model" /> <!-- model의 내용들을 읽어온다 -->
+		<property name="mapperLocations" value="classpath:mybatis/*.xml" /><!--classpath : src/main/java나 src/main/resources를 인식함 classpath:mybatis/*.xml경로 상의 모든것들을 맵퍼(쿼리문이있는 xml)로 인식하겠다  -->
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!--    파일 전송이 있는 경우만 선언, File upload   --> 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean> 
+    
+    <!-- tiles2 -->
+     <bean id="tilesconfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"> 
+        <property name="definitions"> 
+            <list> 
+                <value>/WEB-INF/spring/tilesBookinfo.xml</value>
+                <value>/WEB-INF/spring/tilesCart.xml</value>
+                <value>/WEB-INF/spring/tilesUser.xml</value>
+                <value>/WEB-INF/spring/tilesComment.xml</value>
+                <value>/WEB-INF/spring/tilesOrder.xml</value>
+                <value>/WEB-INF/spring/tilesNotice.xml</value>
+                <value>/WEB-INF/spring/tilesFaq.xml</value>
+            </list> 
+        </property>
+        
+        <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory">
+		</property>
+    </bean>  
+    <bean id="bookCate" class="spring.sts.gulliver.Bookcate"/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> <!-- 위에있는 곳에서 viewname을 찾는다 없을경우 order 2 에서 찾는다 -->
+        <property name="viewClass"> 
+            <value>org.springframework.web.servlet.view.tiles2.TilesView</value> 
+        </property>
+        <property name="order">
+        	<value type="int">1</value>
+        </property>  
+    </bean> 
+    
+<!-- 혼자할때 사용 -->
+<!-- 	<bean id="dataSource"  -->
+<!-- 	destroy-method="close" -->
+<!-- 	class="org.apache.commons.dbcp.BasicDataSource"  -->
+<!-- 	p:driverClassName="oracle.jdbc.driver.OracleDriver"  -->
+<!-- 	p:url="jdbc:oracle:thin:@localhost:1521:XE"  -->
+<!-- 	p:username="soldesk"   -->
+<!-- 	p:password="1234"   -->
+<!-- 	/>  -->
+
+	<bean id="dataSource" 
+	destroy-method="close"
+	class="org.apache.commons.dbcp.BasicDataSource" 
+	p:driverClassName="oracle.jdbc.driver.OracleDriver" 
+	p:url="jdbc:oracle:thin:@localhost:1521:XE" 
+	p:username="gulliver"  
+	p:password="1234"  
+	/>
+	
+	
+
+	
+	
+   <!-- Transaction Manager -->
+<!--     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> -->
+<!--         <property name="dataSource" ref="dataSource" /> -->
+<!--     </bean> -->
+ 
+<!--     <tx:advice id="txAdvice" transaction-manager="transactionManager"> -->
+<!--        <tx:attributes> -->
+<!--           <tx:method name="delete" rollback-for="Exception"/> delete 매서드에서 오류가 난다면 롤백하겠다, 나중에 사용할때 name 바꿔서 사용-->
+<!--        </tx:attributes> -->
+<!--     </tx:advice> -->
+ 
+<!--     <aop:config> -->
+<!--         <aop:pointcut id="transactionPointcut" expression="execution(* spring.model.bbs.*Service.*(..))"/> 처리 클래스, 나중에 bbs부분만 변경해서 사용하기 -->
+<!--         <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut" /> -->
+<!--     </aop:config> -->
+	
+ 	<!-- component-scan --> 
+<!--    <context:component-scan base-package="spring.model.*" use-default-filters="false">  -->
+<!--       <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>  Component나 Service로 된것들만 객체로 인식하겠다 -->
+<!--       <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/> -->
+<!--    </context:component-scan>  -->
+ 
+
+</beans>

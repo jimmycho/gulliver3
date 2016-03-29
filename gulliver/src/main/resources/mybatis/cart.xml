@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cart">
+
+<!-- 1. create (장바구니 추가)-->
+<insert id="create" parameterType="CartDTO">
+	INSERT INTO T_CART ( cartno, cart_cnt, order_whether,input_date, userid, bookid)
+	VALUES ((select NVL(max(cartno),0)+1 as cartno from T_CART), #{cart_cnt}, #{order_whether}, 
+	sysdate, #{userid} , #{bookid} )
+</insert>
+
+<!--2. Read (2-1) 회원개인의 장바구니 내용 보여주기 -->
+ <select id="cartOfUser" parameterType="String" resultType="CartDTO">
+SELECT cartno, userid, name, bookid, bookname, input_date, cur_price, cart_cnt , order_whether
+from
+(
+	SELECT C.cartno, U.userid, U.name, B.bookid,B.bookname, C.input_date, B.cur_price, C.cart_cnt, C.order_whether
+	FROM T_CART C, T_USER U, T_BOOKINFO B
+	WHERE B.bookid=C.bookid AND U.userid=C.userid
+)
+where userid=#{userid}
+order by cartno desc
+</select>
+
+<!-- (2-2)모든회원의 장바구니 내용보여주기(Admin) cur_price,-->
+<select id="cartOfAllUser" parameterType="Map" resultType="CartDTO">
+SELECT 	cartno, userid, name, bookid, bookname, input_date, cur_price, cart_cnt , order_whether, r
+from(
+SELECT 	cartno, userid, name, bookid, bookname, input_date, cur_price, cart_cnt , order_whether, rownum r
+	from( 
+		select  C.cartno, U.userid, U.name, B.bookid,B.bookname, C.input_date, B.cur_price, C.cart_cnt, 
+		C.order_whether
+	    FROM T_CART C, T_USER U, T_BOOKINFO B
+		where B.bookid=C.bookid AND U.userid=C.userid			
+		)
+ 	where userid LIKE '%' || #{word} || '%'			
+	order by cartno desc
+	 )
+ <![CDATA[		
+		where r>= #{sno} and r<= #{eno}
+		order by cartno desc
+]]>
+</select>
+
+<!--3. delete -->
+<delete id="delete" parameterType="int">
+DELETE FROM T_CART 
+WHERE cartno=#{cartno}
+</delete>
+
+<!--4. read(1건의 장바구니 정보 읽기) -->
+<select id="read" parameterType="int" resultType="CartDTO">
+<!-- SELECT * FROM T_CART 
+WHERE cartno=#{cartno}  -->
+SELECT cartno, bookid, bookname, input_date, cur_price, cart_cnt , order_whether
+FROM
+(
+SELECT C.cartno, B.bookid, B.bookname, C.input_date, B.cur_price, C.cart_cnt, C.order_whether
+FROM T_CART C, T_BOOKINFO B
+WHERE B.BOOKID=C.BOOKID
+)
+WHERE cartno=#{cartno}
+</select>
+
+<!--5. update(1건의 장바구니정보읽고 수량 수정 -->
+<update id="update" parameterType="CartDTO">
+UPDATE T_CART  
+SET cart_cnt=#{cart_cnt}
+WHERE cartno = #{cartno}
+</update>
+
+<!--6. counting the number of all carts -->
+<select id="total" parameterType="Map" resultType="int">
+SELECT COUNT(*) FROM T_CART
+	<where>
+			USERID LIKE '%' || #{word} || '%'			
+		</where>
+</select>
+
+</mapper>

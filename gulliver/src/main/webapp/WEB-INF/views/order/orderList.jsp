@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function read(orderno){
+	var url = "./read?orderno=" + orderno;
+	url = url + "&col=${col}";
+	url = url + "&word=${word}";
+	url = url + "&nowPage=${nowPage}";
+	
+	location.href = url;	
+}
+</script>
+</head>
+<body>
+<br>
+	<form action="./list" method="post" name="frm">
+		<div style="text-align: center;">
+			<select name="col">
+				<option value="total" <c:if test="${col == 'total'}">selected='selected'</c:if>>전체</option>
+				<option value="orderno" <c:if test="${col == 'orderno'}">selected='selected'</c:if>>주문번호</option>
+				<option value="recipient" <c:if test="${col == 'recipient'}">selected='selected'</c:if>>수령인</option>
+				<option value="order_date" <c:if test="${col == 'order_date'}">selected='selected'</c:if>>주문일</option>
+			</select> 
+			<input type="text" name="word" value="${word}">&nbsp;
+			<input type="submit" value="검색">
+		</div>
+	</form>
+	<br>
+	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px";>
+		<tr>
+			<td>주문번호</td>
+			<td>주문인</td>
+			<td>주문일</td>
+			<td>책제목</td>
+			<td>배송방법</td>
+		</tr>
+		<c:choose>
+			<c:when test="${empty list }">
+				<tr><td colspan="5" align="center">주문이력이 없습니다.</td></tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="dto" items="${list}">
+					<tr>
+						<td><a href="javascript:read('${dto.orderno}')">${dto.orderno}</a></td> 
+						<td>${dto.recipient}</td> 
+						<td>${dto.order_date}</td> 
+						<td>${dto.bookname}</td> 
+						<td>${dto.del_method}</td> 
+					</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</table>
+
+	<br>
+	<div style="text-align: center;">${paging}</div>
+	<br>
+</body>
+</html>

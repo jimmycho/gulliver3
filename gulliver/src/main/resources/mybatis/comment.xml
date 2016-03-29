@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+
+<!-- 목록 -->
+<select id="list" parameterType="map" resultType="CommentDTO">
+	SELECT seq, star_cnt, say100ja, input_date, bookid, r
+	FROM(
+	    SELECT seq, star_cnt, say100ja, input_date, bookid, rownum r
+	    FROM(
+	          SELECT seq, star_cnt, say100ja, input_date, bookid
+	          FROM T_COMMENT
+	          WHERE bookid = #{bookid}
+	          ORDER BY seq DESC
+	        )
+	)
+	<![CDATA[WHERE r >= #{sno} and r <= #{eno}]]>	
+</select>
+
+
+<!-- 입력 -->
+<insert id="create">
+	INSERT INTO T_COMMENT(seq, star_cnt, say100ja, input_date, bookid)
+	VALUES((SELECT NVL(MAX(seq),0) + 1 FROM T_COMMENT), #{star_cnt}, #{say100ja}, sysdate, #{bookid})
+</insert>
+
+
+<!-- 읽기 -->
+<select id="read" parameterType="int" resultType="CommentDTO">
+	SELECT seq, star_cnt, say100ja, input_date, bookid
+	FROM T_COMMENT
+	WHERE seq = #{seq}
+</select>
+
+<!-- 수정 -->
+<update id="update" parameterType="CommentDTO">
+	UPDATE T_COMMENT 
+	SET	star_cnt 	= #{star_cnt}, 
+		say100ja 	= #{say100ja}, 
+		input_date 	= sysdate
+	WHERE seq 	= #{seq}
+</update>
+
+
+<!-- 삭제 -->
+<delete id="delete" parameterType="int">
+	DELETE 
+	FROM T_COMMENT
+	WHERE seq = #{seq}
+</delete>
+
+<!-- 댓글 총갯수 -->
+<select id="total" parameterType="int" resultType="int">
+	SELECT COUNT(*)
+	FROM T_COMMENT
+	WHERE bookid = #{bookid}
+</select>
+
+
+</mapper>
+ 
+

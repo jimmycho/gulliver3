@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="bookinfo">
+
+<!-- 리스트 페이징 -->
+<select id="list" parameterType="map" resultType="BookinfoDTO">
+	SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	   		stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
+	FROM (
+	      SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+				 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, rownum r      
+	      FROM (
+		          SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+						 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
+		          FROM T_BOOKINFO
+		          <where>
+		          	<choose>
+		          		<when test="col == 'title'">
+		          			WHERE bookname LIKE '%'|| #{word} ||'%'
+		          		</when>
+		          		<when test="col == 'writer'">
+		          			WHERE writer LIKE '%'|| #{word} ||'%'
+		          		</when>
+		          		<when test="col == 'isbn10'">
+		          			WHERE isbn10 LIKE '%'|| #{word} ||'%'
+		          		</when>
+		          		<when test="col == 'isbn13'">
+		          			WHERE isbn13 LIKE '%'|| #{word} ||'%'
+		          		</when>
+		          	</choose>
+		          </where>
+		          ORDER BY bookid DESC
+	          )
+	      )
+	      <![CDATA[WHERE r >= #{sno} and r <= #{eno}]]>
+</select>
+
+<!-- 등록 -->
+<insert id="create" parameterType="BookinfoDTO">
+	INSERT INTO T_BOOKINFO(bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date)
+	VALUES((SELECT NVL(MAX(bookid),0) + 1 AS bookid FROM T_BOOKINFO), #{bookname}, #{sale_price}, #{bookfront_photo}, #{book_explain}, #{ISBN10}, #{ISBN13}, 
+	#{stock_cnt}, #{cur_price}, #{publisher}, #{pub_date}, #{BOOK_CATE_CD}, #{writer}, #{traductor}, sysdate)
+</insert>
+
+
+<!-- 수정 -->
+<update id="update" parameterType="BookinfoDTO">
+UPDATE T_BOOKINFO SET
+	bookname        = #{bookname},
+	sale_price      = #{sale_price},
+	bookfront_photo = #{bookfront_photo},
+	book_explain    = #{book_explain},
+	ISBN10          = #{ISBN10},
+	ISBN13          = #{ISBN13},
+	stock_cnt       = #{stock_cnt},
+	cur_price       = #{cur_price},
+	publisher       = #{publisher},
+	pub_date        = #{pub_date},
+	BOOK_CATE_CD    = #{BOOK_CATE_CD},
+	writer          = #{writer},
+	traductor       = #{traductor},
+	input_date      = sysdate
+WHERE bookid = #{bookid}
+</update>
+
+<!-- 삭제 -->
+<delete id="delete">
+	DELETE FROM T_BOOKINFO 
+	WHERE bookid = #{bookid}
+</delete>
+
+
+<!-- 글 총 갯수 -->
+<select id="total" parameterType="map" resultType="int">
+	SELECT COUNT(*) 
+	FROM T_BOOKINFO
+	<where>
+		<choose>
+			<when test="col == 'title'">
+				WHERE bookname LIKE '%'|| #{word} ||'%'
+			</when>
+			<when test="col == 'writer'">
+				WHERE writer LIKE '%'|| #{word} ||'%'
+			</when>
+			<when test="col == 'isbn10'">
+				WHERE isbn10 LIKE '%'|| #{word} ||'%'
+			</when>
+			<when test="col == 'isbn13'">
+				WHERE isbn13 LIKE '%'|| #{word} ||'%'
+			</when>
+		</choose>
+	 </where>
+</select>
+
+<!-- 글 읽기 -->
+<select id="read" parameterType="int" resultType="BookinfoDTO">
+      SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+			stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
+		FROM T_BOOKINFO
+		WHERE bookid = #{bookid}
+</select>
+		
+		
+		
+</mapper>

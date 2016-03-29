@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faq">
+
+<!-- create -->
+<insert id="create" parameterType="FaqDTO">
+INSERT INTO T_FAQ(faqno, faq_cat, title, content, faq_cnt, in_date) 
+VALUES ((select NVL(max(faqno),0)+1 as faqno from T_FAQ), #{faq_cat}, 
+#{title}, #{content},0,sysdate )
+</insert>
+
+<!-- list(admin) -->
+<select id="list" parameterType="Map" resultType="FaqDTO">
+select faqno, faq_cat, title, content, faq_cnt, in_date, r
+from (
+	select faqno, faq_cat, title, content, faq_cnt, in_date, rownum r
+	from(
+		select faqno, faq_cat, title, content, faq_cnt, in_date
+		from T_FAQ 
+				<where>
+					content LIKE '%' || #{word} || '%'			
+				</where>
+				order by faqno desc
+				)
+		<![CDATA[		
+		)where r>= #{sno} and r<= #{eno}
+]]>
+</select>
+
+<!-- read(faq) -->
+<select id="read" parameterType="int" resultType="FaqDTO">
+SELECT * FROM T_FAQ 
+WHERE faqno=#{faqno} 
+</select>
+
+<!-- update -->
+<update id="update" parameterType="FaqDTO">
+UPDATE T_FAQ
+SET faq_cat= #{faq_cat}, title=#{title}, content=#{content}, faq_cnt= 0,
+in_date=sysdate
+WHERE faqno = #{faqno}
+</update>
+
+<!-- delete -->
+<delete id="delete" parameterType="int">
+DELETE FROM T_FAQ 
+WHERE faqno=#{faqno}
+</delete>
+
+<!-- counting the number of faq articles -->
+<select id="total" parameterType="Map" resultType="int">
+SELECT COUNT(*) FROM T_FAQ
+	<where>
+			content LIKE '%' || #{word} || '%'			
+		</where>
+</select>
+
+</mapper>

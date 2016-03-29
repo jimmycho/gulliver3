@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="/notice/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+		<put-attribute name="title" value="공지목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+	</definition>
+	<definition name="/notice/read" extends="main">
+		<put-attribute name="title" value="공지읽기"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/notice/noticeRead.jsp" />
+	</definition>
+	<definition name="/notice/create" extends="main">
+		<put-attribute name="title" value="공지작성"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/notice/noticeCreate.jsp" />
+	</definition>
+	<definition name="/notice/update" extends="main">
+		<put-attribute name="title" value="공지수정"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/notice/noticeUpdate.jsp" />
+	</definition>
+	<definition name="/notice/delete" extends="main">
+		<put-attribute name="title" value="공지삭제"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/notice/noticeDelete.jsp" />
+	</definition>
+<!-- 	<definition name="/notice/deleteProc" extends="main"> -->
+<!-- 		<put-attribute name="title" value="공지삭제"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/notice/deleteProc.jsp" /> -->
+<!-- 	</definition> -->
+
+</tiles-definitions> 

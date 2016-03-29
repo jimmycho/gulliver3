@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="/img/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+		<put-attribute name="title" value="이미지목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/img/list.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+	</definition>
+<!-- 	<definition name="/img/read" extends="main"> -->
+<!-- 		<put-attribute name="title" value="메모읽기"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/img/read.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="/img/create" extends="main"> -->
+<!-- 		<put-attribute name="title" value="회원가입"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/img/createForm.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="/img/update" extends="main"> -->
+<!-- 		<put-attribute name="title" value="메모수정"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/img/updateForm.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="/img/delete" extends="main"> -->
+<!-- 		<put-attribute name="title" value="삭제"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/img/deleteForm.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="/img/deleteProc" extends="main"> -->
+<!-- 		<put-attribute name="title" value="삭제"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/img/deleteProc.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="/img/reply" extends="main"> -->
+<!-- 		<put-attribute name="title" value="답변"></put-attribute> -->
+<!-- 		<put-attribute name="body"	value="/WEB-INF/views/img/replyForm.jsp" /> -->
+<!-- 	</definition> -->
+
+</tiles-definitions> 

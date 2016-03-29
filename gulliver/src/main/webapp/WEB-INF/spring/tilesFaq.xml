@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="/faq/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+		<put-attribute name="title" value="FAQ목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/faq/list.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+	</definition>
+	
+	<definition name="/admin/faq/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+		<put-attribute name="title" value="FAQ목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/admin/faq/list.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+	</definition>
+	
+	<definition name="/admin/faq/read" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+		<put-attribute name="title" value="FAQ조회"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/admin/faq/read.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+	</definition>
+	<definition name="/admin/faq/create" extends="main">
+	<put-attribute name="title" value="FAQ등록"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/views/admin/faq/createForm.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/admin/faq/update" extends="main">
+	<put-attribute name="title" value="FAQ수정"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/views/admin/faq/updateForm.jsp"></put-attribute>
+	</definition>
+	<definition name="/admin/faq/delete" extends="main">
+	<put-attribute name="title" value="FAQ수정"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/views/admin/faq/deleteForm.jsp"></put-attribute>
+	</definition>
+
+</tiles-definitions> 

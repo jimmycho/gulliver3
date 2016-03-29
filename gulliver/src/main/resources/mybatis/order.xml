@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+<!-- 관리자 주문이력 -->
+<select id="list" parameterType="Map" resultType="OrderDTO">
+	SELECT orderno, del_method, recipient, total, order_cnt, order_comment, bookid, bookname, userid, del_zipcode, del_address1, del_address2, order_date, r
+	FROM (
+	      SELECT orderno, del_method, recipient, total, order_cnt, order_comment, bookid, bookname, userid, del_zipcode, del_address1, del_address2, order_date, rownum r
+	      FROM (
+				SELECT r.orderno, r.del_method, r.recipient, r.total, r.order_cnt, r.order_comment, r.bookid, b.bookname, r.userid, r.del_zipcode, r.del_address1, r.del_address2, r.order_date
+				FROM T_ORDER R, T_BOOKINFO B
+				<![CDATA[WHERE r.bookid = b.bookid]]> 
+				<if test="grade == 'M'.toString()">
+					AND r.userid = #{userid}
+				</if>
+				<if test="col == 'orderno'">
+					AND orderno LIKE '%'|| #{word} ||'%'
+				</if>
+				<if test="col == 'recipient'">
+					AND recipient LIKE '%'|| #{word} ||'%'
+				</if>
+				<if test="col == 'order_date'">
+					AND order_date LIKE '%'|| #{word} ||'%'
+				</if>
+	            ORDER BY orderno DESC
+	            )
+	)
+	<![CDATA[WHERE r >= #{sno} and r <= #{eno}]]> 
+</select>
+
+<!-- 주문글 읽기 -->
+<select id="read" parameterType="int" resultType="OrderDTO">
+	SELECT r.orderno, r.del_method, r.recipient, r.total, r.order_cnt, r.order_comment, r.bookid, b.bookname, b.bookfront_photo,
+			r.userid, r.del_zipcode, r.del_address1, r.del_address2, r.order_date
+	FROM T_ORDER R, T_BOOKINFO B
+	WHERE r.bookid = b.bookid AND r.orderno = #{r.orderno}
+	ORDER BY orderno DESC
+</select>
+
+
+<!-- 주문글 등록 -->
+<insert id="create" parameterType="OrderDTO">
+	INSERT INTO T_ORDER(orderno, del_method, recipient, total, order_cnt, order_comment, 
+					bookid, userid, del_zipcode, del_address1, del_address2, order_date)
+	VALUES((SELECT NVL(MAX(orderno),0 ) + 1 AS orderno FROM T_ORDER), #{del_method}, #{recipient}, 
+			#{total}, #{order_cnt}, #{order_comment}, #{bookid}, #{userid}, #{del_zipcode}, #{del_address1}, 
+			#{del_address2}, sysdate)
+</insert>
+
+<!-- 주문글 수정 -->
+
+
+<!-- 주문글 삭제 -->
+<delete id="delete" parameterType="int">
+	DELETE FROM T_ORDER
+	WHERE orderno = #{orderno}
+</delete>
+
+
+<!-- 주문글 총갯수 -->
+<select id="total" parameterType="map" resultType="int">
+	SELECT COUNT(*)	
+	FROM T_ORDER R, T_BOOKINFO B
+	<![CDATA[WHERE r.bookid = b.bookid]]> 
+	<if test="grade == 'M'.toString()">
+		AND r.userid = #{userid}
+	</if>
+	<if test="col == 'orderno'">
+		AND orderno LIKE '%'|| #{word} ||'%'
+	</if>
+	<if test="col == 'recipient'">
+		AND recipient LIKE '%'|| #{word} ||'%'
+	</if>
+	<if test="col == 'order_date'">
+		AND order_date LIKE '%'|| #{word} ||'%'
+	</if>
+</select>
+
+
+ <!-- 주문전에 장바구니에서  주문자의 정보, 장바구니 내용 가져오기 -->
+<!-- <select id="cartRead" parameterType="String" resultType=""> -->
+<!-- SELECT CARTNO, USERID, NAME, ZIPCODE, ADDRESS1, ADDRESS2, PHONE, CALLPHONE, -->
+<!-- 		INPUT_DATE, CUR_PRICE, CART_CNT, ORDER_WHETHER, -->
+<!-- 		BOOKID, BOOKNAME -->
+<!-- FROM -->
+<!-- 	( -->
+<!-- 		SELECT C.CARTNO, U.USERID, U.NAME, U.ZIPCODE, U.ADDRESS1, U.ADDRESS2, U.PHONE, U.CALLPHONE, -->
+<!-- 				C.INPUT_DATE, B.CUR_PRICE, C.CART_CNT, C.ORDER_WHETHER, -->
+<!-- 				B.BOOKID, B.BOOKNAME -->
+<!-- 		FROM T_CART C, T_USER U, T_BOOKINFO B -->
+<!-- 		WHERE B.BOOKID = C.BOOKID AND U.USERID = C.USERID -->
+<!-- 	) -->
+<!-- WHERE USERID=#{USERID}; -->
+<!-- </select> -->
+
+
+</mapper>
+ 
+

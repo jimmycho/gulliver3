@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"  ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+<!-- email address duplication check -->
+<select id="emailCheck" parameterType="String" resultType="int">
+SELECT COUNT(*) as cnt
+FROM T_USER
+WHERE email = #{email}
+</select>
+
+<!-- create -->
+<insert id="create" parameterType="UserDTO">
+INSERT INTO T_USER(userid, name, passwd,phone,email,birthdate,
+callphone,zipcode,grade,address1,address2, joindate, userphoto) 
+VALUES(#{userid},#{name}, #{passwd},#{phone},#{email},#{birthdate},
+#{callphone},#{zipcode},'M',#{address1},#{address2},sysdate,#{userphoto}) 
+</insert>
+
+<!-- read(member) -->
+<select id="read" parameterType="String" resultType="UserDTO">
+SELECT * FROM T_USER 
+WHERE userid=#{userid} 
+</select>
+
+<!-- list(admin) -->
+<select id="list" parameterType="Map" resultType="UserDTO">
+SELECT userid, name, passwd, phone , email, birthdate, 
+callphone, zipcode, grade, address1, address2, joindate, userphoto, r
+FROM(
+SELECT userid, name, passwd, phone , email, birthdate, 
+callphone, zipcode, grade, address1, address2, joindate, userphoto, rownum r
+FROM(
+SELECT userid, name, passwd, phone , email, birthdate, 
+callphone, zipcode, grade, address1, address2, joindate, userphoto
+FROM T_USER
+		<where>
+			<choose>
+				<when test="col=='name'">
+					name LIKE '%' || #{word} || '%'
+				</when>
+				<when test="col=='userid'">
+					userid LIKE '%' || #{word} || '%'
+				</when>
+				<when test="col=='email'">
+					email LIKE '%' || #{word} || '%'
+				</when>
+			</choose>
+		</where>
+		ORDER BY userid ASC
+		)
+<![CDATA[
+	)WHERE r >= #{sno} AND r <= #{eno}
+]]>
+</select>
+
+<!-- counting the number of total members -->
+<select id="total" parameterType="Map" resultType="int">
+SELECT COUNT(*) FROM T_USER
+	<where>
+		<choose>
+			<when test="col=='name'">
+				name LIKE '%' || #{word} || '%'
+			</when>
+			<when test="col=='userid'">
+				userid LIKE '%' || #{word} || '%'
+			</when>
+			<when test="col=='email'">
+				email LIKE '%' || #{word} || '%'
+			</when>
+		</choose>
+	</where>
+</select>
+
+<!-- update -->
+<update id="update" parameterType="UserDTO">
+UPDATE T_USER  
+SET name= #{name}, passwd=#{passwd}, phone=#{phone}, email=#{email}, birthdate=#{birthdate}
+	,callphone=#{callphone}, zipcode=#{zipcode} ,  grade=#{grade}, address1=#{address1}, address2=#{address2} 
+    ,joindate=sysdate, userphoto=#{userphoto}        
+WHERE userid = #{userid} 
+
+</update>
+
+<!-- delete -->
+<delete id="delete" parameterType="String">
+DELETE FROM T_USER 
+WHERE userid=#{userid}
+</delete>
+
+<!-- image file name read -->
+<select id="getFname" parameterType="String" resultType="String">
+	SELECT fname FROM member
+	WHERE userid=#{userid}
+</select>
+
+<!-- reading zipcode -->
+<select id="zipcode" parameterType="String" resultType="ZipcodeDTO">
+SELECT zipcode, sido, gugun, dongli, etc 
+   FROM T_ZIPCODE 
+   WHERE (dongli LIKE '%' || #{dongli} || '%')
+		ORDER BY sido, gugun, dongli 
+</select>
+
+<!-- id duplication check -->
+<select id="checkId" parameterType="String" resultType="int">
+SELECT COUNT(*) as cnt
+FROM T_USER
+WHERE userid=#{userid}
+</select>
+
+<select id="getGrade" parameterType="String" resultType="String">
+SELECT grade FROM T_USER
+WHERE userid=#{userid}
+</select>
+
+<select id="loginCheck" parameterType="Map" resultType="int">
+SELECT COUNT(*) FROM T_USER
+WHERE userid = #{userid} AND passwd=${passwd}
+</select>
+
+</mapper>
+ 
+
