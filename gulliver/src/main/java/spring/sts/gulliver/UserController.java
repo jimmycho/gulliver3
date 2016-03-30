@@ -179,7 +179,6 @@ public class UserController {
 	public String read(String userid, Model model, HttpSession session){
 		if(userid==null){
 	        userid = (String)session.getAttribute("userid");
-	        System.out.println("userid:"+userid);
 	    }
 
 		UserDTO dto = dao.read(userid);
@@ -226,6 +225,33 @@ public class UserController {
 		request.setAttribute("nowPage", nowPage);
 		
 		return "/admin/user/list"; //관리자용 faq 목록
+	}//admin/user/list메소드
+	
+	@RequestMapping("/user/MyPage")
+	public String MyPage(String userid, Model model, HttpSession session){
+		
+		if(userid==null){
+	        userid = (String)session.getAttribute("userid");
+	    }
+
+		UserDTO dto = dao.read(userid);
+	    model.addAttribute("dto",dto);
+		
+		return "/user/MyPage";
+		
+	}
+	@RequestMapping("/adm/adminPage")
+	public String AdminPage(String userid, Model model, HttpSession session){
+		
+		if(userid==null){
+			userid = (String)session.getAttribute("userid");
+		}
+		
+		UserDTO dto = dao.read(userid);
+		model.addAttribute("dto",dto);
+		
+		return "/admin/user/adminPage";
+		
 	}
 	
 }//class UserController

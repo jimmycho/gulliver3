@@ -4,7 +4,7 @@
     "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-	<definition name="/order/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+	<definition name="/order/list" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
 		<put-attribute name="title" value="주문이력"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/order/orderList.jsp" /> <!-- 실행될 페이지 명시(실제 위치) -->
 	</definition>

@@ -154,8 +154,8 @@ function response(subCode) {
             	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
             
             	var code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
-            	 topC.innerHTML +="<li><a onclick='loadSubCate("+code+")'>"+name+"</a><ul id='"+code+"'>";
-            	 //topC.innerHTML += name;
+            	 topC.innerHTML +="<li><a onclick='loadSubCate("+code+")' style='cursor: pointer;'>└"+name+"</a><ul id='"+code+"'>";
+            	 //topC.innerHTML += name;   
             	 topC.innerHTML +="</ul></li>"+"\n";
             	 
             }
@@ -168,8 +168,8 @@ function response(subCode) {
 <ul>
 	<c:forEach var="dto" items="${topCateList}">
 		<li>
-			<a onclick="loadSubCate(${dto.BOOK_CATE_CD})"style="cursor: pointer;">
-			 ${dto.BOOK_CATE_NAME} </a>
+			<a onclick="loadSubCate(${dto.BOOK_CATE_CD})"style="cursor: pointer;"><strong>
+			 ${dto.BOOK_CATE_NAME} </strong></a>
 			 <ul id="${dto.BOOK_CATE_CD}"></ul>
 		</li>
 	</c:forEach>

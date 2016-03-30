@@ -149,59 +149,28 @@ padding-left: 20px }
 <body>
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
-		<nav id="topMenu">
-		<ul>
-			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/">H O M E</a>
-			</li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink" href="#">고객센터</a>
-				<ul class="submenu">
-					<li><a class="submenuLink" href="<%=root%>/notice/list">공지사항</a></li>
-					<li><a class="submenuLink" href="<%=root %>/faq/list">FAQ</a></li>
-					<li><a class="submenuLink" href="#">오시는길</a></li>
+<div id="jb-sidebar">
+			
+			<% if(userid!=null && grade.equals("M")){%>
+				<ul ><a  href="<%=root %>/user/MyPage"><strong>&nbsp;마이페이지</a><br></strong>
+					<li><a  href="<%=root %>/user/read">나의정보</a></li>
+					<li><a  href="<%=root %>/cart/list">장바구니보기</a></li>
+					<li><a  href="<%=root%>/order/list">주문이력</a></li>
 				</ul>
-			</li>
-			
-			<% if(userid==null){%>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/user/agree">회원가입</a></li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/user/login">로그인</a></li>
-			<li>|</li>
-			
-			<% } else { 
-				if(grade.equals("M")){
-			%>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/user/logout">로그아웃</a></li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/user/MyPage">마이페이지</a>
-			</li>
-			<%} else if(grade.equals("A")){ %>
-				<li>|</li>
-			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/user/logout">로그아웃</a></li>
-			
-				<li>|</li>
-				<li class="topMenuLi"><a class="menuLink" href="<%=root %>/adm/adminPage">관리자메뉴</a>
+			</ul>
+			<%} %>
+			<%if(userid!=null && grade.equals("A")){ %>
+				<ul><a  href="<%=root %>/adm/adminPage"><strong>&nbsp;관리자 메뉴<br></strong>
+					<li><a href="<%=root%>/adm/faq/list">FAQ관리</a></li>
+					<li><a href="<%=root%>/adm/user/list">회원관리</a></li>
+					<li><a href="<%=root%>/adm/cart/list">장바구니관리</a></li>
+					<li><a href="<%=root%>/order/list">전체주문조회</a></li>
+					<li><a href="<%=root%>/bookinfo/create">서적등록</a></li>
+					<li><a href="<%=root%>/bookinfo/admin_bookinfoList">서적관리</a></li>
+					<li><a href="<%=root%>/bookcate/listTopCate">분류관리</a></li>
+				</ul>
 				</li>
-			<%} }%>
-		</ul>
-	</nav>
-	
-	<div id="jb-header" style="text-align: center;">
-		<br><br>
-		<form style="text-align: center;; padding-bottom: 5px ;padding-right:10px;">
-			<select style="font-size: large;">
-				<option name="" selected="selected">국내도서</option>
-				<option name="">외국도서</option>
-			</select> <input type="text" name="" value="" style="font-size: large;">
-		<input type="button" name="" value="검색" style="font-size: large;">
-		</form>
-	</div>
-
-	<!-- 상단 메뉴 끝 -->
-
-<!-- 	내용 시작 -->
-<!-- 	<div style="width: 100%; padding-top: 10px;"> -->
-	
-<!-- 	</div> -->
+			<%} %>
+</div>
+</div>
+<!-- 사이드바 메뉴끝 -->

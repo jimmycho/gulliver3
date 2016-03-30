@@ -15,7 +15,7 @@
 <style type="text/css">
 
 </style>
-<link href='../css/style.css' rel='Stylesheet' type='text/css'>
+<!-- <link href='../css/style.css' rel='Stylesheet' type='text/css'> -->
 </head>
 
 <body>

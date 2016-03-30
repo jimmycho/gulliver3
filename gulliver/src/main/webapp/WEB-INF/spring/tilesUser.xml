@@ -19,12 +19,20 @@
         <put-attribute name="body" value="/WEB-INF/views/user/loginForm.jsp" />
     </definition> 
     
-    <definition name="/user/read" extends="main"> 
+    <definition name="/user/MyPage" extends="main2"> 
+        <put-attribute name="title" value="나의정보" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/user/MyPage.jsp" />
+    </definition> 
+    <definition name="/user/read" extends="main2"> 
         <put-attribute name="title" value="나의정보" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/user/read.jsp" />
     </definition> 
-    <definition name="/admin/user/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+    <definition name="/admin/user/list" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
 		<put-attribute name="title" value="회원목록"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/admin/user/list.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+	</definition>
+    <definition name="/admin/user/adminPage" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+		<put-attribute name="title" value="회원목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/admin/user/adminPage.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
 </tiles-definitions> 

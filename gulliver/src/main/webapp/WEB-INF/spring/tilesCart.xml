@@ -9,7 +9,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/cart/bookread.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
 	
-	<definition name="/cart/list" extends="main">
+	<definition name="/cart/list" extends="main2">
 	<put-attribute name="title" value="회원 장바구니정보"></put-attribute>
 	<put-attribute name="body" value="/WEB-INF/views/cart/list.jsp"></put-attribute>
 	</definition>
@@ -19,7 +19,7 @@
 	<put-attribute name="body" value="/WEB-INF/views/cart/selectOrder.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="/admin/cart/list" extends="main"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+	<definition name="/admin/cart/list" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
 		<put-attribute name="title" value="Cart목록"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/admin/cart/list.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
