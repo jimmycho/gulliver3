@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%
+	final String CONTEXT = request.getContextPath();
+	String pageno = "1";
+	//out.print(CONTEXT + "/script/lib/jQuery/jquery-1.7.1.min.js");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script type="text/javascript" src="<%=CONTEXT%>/script/lib/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<%=CONTEXT%>/script/lib/json/json2.js"></script>
 <script type="text/javascript">
 	var jsonObj = ''; 
 	var pageNo = 1;  //현재 페이지
@@ -77,69 +84,69 @@
 		<a href="javascript:searchBook(1);">이후</a>
 	</div>
 	</div>
+	
 	<br>
-	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px;">
-
-		<tr>
-			<td>책 코드</td>
-			<td><input maxlength="30" name="isbncd" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>책이름</td>
-			<td><input maxlength="30" name="bookname" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>총페이지수</td>
-			<td><input maxlength="30" name="total_page_cnt" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>책가로</td>
-			<td><input maxlength="30" name="book_garu" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>책세로</td>
-			<td><input maxlength="30" name="book_seru" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>책무게</td>
-			<td><input maxlength="30" name="book_weight" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>책표지사진명</td>
-			<td><input maxlength="30" name="bookfront_photo" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>정가</td>
-			<td><input maxlength="30" name="current_cnt" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>수량</td>
-			<td><input maxlength="30" name="cur_price" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>출판일시</td>
-			<td><input maxlength="30" name="pub_date" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>저자</td>
-			<td><input maxlength="30" name="writer" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>번역자</td>
-			<td><input maxlength="30" name="traductor" size="30" type="text" /></td>
-		</tr>
-		<tr>
-			<td>입력일시</td>
-			<td><input maxlength="30" name="input_date" size="30" type="text" /></td>
-		</tr>
-	</table>
-
-
-	<p style="text-align: center;">
-		<input name="" type="button" value="취소" />&nbsp;&nbsp;<input
-			name="submit" type="submit" value="상품등록" />
-	</p>
-
-	</div>
+	<form action="./create" method="post">
+		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px;">
+			<tr>
+				<td>책이름</td>
+				<td><input name="bookname" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>책표지사진명</td>
+				<td><input name="bookfront_photo" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>정가</td>
+				<td><input name="cur_price" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>할인가</td>
+				<td><input name="sale_price" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>수량</td>
+				<td><input name="stock_cnt" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>출판사</td>
+				<td><input name="publisher" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>출판일시</td>
+				<td><input name="pub_date" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>저자</td>
+				<td><input name="writer" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>번역자</td>
+				<td><input name="traductor" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>ISBN10</td>
+				<td><input name="ISBN10" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>ISBN13</td>
+				<td><input name="ISBN13" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>책 분류코드</td>
+				<td><input name="BOOK_CATE_CD" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td>책설명</td>
+				<td><input name="book_explain" size="30" type="text" /></td>
+			</tr>
+		</table>
+	
+	
+		<p style="text-align: center;">
+			<input name="" type="button" value="취소" />&nbsp;&nbsp;
+			<input type="submit" value="상품등록" />
+		</p>
+	</form>
 </body>
 </html>

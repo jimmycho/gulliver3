@@ -136,7 +136,7 @@ padding-left: 20px }
 }
 
 .topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
-	height: 150px; /* 높이를 93px로 설정 */
+	height: 200px; /* 높이를 93px로 설정 */
 }
 
 .submenuLink:hover { /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
@@ -195,6 +195,7 @@ padding-left: 20px }
 					<li><a class="submenuLink" href="<%=root%>/adm/cart/list">장바구니관리</a></li>
 					<li><a class="submenuLink" href="<%=root%>/bookcate/listTopCate">책분류관리</a></li>
 					<li><a class="submenuLink" href="<%=root%>/order/list">주문이력</a></li>
+					<li><a class="submenuLink" href="<%=root%>/bookinfo/create">책등록</a></li>
 				</ul>
 				</li>
 			<%} %>
