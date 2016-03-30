@@ -26,7 +26,7 @@ import spring.utility.gulliver.Utility;
 public class UserController {
 	
 	@Autowired
-	private UserDAO dao;
+	private UserDAO dao; 
 	
 	@RequestMapping("/user/checkId")
 	public String checkId(String userid, Model model){
@@ -252,6 +252,31 @@ public class UserController {
 		
 		return "/admin/user/adminPage";
 		
+	}//method AdminPage
+	
+	@RequestMapping(value="/user/update", method=RequestMethod.GET)
+	public String update(String id, HttpSession session, Model model){//model에 저장해서 view 페이지로 넘긴다
+		
+		/*if(id==null){
+			id=(String) session.getAttribute("id");
+		}*/
+		
+		UserDTO dto=dao.read(id);
+		model.addAttribute("dto",dto);
+		return "/user/update";
 	}
+	
+	@RequestMapping(value="/user/update", method=RequestMethod.POST)
+	public String update(UserDTO dto,HttpServletRequest request, HttpServletResponse response){//model에 저장해서 view 페이지로 넘긴다
+		
+		int cnt=dao.update(dto);
+		System.out.println(dto.getPhone());
+		if(cnt==1){
+					return "redirect:/user/read";
+				}else{
+					return "/user/error";
+				}
+		}
+	
 	
 }//class UserController

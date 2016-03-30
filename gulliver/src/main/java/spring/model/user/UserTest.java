@@ -102,7 +102,7 @@ public class UserTest {
 	private static void update(UserDAO dao){
 		UserDTO dto=dao.read("user2");
 		dto.setCallphone("010-8888-9999");
-		if(dao.update(dto)){
+		if(dao.update(dto)>0){
 			p("성공");
 			dto=dao.read("user2");
 			p(dto);

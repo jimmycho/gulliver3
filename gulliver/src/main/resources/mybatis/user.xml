@@ -76,15 +76,13 @@ SELECT COUNT(*) FROM T_USER
 	</where>
 </select>
 
-<!-- update -->
+<!-- update  passwd=#{passwd}, -->
 <update id="update" parameterType="UserDTO">
 UPDATE T_USER  
-SET name= #{name}, passwd=#{passwd}, phone=#{phone}, email=#{email}, birthdate=#{birthdate}
-	,callphone=#{callphone}, zipcode=#{zipcode} ,  grade=#{grade}, address1=#{address1}, address2=#{address2} 
-    ,joindate=sysdate, userphoto=#{userphoto}        
+SET name= #{name}, callphone=#{callphone}, email=#{email},  zipcode=#{zipcode} ,  address1=#{address1}, address2=#{address2} 
 WHERE userid = #{userid} 
-
 </update>
+
 
 <!-- delete -->
 <delete id="delete" parameterType="String">

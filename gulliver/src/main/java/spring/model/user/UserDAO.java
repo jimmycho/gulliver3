@@ -34,12 +34,11 @@ public class UserDAO {
 		return sqlSessionTemplate.selectOne("user.read", userid);
 	}
 
-	public boolean update(UserDTO dto) {
+	public int update(UserDTO dto) {
 		// TODO Auto-generated method stub
-		boolean flag=false;
-		int cnt=sqlSessionTemplate.update("user.update", dto);
-		if(cnt>0) flag=true;
-		return flag;
+		System.out.println("UserDAO호출");
+		System.out.println(dto.getCallphone());
+		return(sqlSessionTemplate.update("user.update", dto));
 	}
 
 	public boolean delete(String userid) {
