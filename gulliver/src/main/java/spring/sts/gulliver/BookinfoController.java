@@ -147,8 +147,20 @@ public class BookinfoController {
 		return "/bookinfo/tempServer";
 	}
 
+	
 	// 책정보 등록
-	@RequestMapping("/bookinfo/create")
+	@RequestMapping(value="/bookinfo/create", method = RequestMethod.POST)
+	public String create(BookinfoDTO dto){
+		int cnt = dao.create(dto);
+		
+		if(cnt > 0){
+			return "redirect:./list";
+		}else{
+			return "/error";
+		}
+	}
+	
+	@RequestMapping(value="/bookinfo/create", method = RequestMethod.GET)
 	public String create() {
 		return "/bookinfo/create";
 	}
