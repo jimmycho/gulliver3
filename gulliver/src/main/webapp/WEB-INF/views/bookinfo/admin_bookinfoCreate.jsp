@@ -138,7 +138,7 @@
 				<td><input maxlength="30" name="BOOK_CATE_CD" size="30" type="text" /></td>
 			</tr>
 			<tr>
-				<td>책 설명</td>
+				<td>책설명</td>
 				<td><input maxlength="30" name="book_explain" size="30" type="text" /></td>
 			</tr>
 		</table>
