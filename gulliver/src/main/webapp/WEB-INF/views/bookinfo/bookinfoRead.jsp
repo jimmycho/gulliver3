@@ -6,10 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function checkLogin(userid){
+	if(userid==null) alert("로그인 상태에서 이용가능합니다.")	;
+	return false;	
+}
+</script>
 </head>
 <body>
 	<br><br>
-	<form name="frm" action="../cart/create" method="post">
+	<form name="frm" action="../cart/create" method="post" onsubmit="return checkLogin(${sessionScope.userid})">
 		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:900px;">
 			<tr>
 				<td rowspan="11" width="30%">
