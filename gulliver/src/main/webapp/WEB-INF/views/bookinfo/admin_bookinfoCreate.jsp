@@ -3,7 +3,6 @@
 	final String CONTEXT = request.getContextPath();
 	String pageno = "1";
 	//out.print(CONTEXT + "/script/lib/jQuery/jquery-1.7.1.min.js");
-	out.println( org.springframework.core.SpringVersion.getVersion());
 %>
 <!DOCTYPE html>
 <html>
