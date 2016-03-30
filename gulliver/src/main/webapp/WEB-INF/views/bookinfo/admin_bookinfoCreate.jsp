@@ -91,55 +91,55 @@
 		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px;">
 			<tr>
 				<td>책이름</td>
-				<td><input maxlength="30" name="bookname" size="30" type="text" /></td>
+				<td><input name="bookname" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>책표지사진명</td>
-				<td><input maxlength="30" name="bookfront_photo" size="30" type="text" /></td>
+				<td><input name="bookfront_photo" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>정가</td>
-				<td><input maxlength="30" name="cur_price" size="30" type="text" /></td>
+				<td><input name="cur_price" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>할인가</td>
-				<td><input maxlength="30" name="sale_price" size="30" type="text" /></td>
+				<td><input name="sale_price" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>수량</td>
-				<td><input maxlength="30" name="stock_cnt" size="30" type="text" /></td>
+				<td><input name="stock_cnt" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>출판사</td>
-				<td><input maxlength="30" name="publisher" size="30" type="text" /></td>
+				<td><input name="publisher" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>출판일시</td>
-				<td><input maxlength="30" name="pub_date" size="30" type="text" /></td>
+				<td><input name="pub_date" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>저자</td>
-				<td><input maxlength="30" name="writer" size="30" type="text" /></td>
+				<td><input name="writer" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>번역자</td>
-				<td><input maxlength="30" name="traductor" size="30" type="text" /></td>
+				<td><input name="traductor" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>ISBN10</td>
-				<td><input maxlength="30" name="ISBN10" size="30" type="text" /></td>
+				<td><input name="ISBN10" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>ISBN13</td>
-				<td><input maxlength="30" name="ISBN13" size="30" type="text" /></td>
+				<td><input name="ISBN13" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>책 분류코드</td>
-				<td><input maxlength="30" name="BOOK_CATE_CD" size="30" type="text" /></td>
+				<td><input name="BOOK_CATE_CD" size="30" type="text" /></td>
 			</tr>
 			<tr>
 				<td>책설명</td>
-				<td><input maxlength="30" name="book_explain" size="30" type="text" /></td>
+				<td><input name="book_explain" size="30" type="text" /></td>
 			</tr>
 		</table>
 	
