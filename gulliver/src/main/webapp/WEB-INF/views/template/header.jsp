@@ -152,9 +152,6 @@ padding-left: 20px }
 		<nav id="topMenu">
 		<ul>
 			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/">H O M E</a>
-				<ul class="submenu">
-					<li><a class="submenuLink" href="<%=root%>/bookcate/listTopCate">북카테고리</a></li>
-				</ul>
 			</li>
 			<li>|</li>
 			<li class="topMenuLi"><a class="menuLink" href="#">고객센터</a>
