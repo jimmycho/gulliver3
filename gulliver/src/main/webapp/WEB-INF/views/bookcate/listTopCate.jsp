@@ -10,20 +10,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>북카테고리(AJAX방식)</title>
-
-<%-- <script type="text/javascript" src="<%=root%>/bookcate/httpRequest.js"></script> --%>
-				
+<style>
+.menu a {
+	cursor: pointer;
+	font-weight: bold;}
+.menu .hide li{
+	display: none;}
+ul{
+list-style-type: none;
+padding-left: 0;}
+li{
+padding-left: 20px }
+</style>			
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>	
 <script type="text/javascript">
 //XMLHttpRequest 객체
 var httpRequest = null;
- 
 // url: 요청 주소 
 // params: 서버로 보내는 값의 목록
 // response_function_name: 응답 결과를 처리할 함수 
 // method: GET, POST인지 결정
 function sendRequest(url, params, response_function_name, method) {
-	
-	//alert("params in js file:"+params);
+//alert("params in js file:"+params);
  //1.객체생성
 	if (window.XMLHttpRequest) {
 	// code for modern browsers
@@ -33,7 +41,7 @@ function sendRequest(url, params, response_function_name, method) {
 	httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 	}
  //2. 함수연결
-//    document.write("httpRequest:"+httpRequest);
+//document.write("httpRequest:"+httpRequest);
     // 소문자로 변경
     httpMethod = method.toLowerCase();
     
@@ -54,7 +62,6 @@ function sendRequest(url, params, response_function_name, method) {
     // 내용 타입 지정
     httpRequest.setRequestHeader(
         'Content-Type', 'application/x-www-form-urlencoded');
-    
     // 응답을 처리할 함수 지정    
     httpRequest.onreadystatechange = response_function_name;
 //4.send    
@@ -79,90 +86,47 @@ function show(elementId) {
         element.style.display = '';
     }
 }
-    
 // 태그를 숨김
 function hide(elementId) {
     var element = document.getElementById(elementId);
     if (element) {
         element.style.display = 'none';
     }
-}
-
-</script>
+} </script>
 <script type="text/javascript">
 var xmlDoc = null;
 var xslDoc = null;
-
 function loadSubCate(subCode) {
 	var params="subCode="+subCode;
-	//alert("params :"+params);
     sendRequest("<%=root%>/bookcate/listSubCate",params,response,"GET");
 }
-
-function response() {
-	
+function response(subCode) {
     if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
         if (httpRequest.status == 200) { // 요청한 서버 파일이 실행 됐다면
-        	//alert("문제발생:"+httpRequest.status);
-        	//alert("문제발생:state"+httpRequest.readyState);
-            // 태그중에 "newsList"을 찾아 옵니다.
             var xmlDoc = httpRequest.responseXML;
             var SubCategoryList = xmlDoc.getElementsByTagName("SubCategory");
-            //alert("SubCategoryList"+SubCategoryList);
-            var subC ="";
-            subC=document.getElementById("subCode");
-            
+            var parCode = SubCategoryList.item(0).getElementsByTagName("parent_code").item(0)
+            				.firstChild.nodeValue;
+            var topC=document.getElementById(parCode); 
+            topC.innerHTML="";
             for(var i=0;i<SubCategoryList.length;i++){
             	var SubCate =SubCategoryList.item(i);
-            	var code =SubCate.getElementsByTagName("code").item(0)
-            			  .firstChild.nodeValue;
-            	var name =SubCate.getElementsByTagName("name").item(0)
-            			  .firstChild.nodeValue;
-            	subC.innerHTML +="<li>"+name+"</li>";
-            	//alert("subC"+subC.innerHTML);
+            	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
+            	 topC.innerHTML +="<li><a href='http://www.naver.com'><ul>"+name;
+            	 //topC.innerHTML += name;
+            	 topC.innerHTML +="</ul></a></li>";
+
             }
-            // 서버로부터 전송된 문자열
-            // div 태그의 값으로 responseText값을 할당합니다.
-            //alert(message);
-        }
-    }
-}
-</script>
-<script type="text/javascript">
-		function btnClick() {
-			alert("Button Click");
-		}
-</script>
-<style>
-.menu a {
-	cursor: pointer;
-	font-weight: bold;
-}
-
-.menu .hide li{
-	display: none;
-}
-ul{
-list-style-type: none;
-padding-left: 0;
-
-}
-li{
-
-padding-left: 20px }
-</style>
-
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-</head>
+           }}}
+</script> 
+</head> 
 <body>
 <ul>
 	<c:forEach var="dto" items="${list}" varStatus="status">
 		<li>
-			<a id="" onclick="loadSubCate(${dto.BOOK_CATE_CD})" style="cursor:pointer;">${dto.BOOK_CATE_NAME }
-			</a>
-			<ul >
-			 <div id="subCode"></div>
-			 </ul>
+			<a onclick="loadSubCate(${dto.BOOK_CATE_CD})"style="cursor: pointer;">
+			 ${dto.BOOK_CATE_NAME} </a>
+			 <ul id="${dto.BOOK_CATE_CD}"></ul>
 		</li>
 	</c:forEach>
 </ul>

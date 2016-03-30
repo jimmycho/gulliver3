@@ -5,6 +5,7 @@
 <SubCategoryList>
 <c:forEach var="dtoSub" items="${subCateList}" >
 	<SubCategory>
+		<parent_code>${dtoSub.HIGH_LINK_CD}</parent_code>
 		<code>${dtoSub.BOOK_CATE_CD}</code>
 		<name>${dtoSub.BOOK_CATE_NAME}</name>
 	</SubCategory>
