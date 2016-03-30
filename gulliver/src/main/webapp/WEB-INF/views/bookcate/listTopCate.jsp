@@ -104,19 +104,24 @@ function response(subCode) {
     if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
         if (httpRequest.status == 200) { // 요청한 서버 파일이 실행 됐다면
             var xmlDoc = httpRequest.responseXML;
-            var SubCategoryList = xmlDoc.getElementsByTagName("SubCategory");
+            var SubCategoryList = xmlDoc.getElementsByTagName("SubCategory");            
+            if(SubCategoryList.item(0)==null) alert("마지막 카테고리입니다 !");
             var parCode = SubCategoryList.item(0).getElementsByTagName("parent_code").item(0)
             				.firstChild.nodeValue;
+           
             var topC=document.getElementById(parCode); 
             topC.innerHTML="";
             for(var i=0;i<SubCategoryList.length;i++){
             	var SubCate =SubCategoryList.item(i);
             	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
-            	 topC.innerHTML +="<li><a href='http://www.naver.com'><ul>"+name;
+            
+            	var code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
+            	 topC.innerHTML +="<li><a onclick='loadSubCate("+code+")'>"+name+"</a><ul id='"+code+"'>";
             	 //topC.innerHTML += name;
-            	 topC.innerHTML +="</ul></a></li>";
-
+            	 topC.innerHTML +="</ul></li>"+"\n";
+            	 
             }
+            //alert(topC.innerHTML);
            }}}
 </script> 
 </head> 
