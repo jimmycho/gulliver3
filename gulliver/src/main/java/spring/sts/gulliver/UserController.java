@@ -320,6 +320,38 @@ public class UserController {
 					return "/user/error";
 				}
 		}
-	
+	@RequestMapping(value="/user/updateFile", method=RequestMethod.POST)
+	public String updateFile(String userid, String userphoto, MultipartFile fname,HttpServletRequest request){
+		
+		String basePath=request.getRealPath("/storage");
+		int size = (int) fname.getSize();
+		String filename=null;
+		if (size  > 0) {			
+			filename = Utility.saveFileSpring30(fname, basePath);
+		}
+		/*else{
+			filename="member.jpg";		//사진변경메뉴에서 사진을 선택하지 않은 경우	
+		}*/
+		Map map=new HashMap();
+		map.put("userid", userid);
+		map.put("filename", filename);
+		int cnt = dao.updateFile(map);
+		if(cnt==1 && !userphoto.equals("member.jpg")){
+			Utility.deleteFile(basePath, userphoto);
+		}
+		
+		if(cnt==1){
+			return "redirect:/user/read";
+		}else{
+		
+		return "/user/error";
+		}
+	}
+	@RequestMapping(value="/user/updateFile", method=RequestMethod.GET)
+	public String updateFile(){
+		
+		return "/user/updateFile";
+		
+	}
 	
 }//class UserController

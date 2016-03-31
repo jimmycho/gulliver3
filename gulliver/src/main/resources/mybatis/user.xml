@@ -83,6 +83,13 @@ SET name= #{name}, callphone=#{callphone}, email=#{email},  zipcode=#{zipcode} ,
 WHERE userid = #{userid} 
 </update>
 
+<!-- update File  -->
+<update id="updateFile" parameterType="Map">
+UPDATE T_USER  
+SET userphoto= #{filename} 
+WHERE userid = #{userid} 
+</update>
+
 
 <!-- delete -->
 <delete id="delete" parameterType="String">
