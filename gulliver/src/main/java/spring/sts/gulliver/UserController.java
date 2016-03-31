@@ -118,9 +118,9 @@ public class UserController {
 	
 	@RequestMapping(value="/user/login", method=RequestMethod.GET)
 	public String login(HttpServletRequest request,
-			@RequestParam(value="faqno",defaultValue="0")int faqno,
-			@RequestParam(value="nowPage",defaultValue="0")int nowPage
-			) {
+			@RequestParam(value="faqno",defaultValue="0") int faqno,
+			@RequestParam(value="nowPage",defaultValue="0") int nowPage	) 
+			{
 			
 				/*----쿠키설정 내용시작----------------------------*/
 				String c_id = ""; // ID 저장 여부를 저장하는 변수, Y

@@ -18,6 +18,22 @@
 	font-size: 14px;
 }
 </style>
+<script type="text/javascript">
+function inputCheck(){
+var f=document.frm;
+if(f.userid.value==""){
+	alert("아이디를 입력하여 주세요");
+	f.userid.focus();
+	return false;
+}
+if(f.passwd.value==""){
+	alert("비밀번호를 입력하여 주세요");
+	f.passwd.focus();
+	return false;
+}
+}
+</script>
+
 <link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css"> 
 </head>
 <!-- *********************************************** -->
@@ -26,17 +42,18 @@
 
 	<DIV class="title">로그인</DIV>
 
-	<FORM name='frm' method='POST' action='${pageContext.request.contextPath }/user/login'>
+	<FORM name='frm' method='POST' action='${pageContext.request.contextPath }/user/login'
+	onsubmit="return inputCheck()">
 		<TABLE class='table'>
 			<TR>
 				<TH>아이디</TH>
 				<TD><input type="text" name="userid" size="20" value="${c_id_val}"> 
 					<c:choose>
-						<c:when test="${c_id eq 'Y'}">
+						<c:when test="${c_id eq 'Y'}"> 
 							<input type='checkbox' name='c_id' value='Y' checked='checked'> ID 저장
 						</c:when>
 						<c:otherwise>
-							<input type='checkbox' name='c_id' value='Y'>ID 저장
+							<input type='checkbox' name='c_id' value='Y'>ID 저장 
 						</c:otherwise>
 					</c:choose>
 		
