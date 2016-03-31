@@ -164,6 +164,16 @@ public class CartController {
 		return "redirect:list";
 	}
 	
+	@RequestMapping(value="/cart/deleteUserCart", method=RequestMethod.GET)
+	public int deleteUserCart(HttpServletRequest request){
+		
+		String userid=request.getParameter("userid");
+		 
+		return (dao.deleteUserCart(userid));
+		
+		
+	}
+	
 	@RequestMapping(value="/cart/updateCart_cnt",method=RequestMethod.GET)
 	public String updateCart_cnt(HttpServletRequest request,CartDTO dto){
 		

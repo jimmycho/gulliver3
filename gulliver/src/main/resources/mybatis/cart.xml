@@ -48,6 +48,19 @@ DELETE FROM T_CART
 WHERE cartno=#{cartno}
 </delete>
 
+<!--3-1. deleteUserCart(회원탈퇴작업의 사전작업용 -->
+<delete id="deleteUserCart" parameterType="String" >
+DELETE FROM T_CART 
+WHERE userid=#{userid}
+</delete>
+
+<select id="cartCount" parameterType="String" resultType="int">
+	SELECT COUNT(*)	
+	FROM T_CART 
+	WHERE userid=#{userid}
+</select>
+
+
 <!--4. read(1건의 장바구니 정보 읽기) -->
 <select id="read" parameterType="int" resultType="CartDTO">
 <!-- SELECT * FROM T_CART 

@@ -91,5 +91,9 @@ WHERE userid = 'user7';
 DELETE FROM T_CART
 WHERE CARTNO = 6
 
+DELETE FROM T_CART
+WHERE userid = 'user3'
+
+
 SELECT COUNT(*) FROM T_CART
-where userid like '%%'
+where userid = 'user3';

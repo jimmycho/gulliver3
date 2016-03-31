@@ -118,6 +118,18 @@ INSERT INTO T_ORDER(orderno, del_method, recipient, total, order_cnt, order_comm
 VALUES((SELECT NVL(MAX(orderno),0 ) + 1 AS orderno FROM T_ORDER), '우체국택배', '이길동', 10000, 7, '책입니다 빠른배송해주세요', 3, 'user7', '123-123', '강남구 신논현동', '12-122', sysdate);
 
 
+--회원탈퇴시 FK 연관 데이터 사전 삭제
+DELETE FROM T_ORDER
+WHERE userid = 'user7';
+
+SELECT COUNT(*) 
+FROM T_ORDER
+where userid = 'user7';
+
+
+
+SELECT * from T_ORDER
+where userid='user7';
 
 
 

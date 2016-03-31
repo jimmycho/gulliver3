@@ -43,7 +43,7 @@ public class UserTest {
 
 	private static void delete(UserDAO dao) {
 		// TODO Auto-generated method stub
-		if(dao.delete("user78")){
+		if(dao.delete("user78")>1){
 			p("성공");
 		}else{
 			p("실패");

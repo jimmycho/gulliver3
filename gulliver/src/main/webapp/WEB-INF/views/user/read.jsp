@@ -89,8 +89,9 @@ function updatePW(userid){
 		<input type='button' value='사진수정'
 			onclick="updateFile('${dto.userid}','${dto.userphoto}')">
 		<input type='button' value='비번수정'
-			onclick="updatePW('${dto.userid}')"> <input type='button'
-			value='탈퇴' onclick="deleteM('${dto.userid}','${dto.userphoto}')">
+			onclick="updatePW('${dto.userid}')"> 
+		<input type='button' value='탈퇴' 
+			onclick="deleteM('${dto.userid}','${dto.userphoto}')">
 		<input type='button' value='다운로드'
 			onclick="location.href='${pageContext.request.contextPath}/download?dir=/storage&filename=${dto.userphoto}'">
 	</DIV>

@@ -55,14 +55,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 주문글 수정 -->
 
 
-<!-- 주문글 삭제 -->
+<!-- 주문 삭제 -->
 <delete id="delete" parameterType="int">
 	DELETE FROM T_ORDER
 	WHERE orderno = #{orderno}
 </delete>
 
+<!-- 주문 삭제 -->
+<delete id="deleteUserOrder" parameterType="String">
+	DELETE FROM T_ORDER
+	WHERE userid=#{userid}
+</delete>
 
-<!-- 주문글 총갯수 -->
+
+<!-- 주문 총갯수 -->
 <select id="total" parameterType="map" resultType="int">
 	SELECT COUNT(*)	
 	FROM T_ORDER R, T_BOOKINFO B
@@ -79,6 +85,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<if test="col == 'order_date'">
 		AND order_date LIKE '%'|| #{word} ||'%'
 	</if>
+</select>
+
+<select id="orderCount" parameterType="String" resultType="int">
+	SELECT COUNT(*)	
+	FROM T_ORDER 
+	WHERE userid=#{userid}
 </select>
 
 

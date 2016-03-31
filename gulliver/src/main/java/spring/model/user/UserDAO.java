@@ -41,12 +41,9 @@ public class UserDAO {
 		return(sqlSessionTemplate.update("user.update", dto));
 	}
 
-	public boolean delete(String userid) {
+	public int delete(String userid) {
 		// TODO Auto-generated method stub
-		boolean flag=false;
-		int cnt=sqlSessionTemplate.delete("user.delete", userid);
-		if(cnt>0) flag=true;
-		return flag;
+		return(sqlSessionTemplate.delete("user.delete", userid));
 	}
 	
 	public int duplicateId(String id) {
@@ -69,6 +66,11 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		System.out.println(map.get("userid"));
 		return sqlSessionTemplate.selectOne("user.loginCheck", map);
+	}
+
+	public String getFname(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

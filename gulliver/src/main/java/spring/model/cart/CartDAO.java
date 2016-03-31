@@ -59,4 +59,16 @@ public class CartDAO {
 		return sqlSessionTemplate.selectOne("cart.total", map);
 	}
 
+	public int deleteUserCart(String userid) {
+		// TODO Auto-generated method stub
+		int cnt_Cart=sqlSessionTemplate.selectOne("cart.cartCount", userid);
+		System.out.println("cnt_cart (DAO):"+cnt_Cart);
+		 if(cnt_Cart>0){
+			 sqlSessionTemplate.delete("cart.deleteUserCart", userid);
+			 cnt_Cart=sqlSessionTemplate.selectOne("cart.cartCount", userid);
+		 }
+		  System.out.println("cnt_cart: "+cnt_Cart);
+		 return cnt_Cart;
+	}
+
 }

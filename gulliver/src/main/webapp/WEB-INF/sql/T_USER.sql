@@ -1,4 +1,5 @@
 select * from t_user;
+DELETE FROM T_USER WHERE userid='user3'; 
 --아이디 패스워드 체크
 SELECT COUNT(*) FROM T_USER
 WHERE userid='jimmy' AND passwd='1234'
@@ -50,7 +51,7 @@ SET name='이길동', passwd='1234', phone='02-1234-1234' , email='email2@mail.c
     joindate='12/03/07', userphoto='member.jpg'
 WHERE userid = 'user4'; 
 --삭제
-DELETE FROM T_USER WHERE userid='user13'; 
+DELETE FROM T_USER WHERE userid='user3'; 
 
 --로그인관련
 SELECT COUNT(USERID)AS CNT

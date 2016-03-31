@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import spring.model.cart.CartDAO;
+import spring.model.order.OrderDAO;
 import spring.model.user.UserDAO;
 import spring.model.user.UserDTO;
 import spring.utility.gulliver.Paging;
@@ -27,6 +29,47 @@ public class UserController {
 	
 	@Autowired
 	private UserDAO dao; 
+	@Autowired
+	private CartDAO cdao; 
+	@Autowired
+	private OrderDAO odao; 
+	
+	@RequestMapping(value="/user/delete", method=RequestMethod.POST)
+	public String delete(String userid, String userphoto, HttpSession session, HttpServletRequest request){
+		String upDir=request.getRealPath("/storage");
+		
+		int cnt_cart=cdao.deleteUserCart(userid);
+		int cnt_order=odao.deleteUserOrder(userid);
+		
+		if(cnt_cart==0 && cnt_order==0){
+			int cnt=dao.delete(userid);
+			if(cnt==1){
+				if(!userphoto.equals("member.jpg")) Utility.deleteFile(upDir, userphoto);
+				session.invalidate();
+				return "redirect:/";
+			}else{
+				return "/user/error";
+			}
+		}
+		else return "/user/error";
+	}
+	
+	@RequestMapping(value="/user/delete", method=RequestMethod.GET)
+	public String delete(String userid, String userphoto, HttpSession session,Model model){
+		if(userid==null){
+			userid=(String) session.getAttribute(userid);
+			
+		}
+		if(userphoto==null){
+			userphoto=dao.getFname(userid);
+		}
+		model.addAttribute("userid",userid);
+		model.addAttribute("userphoto", userphoto);
+		
+		return "/user/delete";
+		
+	}
+	
 	
 	@RequestMapping("/user/checkId")
 	public String checkId(String userid, Model model){
