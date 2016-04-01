@@ -20,7 +20,6 @@
 	padding: 20px;
 	margin-bottom: 10px;
 	border: 1px solid #bcbcbc;
-	height: 90px;
 }
 
 #jb-sidebar {
@@ -150,30 +149,18 @@ padding-left: 20px }
 <body>
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
-
-	
-	<div id="jb-header" style="text-align: center;">
-	
-		<br><br>
-		<form style="text-align: right; padding-bottom: 5px ;padding-right:10px;">
-			<select style="font-size: large;">
-				<option name="" selected="selected">국내도서</option>
-				<option name="">외국도서</option>
-			</select> <input type="text" name="" value="" style="font-size: large;">
-		<input type="button" name="" value="검색" style="font-size: large;">
-		</form>
-		
-	<nav id="topMenu">
+		<nav id="topMenu">
 		<ul>
 			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/">H O M E</a>
 			</li>
 			<li>|</li>
-			<li><a class="menuLink" href="<%=root%>/notice/list">공지사항</a></li>
-			<li>|</li>
-			<li><a class="menuLink" href="<%=root %>/faq/list">FAQ</a></li>
-			<li>|</li>
-			<li><a class="menuLink" href="#">오프라인매장</a></li>
-			<li>|</li>
+			<li class="topMenuLi"><a class="menuLink" href="#">고객센터</a>
+				<ul class="submenu">
+					<li><a class="submenuLink" href="<%=root%>/notice/list">공지사항</a></li>
+					<li><a class="submenuLink" href="<%=root %>/faq/list">FAQ</a></li>
+					<li><a class="submenuLink" href="#">오시는길</a></li>
+				</ul>
+			</li>
 			
 			<% if(userid==null){%>
 			<li>|</li>
@@ -200,7 +187,16 @@ padding-left: 20px }
 			<%} }%>
 		</ul>
 	</nav>
-		
+	
+	<div id="jb-header" style="text-align: center;">
+		<br><br>
+		<form style="text-align: center;; padding-bottom: 5px ;padding-right:10px;">
+			<select style="font-size: large;">
+				<option name="" selected="selected">국내도서</option>
+				<option name="">외국도서</option>
+			</select> <input type="text" name="" value="" style="font-size: large;">
+		<input type="button" name="" value="검색" style="font-size: large;">
+		</form>
 	</div>
 
 	<!-- 상단 메뉴 끝 -->
