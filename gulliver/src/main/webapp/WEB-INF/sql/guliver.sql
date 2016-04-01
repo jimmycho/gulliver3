@@ -48,11 +48,13 @@ CREATE TABLE T_BOOKINFO (
 CREATE TABLE T_COMMENT (
        seq                  NUMBER(7) NOT NULL,
        star_cnt             NUMBER(2) NOT NULL,
-       say100ja             VARCHAR2(200) NOT NULL,
+       say100ja             VARCHAR2(500) NOT NULL,
        input_date           DATE NOT NULL,
-       bookid               NUMBER(7) NULL,
+       bookid               NUMBER(7) NOT NULL,
+       userid               VARCHAR2(50) NOT NULL,
        PRIMARY KEY (seq), 
-       FOREIGN KEY (bookid) REFERENCES T_BOOKINFO
+       FOREIGN KEY (bookid) REFERENCES T_BOOKINFO,
+       FOREIGN KEY (userid) REFERENCES T_USER
 );
 
 

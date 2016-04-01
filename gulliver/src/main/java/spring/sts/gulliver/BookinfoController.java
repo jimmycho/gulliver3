@@ -32,42 +32,64 @@ public class BookinfoController {
 	/////////100자평 관련 시작
 	
 	//100자평 등록
-	@RequestMapping(value="/bookinfo/ccreate", method=RequestMethod.POST)
-	public String ccreate(CommentDTO dto, Model model){
-		
+	@RequestMapping(value="/bookinfo/ccreate")
+	public String ccreate(CommentDTO dto, Model model, int nowPage,String col, String word){
+		System.out.println("userid : " + dto.getUserid());
 		int cnt = cdao.create(dto);
 		
 		if(cnt > 0){
+			model.addAttribute("col", col);
+			model.addAttribute("word", word);
+			model.addAttribute("nowPage", nowPage);
 			model.addAttribute("bookid", dto.getBookid());
+			
+			return "redirect:./read";
+		}else{
+			return "/error";
+		}
+	}
+
+	//100자평 삭제
+	@RequestMapping("/bookinfo/cdelete")
+	public String cdelete(int bookid, int seq, int nPage, int nowPage, String col, String word, Model model){
+		
+		int cnt = cdao.delete(seq);
+		System.out.println("dto.getSeq() : " + seq);
+		if(cnt > 0){
+			model.addAttribute("seq", seq);
+			model.addAttribute("nPage", nPage);
+			model.addAttribute("col", col);
+			model.addAttribute("word", word);
+			model.addAttribute("bookid", bookid);
+			model.addAttribute("nowPage", nowPage);
+
 			return "redirect:./read";
 		}else{
 			return "/error";
 		}
 	}
 	
-	@RequestMapping(value="/bookinfo/ccreate", method=RequestMethod.GET)
-	public String ccreate(){
-		
-		return "/bookinfo/ccreate";
-	}
-	
-	
-	//100자평 삭제
-	
 	
 	//100자평 수정
-	
-	
-	//100자평 목록
-	@RequestMapping(value="/bookinfo/cread")
-	public String cread(String col, String word, String nowPage, Model model){
+	@RequestMapping("/bookinfo/cupdate")
+	public String cupdate(int bookid, CommentDTO dto, int nowPage,int nPage, String col, String word, Model model){
+
+		int cnt = cdao.update(dto);
 		
-		
-		
-		return "/bookinfo/read";
+		if(cnt > 0){
+			model.addAttribute("seq", dto.getSeq());
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("nPage", nPage);
+			model.addAttribute("col", col);
+			model.addAttribute("word", word);
+			model.addAttribute("bookid", bookid);
+			
+			return "redirect:./read"; 
+		}else{
+			return "error/error";
+		}	
 	}
-	
-	
+
 	
 	////////100자평 관련 끝
 	

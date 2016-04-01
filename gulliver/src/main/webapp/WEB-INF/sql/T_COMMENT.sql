@@ -2,13 +2,15 @@
 DROP TABLE T_COMMENT CASCADE CONSTRAINTS;
 
 CREATE TABLE T_COMMENT (
-       seq                  NUMBER(7) NOT NULL,		--댓글번호
-       star_cnt             NUMBER(2) NOT NULL,		--별점
-       say100ja             VARCHAR2(200) NOT NULL,	--100자평
-       input_date           DATE NOT NULL,			--입력일
-       bookid               NUMBER(7) NULL,			--bookid
+       seq                  NUMBER(7) NOT NULL,
+       star_cnt             NUMBER(2) NOT NULL,
+       say100ja             VARCHAR2(500) NOT NULL,
+       input_date           DATE NOT NULL,
+       bookid               NUMBER(7) NOT NULL,
+       userid               VARCHAR2(50) NOT NULL,
        PRIMARY KEY (seq), 
-       FOREIGN KEY (bookid) REFERENCES T_BOOKINFO
+       FOREIGN KEY (bookid) REFERENCES T_BOOKINFO,
+       FOREIGN KEY (userid) REFERENCES T_USER
 );
 
 select * from T_COMMENT;
@@ -16,13 +18,13 @@ select * from T_COMMENT;
 
 --T_COMMENT 목록
 
-SELECT seq, star_cnt, say100ja, input_date, bookid, r
+SELECT seq, star_cnt, say100ja, input_date, bookid, userid, name, r
 FROM(
-    SELECT seq, star_cnt, say100ja, input_date, bookid, rownum r
+    SELECT seq, star_cnt, say100ja, input_date, bookid, userid, name, rownum r
     FROM(
-          SELECT seq, star_cnt, say100ja, input_date, bookid
-          FROM T_COMMENT
-          --WHERE bookid = 1
+          SELECT c.seq, c.star_cnt, c.say100ja, c.input_date, c.bookid, c.userid, u.name
+          FROM T_COMMENT C, T_USER U 
+          WHERE bookid = 11 and c.userid = u.userid
           ORDER BY seq DESC
         )
 )

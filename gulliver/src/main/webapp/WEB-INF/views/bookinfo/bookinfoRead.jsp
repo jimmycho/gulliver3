@@ -35,7 +35,7 @@
   color: #000000;        /* 글자 색깔 */
   width: 780px;            /* 화면의 30% */ 
   padding: 10px;         /* 위 오른쪽 아래 왼쪽: 시간 방향 적용 */
-  
+  height: 80px;
   /* padding: 50px 10px;  50px: 위 아래, 10px: 좌우 */
   /* padding-top: 30px;  상단만 간격을 30px 지정   */
   
@@ -59,6 +59,89 @@ function checkLogin(userid){
 	return false;	
 }
 
+$(function() {
+    $('.remaining').each(function() {
+        // count 정보 및 count 정보와 관련된 textarea/input 요소를 찾아내서 변수에 저장한다.
+        var $count = $('.count', this);
+        var $input = $(this).prev();
+        // .text()가 문자열을 반환하기에 이 문자를 숫자로 만들기 위해 1을 곱한다.
+        var maximumCount = $count.text() * 1;
+        // update 함수는 keyup, paste, input 이벤트에서 호출한다.
+        var update = function() {
+            var before = $count.text() * 1;
+            var now = maximumCount - $input.val().length;
+            // 사용자가 입력한 값이 제한 값을 초과하는지를 검사한다.
+            if (now < 0) {
+                var str = $input.val();
+                alert('글자 입력수가 초과하였습니다.');
+                $input.val(str.substr(0, maximumCount));
+                now = 0;
+            }
+            // 필요한 경우 DOM을 수정한다.
+            if (before != now) {
+                $count.text(now);
+            }
+        };
+        // input, keyup, paste 이벤트와 update 함수를 바인드한다
+        $input.bind('input keyup paste', function() {
+            setTimeout(update, 0)
+        });
+        update();
+    });
+});
+
+
+
+function rcheck(tarea){
+	if('${sessionScope.userid}'==""){
+		if(confirm("로그인후 댓글를 쓰세요")){
+		var url = "../user/login";
+		location.href=url;
+		}else{
+			tarea.blur();
+		}
+	}
+}
+
+function input(f){
+	if('${sessionScope.userid}'==""){
+	if(confirm("로그인후 댓글를 쓰세요")){
+	var url = "../user/login";
+
+	location.href=url;
+	return false;
+	}else{
+	 
+	return false;
+	}
+	}else if(f.say100ja.value==""){
+	alert("댓글 내용을 입력하세요.");
+	f.say100ja.focus();
+	return false;
+	}
+	}
+
+//댓글 수정
+//value 값들을 textarea에 넣어서 submit 시킨다
+function cupdate(seq, say100ja){
+	var f = document.frm2;
+	f.say100ja.value = say100ja;
+	f.seq.value = seq;
+	f.csubmit.value="수 정";
+	f.action="./cupdate"
+	}
+	
+	
+function cdelete(seq){
+	if(confirm("정말삭제 하겠습니까?")){ 
+		var url = "./cdelete?seq=" + seq;
+		url = url + "&bookid=${bookid}";
+		url = url + "&nPage=${nPage}";
+		url = url + "&nowPage=${param.nowPage}";
+		
+		location.href = url;
+	}
+}
 </script>
 </head>
 <body>
@@ -132,12 +215,16 @@ function checkLogin(userid){
 			<input type="button" value="목록">
 		</c:if>
 	</div>
-	<br>
 	
 	<!-- 100자평 시작 -->
-	<form action="./ccreate" method="post" name="frm2">
-<%-- 		<input type="hidden" name="bookid" value="${bookid}"> --%>
-					
+	<form action="./ccreate" method="post" name="frm2" onsubmit="return input(this)">
+		<input type="hidden" name="bookid" value="${bookid}">
+		<input type="hidden" name="nowPage" value="${param.nowPage}">
+		<input type="hidden" name="col" value="${param.col}">
+		<input type="hidden" name="word" value="${param.word}">
+		<input type="hidden" name="nPage" value="${nPage}">		
+		<input type="hidden" name="userid" value="${sessionScope.userid}">
+		<input type="hidden" name="seq" value="0">	 <!-- 0은 의미없음 seq값을 javascript 로 변경해서 보낼것임 -->
 				<div class="rcreate">
 					<select name = "star_cnt">
 						<option value = "0">☆☆☆☆☆</option>
@@ -147,41 +234,45 @@ function checkLogin(userid){
 						<option value = "4">★★★★☆</option>
 						<option value = "5">★★★★★</option>
 					</select>
-					<textarea cols="105" name="say100ja" rows="5"></textarea><br>
-					<input type="submit" name="등록" value="등록" />
+						<TEXTAREA id="contentHelp" cols="105" name="say100ja" rows="5" onclick="rcheck(this)"></TEXTAREA>
+						<DIV class=remaining>남은 글자수: <SPAN class="count">100</SPAN></DIV>
+					<input type="submit" name="csubmit" value="등 록" />
 				</div>
-			<c:choose>
-				<c:when test="${empty clist }">
-					100자평이 없습니다.
-				</c:when>
-				<c:otherwise>
-						<c:forEach var="cdto" items="${clist }">
-						<div class="rlist">
-								<c:choose>
-									<c:when test="${cdto.star_cnt == 0}">
-										☆☆☆☆☆
-									</c:when>	
-									<c:when test="${cdto.star_cnt == 1}">
-										★☆☆☆☆
-									</c:when>
-									<c:when test="${cdto.star_cnt == 2}">
-										★★☆☆☆
-									</c:when>
-									<c:when test="${cdto.star_cnt == 3}">
-										★★★☆☆
-									</c:when>
-									<c:when test="${cdto.star_cnt == 4}">
-										★★★★☆
-									</c:when>
-									<c:when test="${cdto.star_cnt == 5}">
-										★★★★★
-									</c:when>
-								</c:choose>
-								${cdto.say100ja }
-							</div>
-						</c:forEach>
-				</c:otherwise>
-			</c:choose>
+				<c:forEach var="cdto" items="${clist }">
+					<div class="rlist">
+						<c:choose>
+							<c:when test="${cdto.star_cnt == 0}">
+								☆☆☆☆☆
+							</c:when>	
+							<c:when test="${cdto.star_cnt == 1}">
+								★☆☆☆☆
+							</c:when>
+							<c:when test="${cdto.star_cnt == 2}">
+								★★☆☆☆
+							</c:when>
+							<c:when test="${cdto.star_cnt == 3}">
+								★★★☆☆
+							</c:when>
+							<c:when test="${cdto.star_cnt == 4}">
+								★★★★☆
+							</c:when>
+							<c:when test="${cdto.star_cnt == 5}">
+								★★★★★
+							</c:when>
+						</c:choose>
+							| ${cdto.name } | ${cdto.input_date} 
+							<c:if test="${sessionScope.userid == cdto.userid }"> <!-- 현재 로그인한 아이디의 것만 보여준다 -->
+								<span style="float: right;">
+									<a href="javascript:cupdate('${cdto.seq}','${cdto.say100ja }')">수정</a>|
+									<a href="javascript:cdelete('${cdto.seq}')">삭제</a>
+								</span>
+							</c:if>
+							<br><br>
+							${cdto.say100ja }
+
+					</div>
+				</c:forEach>
+
 		${paging }
 	</form>
 	<br>

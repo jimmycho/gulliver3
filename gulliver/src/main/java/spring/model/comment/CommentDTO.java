@@ -6,8 +6,23 @@ public class CommentDTO {
 	private String say100ja; // 100자평
 	private String input_date; // 입력일
 	private int bookid; // bookid
+	private String userid; //userid
+	private String name; //user이름
 	
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public int getSeq() {
 		return seq;
 	}

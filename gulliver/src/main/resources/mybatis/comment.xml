@@ -5,13 +5,13 @@
 
 <!-- 목록 -->
 <select id="list" parameterType="map" resultType="CommentDTO">
-	SELECT seq, star_cnt, say100ja, input_date, bookid, r
-	FROM(
-	    SELECT seq, star_cnt, say100ja, input_date, bookid, rownum r
-	    FROM(
-	          SELECT seq, star_cnt, say100ja, input_date, bookid
-	          FROM T_COMMENT
-	          <![CDATA[WHERE bookid = #{bookid}]]>
+SELECT seq, star_cnt, say100ja, input_date, bookid, userid, name, r
+FROM(
+    SELECT seq, star_cnt, say100ja, input_date, bookid, userid, name, rownum r
+    FROM(
+          SELECT c.seq, c.star_cnt, c.say100ja, c.input_date, c.bookid, c.userid, u.name
+          FROM T_COMMENT C, T_USER U 
+	          <![CDATA[WHERE bookid = #{bookid} AND c.userid = u.userid]]>
 	          ORDER BY seq DESC
 	        )
 	)
@@ -24,17 +24,17 @@
 	<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 		SELECT nvl(max(seq),0) + 1 FROM T_COMMENT 
 	</selectKey>
-	INSERT INTO T_COMMENT(seq, star_cnt, say100ja, input_date, bookid)
-	VALUES((SELECT NVL(MAX(seq),0) + 1 FROM T_COMMENT), #{star_cnt}, #{say100ja}, sysdate, #{bookid})
+	INSERT INTO T_COMMENT(seq, star_cnt, say100ja, input_date, bookid, userid)
+	VALUES((SELECT NVL(MAX(seq),0) + 1 FROM T_COMMENT), #{star_cnt}, #{say100ja}, sysdate, #{bookid}, #{userid})
 </insert>
 
 
-<!-- 읽기 -->
-<select id="read" parameterType="int" resultType="CommentDTO">
-	SELECT seq, star_cnt, say100ja, input_date, bookid
-	FROM T_COMMENT
-	WHERE seq = #{seq}
-</select>
+<!-- 읽기 --> 
+<!-- <select id="read" parameterType="int" resultType="CommentDTO"> -->
+<!-- 	SELECT seq, star_cnt, say100ja, input_date, bookid -->
+<!-- 	FROM T_COMMENT -->
+<!-- 	WHERE seq = #{seq} -->
+<!-- </select> -->
 
 <!-- 수정 -->
 <update id="update" parameterType="CommentDTO">
