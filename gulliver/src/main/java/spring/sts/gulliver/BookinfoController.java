@@ -33,12 +33,13 @@ public class BookinfoController {
 	
 	//100자평 등록
 	@RequestMapping(value="/bookinfo/ccreate", method=RequestMethod.POST)
-	public String ccreate(CommentDTO dto){
+	public String ccreate(CommentDTO dto, Model model){
 		
 		int cnt = cdao.create(dto);
 		
 		if(cnt > 0){
-			return "redirect:./list";
+			model.addAttribute("bookid", dto.getBookid());
+			return "redirect:./read";
 		}else{
 			return "/error";
 		}
