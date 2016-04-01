@@ -167,7 +167,6 @@ padding-left: 20px }
 					<li><a href="<%=root%>/order/list">전체주문조회</a></li>
 					<li><a href="<%=root%>/adm/bookinfo/create">서적등록</a></li>
 					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoList">서적관리</a></li>
-					<li><a href="<%=root%>/bookcate/listTopCate">분류관리</a></li>
 				</ul>
 				</li>
 			<%} %>

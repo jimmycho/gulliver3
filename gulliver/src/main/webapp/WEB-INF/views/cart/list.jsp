@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <title></title>
 <script type="text/javascript">
   function ToggleReadWrite (cart_cnt,cartno) {
@@ -27,7 +28,7 @@
   }
 </script>
 
-
+<!-- 
 <style type="text/css">
 TH {
 	border-color: #AAAAAA; /* 테이블 외곽선 색깔 */
@@ -37,35 +38,34 @@ TH {
 	background-color: #FFD549; /* 배경 색 */
 	padding: 5px; /* 셀 내부 간격 */
 }
-</style>
+</style> -->
 
 </head>
 <body>
-
+<center>
 <div align="center" style="font-size: xx-large;"><c:out value="${list[0].name}"/>  님 장바구니 목록 </div>
 <br>
 <form action="../order/create" method="get" name="frm">
-<table align="center" border="1" cellpadding="1" cellspacing="1"
-		style="width: 750px;">
+<table class="BTABLE" width="85%" border="0" >
 		<tbody>
-			<tr bgcolor="#FFD549">
-				<th>장바구니<br>번호</td>
-				<th>입력일시</td>
-				<th>책이름</td>
-				<th>가격(원)</td>
-				<th>수량(권)</td>
-				<th>삭제</th>
-				<th>주문선택</td>
+			<tr> 
+				<td align="center" class="BTD2" height="23">No</td>
+				<td align="center" class="BTD2" height="23">입력일시</td>
+				<td align="center" class="BTD2" height="23">책이름</td>
+				<td align="center" class="BTD2" height="23">가격(원)</td>
+				<td align="center" class="BTD2" height="23">수량(권)</td>
+				<td align="center" class="BTD2" height="23">삭제</td>
+				<td align="center" class="BTD2" height="23">주문선택</td>
 			</tr>
 <c:choose>	
 	<c:when test="${empty list }">
-		<tr>
+		<tr bgcolor="#ffffff">
 		<td>장바구니에 담긴 상품이 없습니다.</td>
 		</tr>
 	</c:when>	
 	<c:otherwise>
 	<c:forEach var="dto" items="${list }" varStatus="status" >
-			<tr>
+			<tr bgcolor="#ffffff">
 				<td>${dto.cartno }</td>
 				<td>${dto.input_date }</td>
 				<td>${dto.bookname }</td>
@@ -90,7 +90,7 @@ TH {
 				<td colspan="7" style="text-align: right;">
 					총 상품 가격: ${totalPrice }원<br>
 					총 상품 수량: 총 ${totalCart_cnt}권<br>
-					<div align="right"><input type="submit" style="" value="   주   문   하   기   "></div>
+					<div align="right"><input type="submit" style="" value="   주   문   하   기   " class="BBUTTON"></div>
 				</td>  
 					
 			</tr>
@@ -102,7 +102,7 @@ TH {
 
 	
 <br>
-
+</center>
 </body>
 <script type="text/javascript">
 

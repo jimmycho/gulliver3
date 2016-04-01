@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title"/></title>
-<link href="../css/style.css" rel="Stylesheet" type="text/css"> 
+<!-- <link href="../css/style.css" rel="Stylesheet" type="text/css"> --> 
 <style>
 #jb-container {
 	width: 1200px; margin : 0px auto;
