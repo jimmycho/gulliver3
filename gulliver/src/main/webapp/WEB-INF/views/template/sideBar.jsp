@@ -154,7 +154,8 @@ function response(subCode) {
             	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
             
             	var code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
-            	 topC.innerHTML +="<li><a onclick='loadSubCate("+code+")' style='cursor: pointer;'>└"+name+"</a><ul id='"+code+"'>";
+            	//alert("name:code"+name+code) ;
+            	topC.innerHTML +="<li><a onclick='loadSubCate("+code+")' style='cursor: pointer;'>└"+name+"</a><ul id='"+code+"'>";
             	 //topC.innerHTML += name;   
             	 topC.innerHTML +="</ul></li>"+"\n";
             	 

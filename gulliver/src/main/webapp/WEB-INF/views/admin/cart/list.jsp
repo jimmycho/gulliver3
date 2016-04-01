@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="./css/style1.css" rel="stylesheet" type="text/css">
 <title></title>
 <script type="text/javascript">
 function read(faqno){
@@ -16,7 +17,7 @@ function read(faqno){
 }
 </script>
 
-<style type="text/css">
+<!-- <style type="text/css">
 TH {
 	border-color: #AAAAAA; /* 테이블 외곽선 색깔 */
 	border-width: 1px; /* 테이블 외곽선 두께 */
@@ -25,7 +26,7 @@ TH {
 	background-color: #FFD549; /* 배경 색 */
 	padding: 5px; /* 셀 내부 간격 */
 }
-</style>
+</style> -->
 
 </head>
 <body>
