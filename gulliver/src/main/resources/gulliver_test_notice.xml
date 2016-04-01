@@ -38,10 +38,10 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <!-- 	<bean id="dao" class="spring.model.bookinfo.BookinfoDAO" p:sqlSessionTemplate-ref="sqlSession"/> -->
 	
 	<!-- bookinfo test -->
-	<bean id="dao" class="spring.model.order.OrderDAO" p:sqlSessionTemplate-ref="sqlSession"/>
+<!-- 	<bean id="dao" class="spring.model.order.OrderDAO" p:sqlSessionTemplate-ref="sqlSession"/> -->
 	
 	<!-- bookinfo test -->
-<!-- 	<bean id="dao" class="spring.model.comment.CommentDAO" p:sqlSessionTemplate-ref="sqlSession"/> -->
+	<bean id="dao" class="spring.model.comment.CommentDAO" p:sqlSessionTemplate-ref="sqlSession"/>
 	
 	
 </beans>

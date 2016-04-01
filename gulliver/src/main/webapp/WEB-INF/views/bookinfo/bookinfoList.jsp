@@ -12,6 +12,7 @@ function read(bookid){
 	var url = "./read?bookid=" + bookid;
 		url = url + "&col=${col}";
 		url = url + "&word=${word}";
+		url = url + "&nowPage=${nowPage}";
 		
 		location.href = url;
 }

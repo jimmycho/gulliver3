@@ -24,13 +24,13 @@
 		<put-attribute name="title" value="기본페이지"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/bookcate/listTopCate.jsp" />
 	</definition>
-	<definition name="/bookinfo/create" extends="main2">
+	<definition name="/adm/bookinfo/create" extends="main2">
 		<put-attribute name="title" value="책등록"></put-attribute>
-		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/admin_bookinfoCreate.jsp" />
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate.jsp" />
 	</definition>
-	<definition name="/bookinfo/admin_bookinfoList" extends="main2">
+	<definition name="/adm/bookinfo/admin_bookinfoList" extends="main2">
 		<put-attribute name="title" value="책목록"></put-attribute>
-		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/admin_bookinfoList.jsp" />
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoList.jsp" />
 	</definition>
 	<definition name="/bookinfo/list" extends="main">
 		<put-attribute name="title" value="책목록"></put-attribute>

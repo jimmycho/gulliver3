@@ -1,14 +1,14 @@
 select * from T_BOOKINFO;
 DROP TABLE T_BOOKINFO CASCADE CONSTRAINTS;
   
-CREATE TABLE T_BOOKINFO()
+CREATE TABLE T_BOOKINFO (
        bookid               NUMBER(7) NOT NULL,					-- bookid (PK)
        bookname             VARCHAR2(100) DEFAULT 0 NOT NULL,	-- 책이름
        sale_price           NUMBER(10) NULL,					-- 할인가격
        bookfront_photo      VARCHAR2(2000) NULL,				-- 책 표지 사진명
        book_explain         VARCHAR2(4000) NULL,				-- 책 설명
-       ISBN10               VARCHAR2(20) NULL,					-- ISBN 10자리
-       ISBN13               VARCHAR2(20) NULL,					-- ISBN 13자리
+       ISBN10               NUMBER(20) NULL,					-- ISBN 10자리
+       ISBN13               NUMBER(20) NULL,					-- ISBN 13자리
        stock_cnt            NUMBER(10) DEFAULT 0 NULL,			-- 재고량
        cur_price            NUMBER(10) DEFAULT 0 NULL,			-- 정가
        publisher            VARCHAR2(50) NULL,					-- 출판사

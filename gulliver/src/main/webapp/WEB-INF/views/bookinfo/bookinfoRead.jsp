@@ -15,8 +15,8 @@ function checkLogin(userid){
 </head>
 <body>
 	<br><br>
-	<form name="frm" action="../cart/create" method="post" onsubmit="return checkLogin(${sessionScope.userid})">
-		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:900px;">
+	<form name="frm1" action="../cart/create" method="post" onsubmit="return checkLogin(${sessionScope.userid})">
+		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:800px;">
 			<tr>
 				<td rowspan="11" width="30%">
 					<p style="text-align: center;">
@@ -85,5 +85,68 @@ function checkLogin(userid){
 		</c:if>
 	</div>
 	<br>
+	
+	<!-- 100자평 시작 -->
+	<form action="./ccreate" method="post" name="frm2">
+		<input type="hidden" name="bookid" value="${bookid}">
+		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:800px;">
+			<tr>
+				<td style="text-align: left; ">
+					<select name = "star_cnt">
+				       <option value = "0">☆☆☆☆☆</option>
+				       <option value = "1">★☆☆☆☆</option>
+				       <option value = "2">★★☆☆☆</option>
+				       <option value = "3">★★★☆☆</option>
+				       <option value = "4">★★★★☆</option>
+				       <option value = "5">★★★★★</option>
+				      </select>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					<textarea cols="100px" name="say100ja" rows="5"></textarea><br><br>
+					<input type="submit" name="등록" value="등록" />
+				</td>
+			</tr>
+			<c:choose>
+				<c:when test="${empty clist }">
+					<tr><td>100자평이 없습니다.</td></tr>
+				</c:when>
+				<c:otherwise>
+						<c:forEach var="cdto" items="${clist }">
+							<tr>
+								<c:choose>
+									<c:when test="${cdto.star_cnt == 0}">
+										<td>☆☆☆☆☆</td>
+									</c:when>	
+									<c:when test="${cdto.star_cnt == 1}">
+										<td>★☆☆☆☆</td>
+									</c:when>
+									<c:when test="${cdto.star_cnt == 2}">
+										<td>★★☆☆☆</td>
+									</c:when>
+									<c:when test="${cdto.star_cnt == 3}">
+										<td>★★★☆☆</td>
+									</c:when>
+									<c:when test="${cdto.star_cnt == 4}">
+										<td>★★★★☆</td>
+									</c:when>
+									<c:when test="${cdto.star_cnt == 5}">
+										<td>★★★★★</td>
+									</c:when>
+								</c:choose>
+							</tr>
+							<tr>
+								<td>${cdto.say100ja }</td>
+							</tr>
+						</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</table>
+		${paging }
+	</form>
+	<br>
+	
+	<!-- 100자평 끝 -->
 </body>
 </html>

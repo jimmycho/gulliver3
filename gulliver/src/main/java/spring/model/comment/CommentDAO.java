@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CommentDAO {
 	
+	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
 	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {

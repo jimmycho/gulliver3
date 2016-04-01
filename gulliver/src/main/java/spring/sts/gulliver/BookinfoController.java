@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import spring.model.bookinfo.BookinfoDAO;
 import spring.model.bookinfo.BookinfoDTO;
+import spring.model.comment.CommentDAO;
+import spring.model.comment.CommentDTO;
 import spring.utility.gulliver.Paging;
 import spring.utility.gulliver.Utility;
 
@@ -23,9 +25,56 @@ public class BookinfoController {
 	@Autowired
 	private BookinfoDAO dao;
 
+	@Autowired
+	private CommentDAO cdao;
+	
+	
+	/////////100자평 관련 시작
+	
+	//100자평 등록
+	@RequestMapping(value="/bookinfo/ccreate", method=RequestMethod.POST)
+	public String ccreate(CommentDTO dto){
+		
+		int cnt = cdao.create(dto);
+		
+		if(cnt > 0){
+			return "redirect:./list";
+		}else{
+			return "/error";
+		}
+	}
+	
+	@RequestMapping(value="/bookinfo/ccreate", method=RequestMethod.GET)
+	public String ccreate(){
+		
+		return "/bookinfo/ccreate";
+	}
+	
+	
+	//100자평 삭제
+	
+	
+	//100자평 수정
+	
+	
+	//100자평 목록
+	@RequestMapping(value="/bookinfo/cread")
+	public String cread(String col, String word, String nowPage, Model model){
+		
+		
+		
+		return "/bookinfo/read";
+	}
+	
+	
+	
+	////////100자평 관련 끝
+	
+	
+	
 	//책정보 읽기
 	@RequestMapping("/bookinfo/read")
-	public String read(int bookid, Model model){
+	public String read(int bookid, Model model, String col, String word, int nowPage, HttpServletRequest request){
 		
 		BookinfoDTO dto = dao.read(bookid);
 		
@@ -35,12 +84,42 @@ public class BookinfoController {
 		
 		model.addAttribute("dto", dto);
 		
+		////////100자평 시작
+		String url = "read";
+		int nPage= 1; //시작 페이지 번호는 1부터 
+		 
+		if (request.getParameter("nPage") != null) { 
+			nPage= Integer.parseInt(request.getParameter("nPage"));  
+		}
+		int recordPerPage = 3; // 한페이지당 출력할 레코드 갯수
+		 
+		int sno = ((nPage-1) * recordPerPage) + 1; // 
+		int eno = nPage * recordPerPage;
+		
+		Map map = new HashMap();
+		map.put("sno", sno);
+		map.put("eno", eno);
+		map.put("bookid", bookid);
+
+		List<CommentDTO> clist = cdao.list(map);
+		
+		int total = cdao.total(bookid);
+		
+		String paging = Utility.paging(total, nPage, recordPerPage, url, bookid, nowPage, col, word);
+		 
+		model.addAttribute("clist", clist);
+		model.addAttribute("paging", paging);
+		model.addAttribute("nPage", nPage);
+		model.addAttribute("bookid", bookid);
+		///////100자평 끝
+		
+		
 		return "/bookinfo/read";
 	}
 	
 	
 	//책정보 관리자 목록
-	@RequestMapping("/bookinfo/admin_bookinfoList")
+	@RequestMapping("/adm/bookinfo/admin_bookinfoList")
 	public String adminList(HttpServletRequest request){
 		// 검색 부분
 		String col = Utility.checkNull(request.getParameter("col"));
@@ -86,7 +165,7 @@ public class BookinfoController {
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 
-		return "/bookinfo/admin_bookinfoList";
+		return "/adm/bookinfo/admin_bookinfoList";
 	}
 	
 	
@@ -141,27 +220,26 @@ public class BookinfoController {
 	}
 
 	// 입력할 책 daum api 에서 읽어오기
-	@RequestMapping(value = "/bookinfo/tempServer", method = RequestMethod.POST)
+	@RequestMapping(value="/bookinfo/tempServer", method = RequestMethod.POST)
 	public String tempServer() {
-		System.out.println("tempServer");
 		return "/bookinfo/tempServer";
 	}
 
 	
 	// 책정보 등록
-	@RequestMapping(value="/bookinfo/create", method = RequestMethod.POST)
+	@RequestMapping(value="/adm/bookinfo/create", method = RequestMethod.POST)
 	public String create(BookinfoDTO dto){
 		int cnt = dao.create(dto);
 		
 		if(cnt > 0){
-			return "redirect:./list";
+			return "redirect:../bookinfo/list";
 		}else{
 			return "/error";
 		}
 	}
 	
-	@RequestMapping(value="/bookinfo/create", method = RequestMethod.GET)
+	@RequestMapping(value="/adm/bookinfo/create", method = RequestMethod.GET)
 	public String create() {
-		return "/bookinfo/create";
+		return "/adm/bookinfo/create";
 	}
 }

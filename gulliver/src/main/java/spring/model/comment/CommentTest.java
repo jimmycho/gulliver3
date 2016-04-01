@@ -54,7 +54,7 @@ public class CommentTest {
 		Map map = new HashMap();
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("bookid", 1); 
+		map.put("bookid", 8); 
 
 		List<CommentDTO> list = dao.list(map);
 
