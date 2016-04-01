@@ -233,7 +233,7 @@ public class BookinfoController {
 		int cnt = dao.create(dto);
 		
 		if(cnt > 0){
-			return "redirect:../bookinfo/list";
+			return "redirect:./admin_bookinfoList";
 		}else{
 			return "/error";
 		}
