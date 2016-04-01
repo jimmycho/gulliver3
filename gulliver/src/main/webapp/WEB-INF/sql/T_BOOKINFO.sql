@@ -36,7 +36,7 @@ FROM (
       FROM (
 	          SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
 					 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
-	          FROM T_BOOKINFO
+	          FROM T_BOOKINFO b
 	          --WHERE bookname LIKE '%고등%'
 	          ORDER BY bookid DESC
           )
