@@ -193,7 +193,7 @@ padding-left: 20px }
 		<form style="text-align: center;; padding-bottom: 5px ;padding-right:10px;">
 			<select style="font-size: large;">
 				<option name="" selected="selected">국내도서</option>
-				<option name="">외국도서</option>
+				<option name="">외국도서 </option>
 			</select> <input type="text" name="" value="" style="font-size: large;">
 		<input type="button" name="" value="검색" style="font-size: large;">
 		</form>
