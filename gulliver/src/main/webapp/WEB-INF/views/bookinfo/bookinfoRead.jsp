@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -123,9 +124,10 @@ function input(f){
 
 //댓글 수정
 //value 값들을 textarea에 넣어서 submit 시킨다
-function cupdate(seq, say100ja){
+function cupdate(seq, say100ja, star_cnt){
 	var f = document.frm2;
 	f.say100ja.value = say100ja;
+	f.star_cnt.value = star_cnt;
 	f.seq.value = seq;
 	f.csubmit.value="수 정";
 	f.action="./cupdate"
@@ -263,12 +265,12 @@ function cdelete(seq){
 							| ${cdto.name } | ${cdto.input_date} 
 							<c:if test="${sessionScope.userid == cdto.userid }"> <!-- 현재 로그인한 아이디의 것만 보여준다 -->
 								<span style="float: right;">
-									<a href="javascript:cupdate('${cdto.seq}','${cdto.say100ja }')">수정</a>|
+									<a href="javascript:cupdate('${cdto.seq}','${cdto.say100ja }','${cdto.star_cnt }')">수정</a>|
 									<a href="javascript:cdelete('${cdto.seq}')">삭제</a>
 								</span>
 							</c:if>
 							<br><br>
-							${cdto.say100ja }
+							${fn:replace(cdto.say100ja, nr, br)}
 
 					</div>
 				</c:forEach>

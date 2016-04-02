@@ -115,7 +115,7 @@ public class NoticeController {
 	public String update(NoticeDTO dto, HttpServletRequest request, Model model){
 		
 		int cnt = dao.update(dto);
-		System.out.println(cnt);
+		
 		if(cnt > 0){
 			return "redirect:list";
 		}else{
@@ -139,9 +139,7 @@ public class NoticeController {
 		int cnt = dao.delete(noticeno);
 		
 		if(cnt == 1){
-			System.out.println(request.getParameter("col"));
-			System.out.println(request.getParameter("word"));
-			System.out.println(request.getParameter("nowPage"));
+
 			model.addAttribute("col", request.getParameter("col"));
 			request.setAttribute("word", request.getParameter("word"));
 			request.setAttribute("nowPage", request.getParameter("nowPage"));

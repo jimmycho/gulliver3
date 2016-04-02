@@ -144,7 +144,10 @@ public class BookinfoController {
 		int total = cdao.total(bookid);
 		
 		String paging = Utility.paging(total, nPage, recordPerPage, url, bookid, nowPage, col, word);
-		 
+		
+		model.addAttribute("nr", "\n\r");
+		model.addAttribute("br", "<br>");
+		
 		model.addAttribute("clist", clist);
 		model.addAttribute("paging", paging);
 		model.addAttribute("nPage", nPage);
