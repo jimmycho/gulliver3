@@ -10,11 +10,26 @@
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
 	
-	<definition name="main2" template="/WEB-INF/views/template/template.jsp"	preparer="bookCate">
+	<definition name="main2" template="/WEB-INF/views/template/template.jsp" preparer="bookCate">
 		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp" />
 		<put-attribute name="sideBar" value="/WEB-INF/views/template/sideBar_User.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
+
+<!-- 관리자용 시작-->
+	<definition name="/adm/bookinfo/create" extends="main2">
+		<put-attribute name="title" value="책등록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate.jsp" />
+	</definition>
+	<definition name="/adm/bookinfo/admin_bookinfoList" extends="main2">
+		<put-attribute name="title" value="책목록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoList.jsp" />
+	</definition>
+	<definition name="/adm/bookinfo/admin_bookinfoRead" extends="main2">
+		<put-attribute name="title" value="책정보"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoRead.jsp" />
+	</definition>
+<!-- 관리자용 끝-->
 
 	<definition name="/home" extends="main">
 		<put-attribute name="title" value="기본페이지"></put-attribute>
@@ -23,14 +38,6 @@
 	<definition name="/bookcate/listTopCate" extends="main2">
 		<put-attribute name="title" value="기본페이지"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/bookcate/listTopCate.jsp" />
-	</definition>
-	<definition name="/adm/bookinfo/create" extends="main2">
-		<put-attribute name="title" value="책등록"></put-attribute>
-		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate.jsp" />
-	</definition>
-	<definition name="/adm/bookinfo/admin_bookinfoList" extends="main2">
-		<put-attribute name="title" value="책목록"></put-attribute>
-		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoList.jsp" />
 	</definition>
 	<definition name="/bookinfo/list" extends="main">
 		<put-attribute name="title" value="책목록"></put-attribute>

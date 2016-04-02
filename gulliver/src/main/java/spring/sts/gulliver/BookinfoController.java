@@ -89,11 +89,26 @@ public class BookinfoController {
 			return "error/error";
 		}	
 	}
+	////////100자평 관련 끝
 
 	
-	////////100자평 관련 끝
 	
-	
+	//책정보 읽기
+	@RequestMapping("/adm/bookinfo/admin_bookinfoRead")
+	public String adminRead(int bookid, BookinfoDTO dto, Model model, HttpServletRequest request){
+		
+		dto = dao.read(bookid);
+		
+		String book_explain = dto.getBook_explain();
+		
+		dto.setBook_explain(book_explain.replaceAll("\n\r", "<br>"));
+		
+		model.addAttribute("dto", dto);
+		
+		
+		return "./admin_bookinfoRead";
+		
+	}
 	
 	//책정보 읽기
 	@RequestMapping("/bookinfo/read")

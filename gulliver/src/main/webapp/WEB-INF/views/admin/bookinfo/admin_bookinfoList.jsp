@@ -6,6 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<script type="text/javascript">
+function bCreate(){
+	var url = "./create";
+	location.href = url;
+}
+
+function bRead(bookid){
+	var url = "./admin_bookinfoRead?";
+	url = url + "bookid=" + bookid;
+	alert(url);
+	location.href = url;
+}
+</script>
 </head>
 <body>
 	<form action="" method="post" name="frm">
@@ -31,7 +44,7 @@
 					<c:forEach var="dto" items="${list}">
 						<tr>
 							<td>${dto.bookid }</td>
-							<td>${dto.bookname }</td>
+							<td><a href="javascript:bRead('${dto.bookid}')">${dto.bookname}</a></td>
 							<td><fmt:formatNumber value="${dto.cur_price }" pattern="#,###" />원</td>
 							<td><fmt:formatNumber value="${dto.sale_price }" pattern="#,###" />원</td>
 							<td>${dto.stock_cnt }</td>
@@ -47,7 +60,7 @@
 		
 		<br>
 		<div style="text-align: center;">
-			<input type="button" name="create" value="등록"><br><br>
+			<input type="button" onclick="bCreate()" name="create" value="등록"><br><br>
 			${paging }
 		</div>
 		<br>

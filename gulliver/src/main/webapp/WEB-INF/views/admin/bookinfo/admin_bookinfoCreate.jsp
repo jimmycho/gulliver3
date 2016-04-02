@@ -144,7 +144,7 @@
 	
 	
 		<p style="text-align: center;">
-			<input name="" type="button" value="취소" />&nbsp;&nbsp;
+			<input name="" type="button" value="취소" onclick="history.back()"/>&nbsp;&nbsp;
 			<input type="submit" value="상품등록" />
 		</p>
 	</form>
