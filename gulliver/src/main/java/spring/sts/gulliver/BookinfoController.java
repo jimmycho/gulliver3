@@ -29,6 +29,133 @@ public class BookinfoController {
 	private CommentDAO cdao;
 	
 	
+	//////////////// 관리자용 시작
+	
+	//관리자 책정보 삭제
+	@RequestMapping("/adm/bookinfo/admin_bookinfoDelete")
+	public String adminDelete(int bookid){
+		
+		int cnt = dao.delete(bookid);
+		
+		if(cnt > 0){
+			return "redirect:./admin_bookinfoList";
+		}else{
+			return "redirect:./error";
+		}
+	}
+	
+	//관리자 책정보 등록
+	@RequestMapping(value="/adm/bookinfo/admin_bookinfoCreate", method = RequestMethod.POST)
+	public String adminCreate(BookinfoDTO dto){
+		
+		int cnt = dao.create(dto);
+		System.out.println("dto.getBookid() : " + dto.getBookid());
+		if(cnt > 0){
+			return "redirect:./admin_bookinfoList";
+		}else{
+			return "/error";
+		}
+	}
+	
+	@RequestMapping(value="/adm/bookinfo/admin_bookinfoCreate", method = RequestMethod.GET)
+	public String adminCreate(){
+		return "/adm/bookinfo/admin_bookinfoCreate";
+	}
+	
+	
+	//관리자 책정보 읽기
+	@RequestMapping("/adm/bookinfo/admin_bookinfoRead")
+	public String adminRead(int bookid, BookinfoDTO dto, Model model, HttpServletRequest request){
+		
+		dto = dao.read(bookid);
+		
+		String book_explain = dto.getBook_explain();
+		
+		dto.setBook_explain(book_explain.replaceAll("\n\r", "<br>"));
+		
+		model.addAttribute("dto", dto);
+		
+		
+		return "/adm/bookinfo/admin_bookinfoRead";
+	}
+	
+	//관리자 책정보 수정
+	@RequestMapping(value="/adm/bookinfo/admin_bookinfoUpdate", method = RequestMethod.POST)
+	public String adminUpdate(int bookid, BookinfoDTO dto){
+		
+		int cnt = dao.update(dto);
+		
+		if(cnt > 0){
+			return "redirect:/adm/bookinfo/admin_bookinfoList";
+		}else{
+			return "/error";
+		}
+	}
+	
+	@RequestMapping(value="/adm/bookinfo/admin_bookinfoUpdate", method = RequestMethod.GET)
+	public String adminUpdate(int bookid, Model model){
+		
+		BookinfoDTO dto = dao.read(bookid);
+		
+		model.addAttribute("dto", dto);
+		
+		return "/adm/bookinfo/admin_bookinfoUpdate";
+	}
+		
+	
+	//책정보 관리자 목록
+	@RequestMapping("/adm/bookinfo/admin_bookinfoList")
+	public String adminList(HttpServletRequest request){
+		// 검색 부분
+		String col = Utility.checkNull(request.getParameter("col"));
+		String word = Utility.checkNull(request.getParameter("word"));
+
+		if (col.equals("total")) {
+			word = "";
+		}
+
+		// 페이징 관련 부분
+		int nowPage = 1;
+
+		if (request.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+
+		int recordPerPage = 5; // 한 페이지당 출력할 레코드 수
+
+		// DB에서 가져올 순번
+		int sno = ((nowPage - 1) * recordPerPage) + 1;
+		int eno = nowPage * recordPerPage;
+
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+
+		// 글의 총 갯수를 구한다
+		int total = dao.total(col, word);
+
+		List<BookinfoDTO> list = dao.list(map);
+
+		String paging = new Paging().paging4(total, nowPage, recordPerPage, col, word);
+
+		if (list.size() == 0) {
+			nowPage = 1;
+		}
+
+		request.setAttribute("list", list);
+		request.setAttribute("paging", paging);
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("nowPage", nowPage);
+
+		return "/adm/bookinfo/admin_bookinfoList";
+	}
+	
+	//////////////// 관리자용 끝
+	
+	
 	/////////100자평 관련 시작
 	
 	//100자평 등록
@@ -92,23 +219,8 @@ public class BookinfoController {
 	////////100자평 관련 끝
 
 	
-	
-	//책정보 읽기
-	@RequestMapping("/adm/bookinfo/admin_bookinfoRead")
-	public String adminRead(int bookid, BookinfoDTO dto, Model model, HttpServletRequest request){
-		
-		dto = dao.read(bookid);
-		
-		String book_explain = dto.getBook_explain();
-		
-		dto.setBook_explain(book_explain.replaceAll("\n\r", "<br>"));
-		
-		model.addAttribute("dto", dto);
-		
-		
-		return "./admin_bookinfoRead";
-		
-	}
+
+
 	
 	//책정보 읽기
 	@RequestMapping("/bookinfo/read")
@@ -145,7 +257,8 @@ public class BookinfoController {
 		
 		String paging = Utility.paging(total, nPage, recordPerPage, url, bookid, nowPage, col, word);
 		
-		model.addAttribute("nr", "\n\r");
+		
+		model.addAttribute("n", "\n");
 		model.addAttribute("br", "<br>");
 		
 		model.addAttribute("clist", clist);
@@ -158,57 +271,7 @@ public class BookinfoController {
 		return "/bookinfo/read";
 	}
 	
-	
-	//책정보 관리자 목록
-	@RequestMapping("/adm/bookinfo/admin_bookinfoList")
-	public String adminList(HttpServletRequest request){
-		// 검색 부분
-		String col = Utility.checkNull(request.getParameter("col"));
-		String word = Utility.checkNull(request.getParameter("word"));
 
-		if (col.equals("total")) {
-			word = "";
-		}
-
-		// 페이징 관련 부분
-		int nowPage = 1;
-
-		if (request.getParameter("nowPage") != null) {
-			nowPage = Integer.parseInt(request.getParameter("nowPage"));
-		}
-
-		int recordPerPage = 20; // 한 페이지당 출력할 레코드 수
-
-		// DB에서 가져올 순번
-		int sno = ((nowPage - 1) * recordPerPage) + 1;
-		int eno = nowPage * recordPerPage;
-
-		Map map = new HashMap();
-		map.put("col", col);
-		map.put("word", word);
-		map.put("sno", sno);
-		map.put("eno", eno);
-
-		// 글의 총 갯수를 구한다
-		int total = dao.total(col, word);
-
-		List<BookinfoDTO> list = dao.list(map);
-
-		String paging = new Paging().paging3(total, nowPage, recordPerPage, col, word);
-
-		if (list.size() == 0) {
-			nowPage = 1;
-		}
-
-		request.setAttribute("list", list);
-		request.setAttribute("paging", paging);
-		request.setAttribute("col", col);
-		request.setAttribute("word", word);
-		request.setAttribute("nowPage", nowPage);
-
-		return "/adm/bookinfo/admin_bookinfoList";
-	}
-	
 	
 	// 책정보 목록
 	@RequestMapping("/bookinfo/list")
@@ -247,7 +310,7 @@ public class BookinfoController {
 
 		List<BookinfoDTO> list = dao.list(map);
 
-		String paging = new Paging().paging3(total, nowPage, recordPerPage, col, word);
+		String paging = new Paging().paging5(total, nowPage, recordPerPage, col, word);
 
 		if (list.size() == 0) {
 			nowPage = 1;
@@ -262,27 +325,5 @@ public class BookinfoController {
 		return "/bookinfo/list";
 	}
 
-	// 입력할 책 daum api 에서 읽어오기
-	@RequestMapping(value="/bookinfo/tempServer", method = RequestMethod.POST)
-	public String tempServer() {
-		return "/bookinfo/tempServer";
-	}
 
-	
-	// 책정보 등록
-	@RequestMapping(value="/adm/bookinfo/create", method = RequestMethod.POST)
-	public String create(BookinfoDTO dto){
-		int cnt = dao.create(dto);
-		
-		if(cnt > 0){
-			return "redirect:./admin_bookinfoList";
-		}else{
-			return "/error";
-		}
-	}
-	
-	@RequestMapping(value="/adm/bookinfo/create", method = RequestMethod.GET)
-	public String create() {
-		return "/adm/bookinfo/create";
-	}
 }

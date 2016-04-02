@@ -36,7 +36,7 @@
   color: #000000;        /* 글자 색깔 */
   width: 780px;            /* 화면의 30% */ 
   padding: 10px;         /* 위 오른쪽 아래 왼쪽: 시간 방향 적용 */
-  height: 80px;
+  
   /* padding: 50px 10px;  50px: 위 아래, 10px: 좌우 */
   /* padding-top: 30px;  상단만 간격을 30px 지정   */
   
@@ -197,7 +197,8 @@ function cdelete(seq){
 				<td colspan="2">
 				<p style="text-align: center;">
 					<input type="submit" value="장바구니담기">
-					<input type="button" onclick="history.back()" value="돌아가기" />
+					<input type="button" onclick="location.href='./list'" value="목록">
+<!-- 					<input type="button" onclick="history.back()" value="돌아가기" /> -->
 					<input type="hidden" name="bookid" value="${dto.bookid }">
 					<input type="hidden" name="userid" value="${sessionScope.userid}">
 				</td>
@@ -212,9 +213,9 @@ function cdelete(seq){
 	<br>
 	<div style="text-align: center;">
 		<c:if test="${'A' eq sessionScope.grade}">
-			<input type="button" value="수정">
-			<input type="button" value="삭제" onclick="deleteB('${dto.bookid}')">
-			<input type="button" value="목록">
+<!-- 			<input type="button" value="수정"> -->
+<%-- 			<input type="button" value="삭제" onclick="deleteB('${dto.bookid}')"> --%>
+<!-- 			<input type="button" onclick="location.href='./list'" value="목록"> -->
 		</c:if>
 	</div>
 	
@@ -236,7 +237,7 @@ function cdelete(seq){
 						<option value = "4">★★★★☆</option>
 						<option value = "5">★★★★★</option>
 					</select>
-						<TEXTAREA id="contentHelp" cols="105" name="say100ja" rows="5" onclick="rcheck(this)"></TEXTAREA>
+						<TEXTAREA id="contentHelp" cols="120" name="say100ja" rows="5" onclick="rcheck(this)"></TEXTAREA>
 						<DIV class=remaining>남은 글자수: <SPAN class="count">100</SPAN></DIV>
 					<input type="submit" name="csubmit" value="등 록" />
 				</div>
@@ -270,7 +271,7 @@ function cdelete(seq){
 								</span>
 							</c:if>
 							<br><br>
-							${fn:replace(cdto.say100ja, nr, br)}
+							${(fn:replace(cdto.say100ja, n, br))}
 
 					</div>
 				</c:forEach>

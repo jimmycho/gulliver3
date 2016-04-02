@@ -65,6 +65,21 @@
 		temp_str = temp_str.replace(eval("/" + str1 + "/gi"), str2);
 		return temp_str;
 	};
+	
+	
+	//숫자만 입력 받기
+	function showKeyCode(event) {
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
+		{
+			return;
+		}
+		else
+		{
+			return false;
+		}
+	}
 </script>
 
 </head>
@@ -86,8 +101,8 @@
 	</div>
 	
 	<br>
-	<form action="./create" method="post">
-		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px;">
+	<form action="./admin_bookinfoCreate" method="post">
+		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 800px;">
 			<tr>
 				<td>책이름</td>
 				<td><input name="bookname" size="30" type="text" /></td>
@@ -98,15 +113,15 @@
 			</tr>
 			<tr>
 				<td>정가</td>
-				<td><input name="cur_price" size="30" type="text" /></td>
+				<td><input name="cur_price" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
 			</tr>
 			<tr>
 				<td>할인가</td>
-				<td><input name="sale_price" size="30" type="text" /></td>
+				<td><input name="sale_price" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
 			</tr>
 			<tr>
 				<td>수량</td>
-				<td><input name="stock_cnt" size="30" type="text" /></td>
+				<td><input name="stock_cnt" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
 			</tr>
 			<tr>
 				<td>출판사</td>
@@ -126,15 +141,15 @@
 			</tr>
 			<tr>
 				<td>ISBN10</td>
-				<td><input name="ISBN10" size="30" type="text" /></td>
+				<td><input name="ISBN10" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
 			</tr>
 			<tr>
 				<td>ISBN13</td>
-				<td><input name="ISBN13" size="30" type="text" /></td>
+				<td><input name="ISBN13" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
 			</tr>
 			<tr>
 				<td>책 분류코드</td>
-				<td><input name="BOOK_CATE_CD" size="30" type="text" /></td>
+				<td><input name="BOOK_CATE_CD" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
 			</tr>
 			<tr>
 				<td>책설명</td>

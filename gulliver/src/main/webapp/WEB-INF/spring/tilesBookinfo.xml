@@ -17,7 +17,7 @@
 	</definition>
 
 <!-- 관리자용 시작-->
-	<definition name="/adm/bookinfo/create" extends="main2">
+	<definition name="/adm/bookinfo/admin_bookinfoCreate" extends="main2">
 		<put-attribute name="title" value="책등록"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate.jsp" />
 	</definition>
@@ -29,6 +29,11 @@
 		<put-attribute name="title" value="책정보"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoRead.jsp" />
 	</definition>
+	<definition name="/adm/bookinfo/admin_bookinfoUpdate" extends="main2">
+		<put-attribute name="title" value="책정보 수정"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoUpdate.jsp" />
+	</definition>
+
 <!-- 관리자용 끝-->
 
 	<definition name="/home" extends="main">

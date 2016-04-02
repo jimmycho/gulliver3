@@ -8,15 +8,25 @@
 <title></title>
 <script type="text/javascript">
 function bCreate(){
-	var url = "./create";
+	var url = "./admin_bookinfoCreate";
 	location.href = url;
 }
 
 function bRead(bookid){
 	var url = "./admin_bookinfoRead?";
 	url = url + "bookid=" + bookid;
-	alert(url);
 	location.href = url;
+}
+
+function bDelete(bookid){
+	if(confirm("정말 삭제 하시겠습니까?") == true){
+		var url = "./admin_bookinfoDelete?";
+		url = url + "bookid=" + bookid;
+		location.href = url;
+	}else{
+		return;
+	}
+
 }
 </script>
 </head>
@@ -32,11 +42,11 @@ function bRead(bookid){
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td>책 코드</td>
-						<td>책이름</td>
-						<td>원가격</td>
-						<td>할인가격</td>
-						<td>현재수량</td>
+						<td width="10%">책 코드</td>
+						<td width="30%">책이름</td>
+						<td width="10%">원가격</td>
+						<td width="10%">할인가격</td>
+						<td width="10%">현재수량</td>
 						<td>저자</td>
 						<td>책표지</td>
 						<td>선택</td>
@@ -50,7 +60,7 @@ function bRead(bookid){
 							<td>${dto.stock_cnt }</td>
 							<td>${dto.writer }</td>
 							<td><img src="${dto.bookfront_photo }"/></td>
-							<td><input type="button" value="삭제"></td>
+							<td><input type="button" onclick="bDelete('${dto.bookid}')" value="삭제"></td>
 						</tr>
 					</c:forEach>
 
