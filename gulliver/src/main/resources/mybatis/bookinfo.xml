@@ -29,6 +29,9 @@
 		          			WHERE isbn13 LIKE '%'|| #{word} ||'%'
 		          		</when>
 		          	</choose>
+		          	<if test="BOOK_CATE_CD != NULL">
+		          		<![CDATA[AND BOOK_CATE_CD = #{BOOK_CATE_CD}]]>
+		          	</if>
 		          </where>
 		          ORDER BY bookid DESC
 	          )

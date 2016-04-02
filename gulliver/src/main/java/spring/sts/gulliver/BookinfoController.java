@@ -221,7 +221,9 @@ public class BookinfoController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-
+		map.put("BOOK_CATE_CD", request.getParameter("BOOK_CATE_CD")); //카테고리 번호 받아서 검색하기 위한 부분
+		
+		
 		// 글의 총 갯수를 구한다
 		int total = dao.total(col, word);
 

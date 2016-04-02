@@ -36,8 +36,8 @@ FROM (
       FROM (
 	          SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
 					 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
-	          FROM T_BOOKINFO b
-	          --WHERE bookname LIKE '%고등%'
+	          FROM T_BOOKINFO 
+	          WHERE bookname LIKE '%칼의%' AND BOOK_CATE_CD = 1101
 	          ORDER BY bookid DESC
           )
       )
@@ -112,7 +112,7 @@ WHERE bookid = 4
 
 --T_BOOKINFO 삭제
 DELETE FROM T_BOOKINFO 
-WHERE bookid = 19;
+WHERE bookid = 10;
 
 
 

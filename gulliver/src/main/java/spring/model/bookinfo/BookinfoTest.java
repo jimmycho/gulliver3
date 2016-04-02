@@ -21,9 +21,9 @@ public class BookinfoTest {
 		BookinfoDAO dao = (BookinfoDAO) beans.getBean("dao");
 
 //ok		 create(dao);
- 		 read(dao); 
+// 		 read(dao); 
 //ok		 update(dao); 
-//ok		 list(dao); 
+		 list(dao); 
 //ok		 delete(dao); 
 //ok		 total(dao); 
 
@@ -56,7 +56,8 @@ public class BookinfoTest {
 		map.put("sno", sno);
 		map.put("eno", eno);
 		map.put("bookid", 1); 
-
+		map.put("BOOK_CATE_CD", 1101); //카테고리 번호 받아서 검색하기 위한 부분
+		
 		List<BookinfoDTO> list = dao.list(map);
 
 		for (int i = 0; i < list.size(); i++) {
