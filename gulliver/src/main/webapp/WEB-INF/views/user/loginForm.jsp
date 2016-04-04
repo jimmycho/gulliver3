@@ -45,10 +45,8 @@ function inputCheck(){
 <!-- *********************************************** -->
 <body leftmargin="0" topmargin="0">
 	<!-- *********************************************** -->
-
-	<DIV class="title">로그인</DIV>
-
-	<FORM name='frm' method='POST' action='${pageContext.request.contextPath }/user/login'
+<DIV class="title">로그인</DIV>
+<FORM name='frm' method='POST' action='${pageContext.request.contextPath }/user/login'
 	onsubmit="return inputCheck()">
 		<TABLE class='table'>
 			<TR>
@@ -62,15 +60,6 @@ function inputCheck(){
 							<input type='checkbox' name='c_id' value='Y'>ID 저장 
 						</c:otherwise>
 					</c:choose>
-		
-			<%-- <% 
-	       if (c_id.equals("Y")){  // id 저장 상태라면 
-	       %> <input type='checkbox' name='c_id' value='Y' checked='checked'>
-						ID 저장 <% 
-	       }else{ %> <input type='checkbox' name='c_id' value='Y'>
-						ID 저장 <% 
-	       } 
-	       %> --%>
        </TD>
 			</TR>
 			<TR>

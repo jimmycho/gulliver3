@@ -55,8 +55,9 @@ public class UserDAO {
 	}
 
 	public int loginCheck(Map map) {
-		System.out.println("userid:"+map.get("userid"));
-		System.out.println("passwd: "+map.get("passwd"));
+		System.out.println("UserDAO호출");
+		System.out.println("useridDAO:"+map.get("userid"));
+		System.out.println("passwdDAO: "+map.get("passwd"));
 		return sqlSessionTemplate.selectOne("user.loginCheck", map);
 	}
 

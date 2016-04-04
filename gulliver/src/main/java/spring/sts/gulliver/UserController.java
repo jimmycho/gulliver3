@@ -116,23 +116,19 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/user/login", method=RequestMethod.GET)
+	@RequestMapping (value="/user/login", method=RequestMethod.GET)
 	public String login(HttpServletRequest request,
 			@RequestParam(value="faqno",defaultValue="0") int faqno,
-			@RequestParam(value="nowPage",defaultValue="0") int nowPage	) 
+			@RequestParam(value="nowPage",defaultValue="0") int nowPage) 
 			{
-			
-				/*----쿠키설정 내용시작----------------------------*/
+				//----쿠키설정 내용시작----------------------------
 				String c_id = ""; // ID 저장 여부를 저장하는 변수, Y
 				String c_id_val = ""; // ID 값
-
 				Cookie[] cookies = request.getCookies();
 				Cookie cookie = null;
-
 				if (cookies != null) {
 					for (int i = 0; i < cookies.length; i++) {
 						cookie = cookies[i];
-
 						if (cookie.getName().equals("c_id")) {
 							c_id = cookie.getValue(); // Y
 						} else if (cookie.getName().equals("c_id_val")) {
@@ -140,24 +136,42 @@ public class UserController {
 						}
 					}
 				}
-				/*----쿠키설정 내용 끝----------------------------*/
+				/*<!------쿠키설정 내용 끝---------------------------->*/
 				request.setAttribute("c_id", c_id);
 				request.setAttribute("c_id_val", c_id_val);
-				
+				System.out.println("c_id_val:"+c_id_val);
 				request.setAttribute("nowPage", nowPage);
-				//System.out.println("nowPage:"+nowPage);
+				System.out.println("nowPage:"+nowPage);
 				request.setAttribute("faqno", faqno);
-				//System.out.println("faqno:"+faqno);
+				System.out.println("faqno:"+faqno);
 				return "/user/login";
 			}
-	
 	@RequestMapping(value="/user/login", method=RequestMethod.POST)
 	public String login(String userid, String passwd,
-						HttpServletRequest request, HttpServletResponse response,
-						int faqno, int nowPage, String col,String word,String flag,
-						HttpSession session, Model model){
+			HttpServletRequest request, HttpServletResponse response,
+			HttpSession session, Model model){
 		
-		Map  map=new HashMap();
+		/*----쿠키설정 내용시작----------------------------*/
+		String c_id = ""; // ID 저장 여부를 저장하는 변수, Y
+		String c_id_val = ""; // ID 값
+		Cookie[] cookies = request.getCookies();
+		Cookie cookie = null;
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				cookie = cookies[i];
+				if (cookie.getName().equals("c_id")) {
+					c_id = cookie.getValue(); // Y
+				} else if (cookie.getName().equals("c_id_val")) {
+					c_id_val = cookie.getValue(); // user1...
+				}
+			}
+		}
+		/*----쿠키설정 내용 끝----------------------------*/
+		request.setAttribute("c_id", c_id);
+		request.setAttribute("c_id_val", c_id_val);
+		
+		 
+		Map map=new HashMap();
 		map.put("userid", userid);
 		map.put("passwd", passwd);
 		int cnt=dao.loginCheck(map);
@@ -166,13 +180,13 @@ public class UserController {
 		String url="/user/passwdError";
 		if(cnt==1){
 			url="redirect:/";
-			if(flag!=""){
+			/*if(flag!=""){
 				model.addAttribute("faqno", faqno);
 				model.addAttribute("nowPage", nowPage);
 				model.addAttribute("col", col);
 				model.addAttribute("word", word);
 				url="redirect:"+flag;
-			}
+			}*/
 			grade=dao.getGrade(userid);
 			session.setAttribute("userid", userid);
 			session.setAttribute("grade", grade);
@@ -180,9 +194,8 @@ public class UserController {
 			// ----------------------------------------------
 			// Cookie 저장, Checkbox는 선택하지 않으면 null 임
 			// ----------------------------------------------
-			Cookie cookie = null;
 
-			String c_id = request.getParameter("c_id"); // Y, 아이디 저장 여부
+			 c_id = request.getParameter("c_id"); // Y, 아이디 저장 여부
 
 				if (c_id != null) { // 처음에는 값이 없음으로 null 체크로 처리
 					cookie = new Cookie("c_id", "Y"); // 아이디 저장 여부 쿠키

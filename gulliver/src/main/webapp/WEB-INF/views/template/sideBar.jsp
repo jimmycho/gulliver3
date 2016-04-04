@@ -3,7 +3,10 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="spring.model.bookcate.BookcateDAO,java.util.List" %>
 <%@ page import="java.net.URLDecoder" %>
-<% String root =request.getContextPath(); %>
+<% String root =request.getContextPath(); 
+String userid = (String)session.getAttribute("userid");
+String grade = (String)session.getAttribute("grade") ; 
+%>
 <% 
 /* 	Cookie[] cookies=request.getCookies();
 	if(cookies!=null){
@@ -15,17 +18,12 @@
 	   }
 	} */
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>북카테고리(AJAX방식)</title>
-<%-- <script type="text/javascript">
-window.onload=function(){
-	
-	<%=ListHTML %>;
-}
-</script> --%>
+<title></title>
+
 <style>
 .menu a {
 	cursor: pointer;
@@ -108,7 +106,7 @@ var rC=ReadCookie('subCategory');
 window.onload= function()
 {
 	//alert("rC : "+rC);
-	///alert("cText : "+cText);
+	//alert("cText : "+cText);
 	if(rC!=null && cText =="") 
 	{
 		var cdiv=document.getElementById("cookie_div"); 
@@ -182,6 +180,7 @@ function hide(elementId) {
         element.style.display = 'none';
     }
 } </script>
+
 <script type="text/javascript">
 var xmlDoc = null;
 var xslDoc = null;
@@ -223,7 +222,7 @@ if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
         WriteCookie('subCategory',cText);
         //ReadCookie('subCategory');
        }}}
-</script> 
+</script>
 <script type="text/javascript">
 function WriteCookie(cName,cValue)
 {
@@ -231,34 +230,102 @@ function WriteCookie(cName,cValue)
 	document.cookie=cookies;
     //alert("subCate in WriteCookie(): " + cookievalue );
 }
-
 </script>
+
+<script type="text/javascript">
+/*  window.onload=function(){
+	var c_id="${c_id_val}";
+	//alert("c_id_val :"+c_id);
+}  */
+</script>
+<script type="text/javascript">  
+function inputCheck(){
+	var f=document.frm;
+	if(f.userid.value==""){
+		alert("아이디를 입력하여 주세요");
+		f.userid.focus();
+		return false;
+	}
+	if(f.passwd.value==""){
+		alert("비밀번호를 입력하여 주세요");
+		f.passwd.focus();
+		return false;
+	}
+}
+</script>
+
 </head> 
 
 <div id="jb-container">
 <div id="jb-sidebar">
+<body>
 <br>
 <div >
-<table class="LTABLE"  >
-<form action="">
-<tr style="font-size: small; background-color: aqua;" >
-<td >
-아이디</td><td><input type="text" size="6" value="id"/></td>
 
-<td rowspan="2"><input type=submit style=width:50pt;height:50pt; value=로그인 /></td>
+	<FORM name='frm' method='POST' action='${pageContext.request.contextPath}/user/login'
+	onsubmit="return inputCheck()">
+		<TABLE class='table'>
+		<% if(userid==null){%>
+		<TR>
+			<TD style="font-size: x-small; background-color: #00A5FF;">아이디</TD>
+			<TD><input type="text" name="userid" size="6"> </TD>
+			<td rowspan="2">
+			<c:choose>
+					<c:when test="${c_id eq 'Y'}">
+						<div style="font-size: x-small;">ID 저장</div>
+						<input type='checkbox' name='c_id' value='Y' checked='checked'>
+					</c:when>
+					<c:otherwise>
+						<div style="font-size: x-small;">
+							ID 저장 <input type='checkbox' name='c_id' value='Y'>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			<input type='submit' value='로그인' style=" height:60px; width: 60px;">
+			</td>
+		</TR>
+		<TR>
+			<TD style="font-size: x-small; background-color: #00A5FF;;">비밀번호</TD>
+			<TD><input type="password" name="passwd" size="6"></TD>
+		</TR>
+
+
+		<%} else {%>
+		<td align="center"><div style="text-align: center;">${userid }님환영합니다</div></td>
+		<td><input type="button" name="logout" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/user/logout'"></td>
+		<%} %>
+		</TABLE>
+		  <input type="hidden" name="faqno" value="${faqno}"> <!-- setter로 저장된 값 -->
+		  <input type="hidden" name="nowPage" value="${nowPage}"> <!-- setter로 저장된 값 -->
+	</FORM>
+<%-- <FORM name='frm' method='POST' action='${pageContext.request.contextPath}/user/login'
+onsubmit="return inputCheck()">
+<table class="LTABLE"  >
+<tr style="font-size: small; background-color: aqua;" >
+<th>아이디</th>
+<td><input type="text" name="userid" size="6" value="${c_id_val}" >
+<c:choose>
+						<c:when test="${c_id eq 'Y'}"> 
+							<input type='checkbox' name='c_id' value='Y' checked='checked'> ID 저장
+						</c:when>
+						<c:otherwise>
+							<input type='checkbox' name='c_id' value='Y'>ID 저장 
+						</c:otherwise>
+					</c:choose>
+			</td>
 </tr>
 <tr>
-<td style="font-size: small;">
-패스워드</td><td><input type="text" size="6" value="passwd"/>
-</td>
+<th style="font-size: small;">패스워드</th>
+<td><input type="password" name="passwd" size="6" ></td>
+<td rowspan="2"><input type='submit' value=로그인  ></td>
 </tr>
 </table>
-</form>
+--%>
 </div>
 	<ul>
 		<c:forEach var="dto" items="${topCateList}">
 			<li>
-				<a onclick="loadSubCate(${dto.BOOK_CATE_CD})"style="cursor: pointer;"><strong>
+				<a onclick="loadSubCate(${dto.BOOK_CATE_CD})" style=><strong>
 				 ${dto.BOOK_CATE_NAME} </strong></a>
 				 <ul id="${dto.BOOK_CATE_CD}"><div id="cookie_div"></div></ul>
 			</li>
@@ -267,8 +334,7 @@ function WriteCookie(cName,cValue)
 <div align="center"><img   src="../images/sideimage01.jpg">
 	</div>
 </div>
-<input type="button" value="쿠키읽기" onclick="ReadCookie('subCategory')"/>
-<input type="button" value="쿠키지우기" onclick="WriteCookie('subCategory','')"/>
 </div>
-
+</body>
+</html>
 <!-- 상단 메뉴 끝 -->
