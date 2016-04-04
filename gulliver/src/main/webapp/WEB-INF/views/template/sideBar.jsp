@@ -75,11 +75,46 @@ padding-left: 20px }
 	border: 1px solid #bcbcbc;
 	background-color: #009AFF
 }
+.LTABLE{
+	FONT-SIZE: 10.5pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon ����� 530_TT,verdana,tahoma;
+	BORDER:0; BACKGROUND-COLOR:#f1f1f1;
+}
 </style>	
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>	
+<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script>	 -->
+
 <script type="text/javascript">
 //XMLHttpRequest 객체
+function ReadCookie(cName)
+{
+   cName=cName+'=';
+   var cookieData = document.cookie;
+   // Get all the cookies pairs in an array
+   var start=cookieData.indexOf(cName);
+   var cValue='';
+   if(start !=-1){
+	   start +=cName.length;
+	   var end=cookieData.indexOf(';',start);
+	   if(end==-1) end=cookieData.length;
+	   cValue=cookieData.substring(start,end);
+   }
+   return cValue;
+}
 var httpRequest = null;
+var cText="";
+//if(cText=="" &&  )
+//alert("readCookie: "+rCookie);
+var rC=ReadCookie('subCategory');
+
+window.onload= function()
+{
+	//alert("rC : "+rC);
+	///alert("cText : "+cText);
+	if(rC!=null && cText =="") 
+	{
+		var cdiv=document.getElementById("cookie_div"); 
+		cdiv.innerHTML=rC;
+	} 
+}
 // url: 요청 주소 
 // params: 서버로 보내는 값의 목록
 // response_function_name: 응답 결과를 처리할 함수 
@@ -157,6 +192,7 @@ function loadSubCate(subCode) {
     sendRequest("<%=root%>/bookcate/listSubCate",params,response,"GET");
 }
 function response() {
+
 if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
     if (httpRequest.status == 200) { // 요청한 서버 파일이 실행 됐다면
         var xmlDoc = httpRequest.responseXML;
@@ -173,55 +209,66 @@ if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
         var topC=document.getElementById(parCode); 
         topC.innerHTML="";
         for(var i=0;i<SubCategoryList.length;i++){
+        	
         	var SubCate =SubCategoryList.item(i);
         	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
-        	 code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
+        	var code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
         	
         	topC.innerHTML +="<li><a onclick='loadSubCate("+code+")' style='cursor: pointer'>└"+name+"</a><ul id='"+code+"'>";
         	topC.innerHTML +="</ul></li>";
-        	//codeL=code[i]
+        	
         } 
-        WriteCookie('subCategory',topC.innerHTML);
-       }}}//}
+        cText+=topC.innerHTML;
+        
+        WriteCookie('subCategory',cText);
+        //ReadCookie('subCategory');
+       }}}
 </script> 
 <script type="text/javascript">
 function WriteCookie(cName,cValue)
 {
 	var cookies = cName + '=' + cValue+';';
 	document.cookie=cookies;
-    alert("subCate in WriteCookie(): " + cookievalue );
+    //alert("subCate in WriteCookie(): " + cookievalue );
 }
-function ReadCookie(cName)
-{
-   cName=cName+'=';
-   var cookieData = document.cookie;
-   // Get all the cookies pairs in an array
-   var start=cookieData.indexOf(cName);
-   var cValue='';
-   if(start !=-1){
-	   start +=cName.length;
-	   var end=cookieData.indexOf(';',start);
-	   if(end==-1) end=cookieData.length;
-	   cValue=cookieData.substring(start,end);
-   }
-   alert(cValue);
-}
+
 </script>
 </head> 
+
 <div id="jb-container">
-	<div id="jb-sidebar">
-<ul>
-	<c:forEach var="dto" items="${topCateList}">
-		<li>
-			<a onclick="loadSubCate(${dto.BOOK_CATE_CD})"style="cursor: pointer;"><strong>
-			 ${dto.BOOK_CATE_NAME} </strong></a>
-			 <ul id="${dto.BOOK_CATE_CD}"></ul>
-		</li>
-	</c:forEach>
-</ul>
+<div id="jb-sidebar">
+<br>
+<div >
+<table class="LTABLE"  >
+<form action="">
+<tr style="font-size: small; background-color: aqua;" >
+<td >
+아이디</td><td><input type="text" size="6" value="id"/></td>
+
+<td rowspan="2"><input type=submit style=width:50pt;height:50pt; value=로그인 /></td>
+</tr>
+<tr>
+<td style="font-size: small;">
+패스워드</td><td><input type="text" size="6" value="passwd"/>
+</td>
+</tr>
+</table>
+</form>
 </div>
-<!-- <input type="button" value="쿠키읽기" onclick="ReadCookie('subCategory')"/>
-<input type="button" value="쿠키지우기" onclick="WriteCookie('subCategory','')"/> -->
+	<ul>
+		<c:forEach var="dto" items="${topCateList}">
+			<li>
+				<a onclick="loadSubCate(${dto.BOOK_CATE_CD})"style="cursor: pointer;"><strong>
+				 ${dto.BOOK_CATE_NAME} </strong></a>
+				 <ul id="${dto.BOOK_CATE_CD}"><div id="cookie_div"></div></ul>
+			</li>
+		</c:forEach>
+	</ul>
+<div align="center"><img   src="../images/sideimage01.jpg">
+	</div>
+</div>
+<input type="button" value="쿠키읽기" onclick="ReadCookie('subCategory')"/>
+<input type="button" value="쿠키지우기" onclick="WriteCookie('subCategory','')"/>
 </div>
 
 <!-- 상단 메뉴 끝 -->
