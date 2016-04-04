@@ -145,9 +145,9 @@ public class UserController {
 				request.setAttribute("c_id_val", c_id_val);
 				
 				request.setAttribute("nowPage", nowPage);
-				System.out.println("nowPage:"+nowPage);
+				//System.out.println("nowPage:"+nowPage);
 				request.setAttribute("faqno", faqno);
-				System.out.println("faqno:"+faqno);
+				//System.out.println("faqno:"+faqno);
 				return "/user/login";
 			}
 	
@@ -178,39 +178,43 @@ public class UserController {
 			session.setAttribute("grade", grade);
 			
 			// ----------------------------------------------
-						// Cookie 저장, Checkbox는 선택하지 않으면 null 임
-						// ----------------------------------------------
-						Cookie cookie = null;
+			// Cookie 저장, Checkbox는 선택하지 않으면 null 임
+			// ----------------------------------------------
+			Cookie cookie = null;
 
-						String c_id = request.getParameter("c_id"); // Y, 아이디 저장 여부
+			String c_id = request.getParameter("c_id"); // Y, 아이디 저장 여부
 
-							if (c_id != null) { // 처음에는 값이 없음으로 null 체크로 처리
-								cookie = new Cookie("c_id", "Y"); // 아이디 저장 여부 쿠키
-								cookie.setMaxAge(120); // 2 분 유지
-								response.addCookie(cookie); // 쿠키 기록
-				
-								cookie = new Cookie("c_id_val", userid); // 아이디 값 저장 쿠키
-								cookie.setMaxAge(120); // 2 분 유지
-								response.addCookie(cookie); // 쿠키 기록
-				
-							} else {
-								cookie = new Cookie("c_id", ""); // 쿠키 삭제
-								cookie.setMaxAge(0);
-								response.addCookie(cookie);
-				
-								cookie = new Cookie("c_id_val", ""); // 쿠키 삭제
-								cookie.setMaxAge(0);
-								response.addCookie(cookie);
-							}
-						// ---------------------------------------------
+				if (c_id != null) { // 처음에는 값이 없음으로 null 체크로 처리
+					cookie = new Cookie("c_id", "Y"); // 아이디 저장 여부 쿠키
+					cookie.setMaxAge(120); // 2 분 유지
+					response.addCookie(cookie); // 쿠키 기록
+					System.out.println("cookie1_name: "+cookie.getName());
+					System.out.println("cookie1_val: "+cookie.getValue());
+	
+					cookie = new Cookie("c_id_val", userid); // 아이디 값 저장 쿠키
+					cookie.setMaxAge(120); // 2 분 유지
+					response.addCookie(cookie); // 쿠키 기록
+					System.out.println("cookie2_name: "+cookie.getName());
+					System.out.println("cookie2_val: "+cookie.getValue());
+	
+				} else {
+					cookie = new Cookie("c_id", ""); // 쿠키 삭제
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+	
+					cookie = new Cookie("c_id_val", ""); // 쿠키 삭제
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+				}
+			// ---------------------------------------------
 
-						return url;
-						
-					}else{
-						
-						return url;
-						
-					}//else
+			return url;
+			
+		}else{
+			
+			return url;
+			
+		}//else
 		}//login method
 	@RequestMapping("/user/logout")
 	public String logout(HttpSession session){

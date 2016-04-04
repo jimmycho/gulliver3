@@ -22,7 +22,7 @@ public class BookcateDAO {
 	}
 	public List<BookcateDTO> listTopCate() {
 		// TODO Auto-generated method stub
-		System.out.println("dao.listTopCate호출");
+		//System.out.println("dao.listTopCate호출");
 		return sqlSessionTemplate.selectList("bookcate.listTopCate");
 		
 	}

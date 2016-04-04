@@ -1,9 +1,13 @@
 package spring.sts.gulliver;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,19 +36,50 @@ public class BookcateController {
 		return "/bookcate/listTopCate";
 	}
 	
-	@RequestMapping(value="/bookcate/listSubCate", method=RequestMethod.GET)
+	/*@RequestMapping(value="/bookcate/listSubCate", method=RequestMethod.GET)
 	public String listSubCate(HttpServletRequest request,Model model) {
-		System.out.println("/bookcate/listSubCate호출");
+		//System.out.println("/bookcate/listSubCate호출");
 		int subCode=Integer.parseInt(request.getParameter("subCode"));
 		List<BookcateDTO> subCateList=dao.list(subCode);
 		for (int i = 0; i < subCateList.size(); i++) {
-			System.out.println(subCateList.get(i).getBOOK_CATE_NAME());
+		System.out.println(subCateList.get(i).getBOOK_CATE_NAME());
 			
 		}
 		model.addAttribute("subCateList",subCateList);
+		
+		
+		
 		return "/bookcate/listSubCate";
 
-	}//method listSubCate
+	}//method listSubCate */
+	
+	@RequestMapping(value="/bookcate/listSubCate", method=RequestMethod.GET)
+	public String listSubCate(HttpServletRequest request,HttpServletResponse response,Model model) {
+		//System.out.println("/bookcate/listSubCate호출");
+		int subCode=Integer.parseInt(request.getParameter("subCode"));
+		List<BookcateDTO> subCateList=dao.list(subCode);
+		
+		model.addAttribute("subCateList",subCateList);
+		// ----------------------------------------------
+		// Ajax 대응용으로 SubCategory를 Cookie 저장 
+		// ----------------------------------------------
+		Cookie cookie = new Cookie("ListHTML", ""); 
+		String subCatListHTML="";
+		for (int i = 0; i < subCateList.size(); i++) {
+			subCatListHTML+=subCateList.get(i).getBOOK_CATE_NAME()+":";				
+			}
+				 
+				cookie.setMaxAge(120); // 2 분 유지
+				cookie.setValue(URLEncoder.encode(subCatListHTML)); //한글인코딩하여 cookie 저장
+				//response.addCookie(cookie); // 쿠키 기록
+				String cv="";
+				if(cookie.getName().equals("ListHTML")) cv=URLDecoder.decode(cookie.getValue());
+				//System.out.println("cookie(subcate):"+URLDecoder.decode(cookie.getValue()));
+				System.out.println("cookie from BookcateCont: "+cv);
+				request.setAttribute("cv", cv);
+				 
+		return "/bookcate/listSubCate";
+	}//method listSubCate 
 	
 	@RequestMapping("/bookcate/listJson")
 	public @ResponseBody Map<?,?> listJson(@RequestParam int BOOK_CATE_CD, ModelMap model) throws Throwable{

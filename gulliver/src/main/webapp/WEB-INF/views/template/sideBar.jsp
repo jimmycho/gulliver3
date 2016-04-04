@@ -2,14 +2,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="spring.model.bookcate.BookcateDAO,java.util.List" %>
-<%
-	String root = request.getContextPath();
+<%@ page import="java.net.URLDecoder" %>
+<% String root =request.getContextPath(); %>
+<% 
+/* 	Cookie[] cookies=request.getCookies();
+	if(cookies!=null){
+		for(int i=0;i<cookies.length;i++){
+			out.println("i:"+(i+1));
+			if(cookies[i].getName().equals("ListHTML")) {
+				out.println(cookies[i].getName());
+			}
+	   }
+	} */
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>북카테고리(AJAX방식)</title>
+<%-- <script type="text/javascript">
+window.onload=function(){
+	
+	<%=ListHTML %>;
+}
+</script> --%>
 <style>
 .menu a {
 	cursor: pointer;
@@ -134,35 +150,63 @@ function hide(elementId) {
 <script type="text/javascript">
 var xmlDoc = null;
 var xslDoc = null;
+var subCateCode;
 function loadSubCate(subCode) {
 	var params="subCode="+subCode;
+	subCateCode=subCode;
     sendRequest("<%=root%>/bookcate/listSubCate",params,response,"GET");
 }
-function response(subCode) {
-    if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
-        if (httpRequest.status == 200) { // 요청한 서버 파일이 실행 됐다면
-            var xmlDoc = httpRequest.responseXML;
-            var SubCategoryList = xmlDoc.getElementsByTagName("SubCategory");            
-            if(SubCategoryList.item(0)==null) alert("마지막 카테고리입니다 !");
-            var parCode = SubCategoryList.item(0).getElementsByTagName("parent_code").item(0)
-            				.firstChild.nodeValue;
-           
-            var topC=document.getElementById(parCode); 
-            topC.innerHTML="";
-            for(var i=0;i<SubCategoryList.length;i++){
-            	var SubCate =SubCategoryList.item(i);
-            	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
-            
-            	var code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
-            	//alert("name:code"+name+code) ;
-            	topC.innerHTML +="<li><a onclick='loadSubCate("+code+")' style='cursor: pointer;'>└"+name+"</a><ul id='"+code+"'>";
-            	 //topC.innerHTML += name;   
-            	 topC.innerHTML +="</ul></li>"+"\n";
-            	 
-            }
-            //alert(topC.innerHTML);
-           }}}
+function response() {
+if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
+    if (httpRequest.status == 200) { // 요청한 서버 파일이 실행 됐다면
+        var xmlDoc = httpRequest.responseXML;
+        var SubCategoryList = xmlDoc.getElementsByTagName("SubCategory");  
+        ////////////////////////////////////////////
+        if(SubCategoryList.item(0)==null) {
+           	var url="<%=root%>/bookinfo/list?BOOK_CATE_CD="; 
+           	url+=subCateCode;
+            location.href = url;  
+           } 
+        ////////////////////////////////////////////
+        var parCode = SubCategoryList.item(0).getElementsByTagName("parent_code").item(0)
+        				.firstChild.nodeValue;
+        var topC=document.getElementById(parCode); 
+        topC.innerHTML="";
+        for(var i=0;i<SubCategoryList.length;i++){
+        	var SubCate =SubCategoryList.item(i);
+        	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
+        	 code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
+        	
+        	topC.innerHTML +="<li><a onclick='loadSubCate("+code+")' style='cursor: pointer'>└"+name+"</a><ul id='"+code+"'>";
+        	topC.innerHTML +="</ul></li>";
+        	//codeL=code[i]
+        } 
+        WriteCookie('subCategory',topC.innerHTML);
+       }}}//}
 </script> 
+<script type="text/javascript">
+function WriteCookie(cName,cValue)
+{
+	var cookies = cName + '=' + cValue+';';
+	document.cookie=cookies;
+    alert("subCate in WriteCookie(): " + cookievalue );
+}
+function ReadCookie(cName)
+{
+   cName=cName+'=';
+   var cookieData = document.cookie;
+   // Get all the cookies pairs in an array
+   var start=cookieData.indexOf(cName);
+   var cValue='';
+   if(start !=-1){
+	   start +=cName.length;
+	   var end=cookieData.indexOf(';',start);
+	   if(end==-1) end=cookieData.length;
+	   cValue=cookieData.substring(start,end);
+   }
+   alert(cValue);
+}
+</script>
 </head> 
 <div id="jb-container">
 	<div id="jb-sidebar">
@@ -176,5 +220,8 @@ function response(subCode) {
 	</c:forEach>
 </ul>
 </div>
+<!-- <input type="button" value="쿠키읽기" onclick="ReadCookie('subCategory')"/>
+<input type="button" value="쿠키지우기" onclick="WriteCookie('subCategory','')"/> -->
 </div>
+
 <!-- 상단 메뉴 끝 -->

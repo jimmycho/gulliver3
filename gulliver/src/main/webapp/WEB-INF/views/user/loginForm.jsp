@@ -19,18 +19,24 @@
 }
 </style>
 <script type="text/javascript">
+window.onload=function(){
+	var c_id="${c_id_val}";
+	alert("c_id_val :"+c_id);
+}
+</script>
+<script type="text/javascript">
 function inputCheck(){
-var f=document.frm;
-if(f.userid.value==""){
-	alert("아이디를 입력하여 주세요");
-	f.userid.focus();
-	return false;
-}
-if(f.passwd.value==""){
-	alert("비밀번호를 입력하여 주세요");
-	f.passwd.focus();
-	return false;
-}
+	var f=document.frm;
+	if(f.userid.value==""){
+		alert("아이디를 입력하여 주세요");
+		f.userid.focus();
+		return false;
+	}
+	if(f.passwd.value==""){
+		alert("비밀번호를 입력하여 주세요");
+		f.passwd.focus();
+		return false;
+	}
 }
 </script>
 
