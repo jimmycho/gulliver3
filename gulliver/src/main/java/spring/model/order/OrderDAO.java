@@ -18,6 +18,10 @@ public class OrderDAO {
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
 	
+	//주문시 수량 감소
+	public int orderCntDown(OrderDTO dto){
+		return sqlSessionTemplate.update("order.orderCntDown", dto);
+	}
 	
 	//관리자 주문이력
 	public List<OrderDTO> list(Map map){

@@ -131,5 +131,8 @@ where userid = 'user7';
 SELECT * from T_ORDER
 where userid='user7';
 
+-- 주문시 수량 감소
+UPDATE T_BOOKINFO SET stock_cnt = (stock_cnt - 2)
+WHERE bookid = 8
 
 

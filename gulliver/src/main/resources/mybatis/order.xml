@@ -6,6 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="order">
 
+<!-- 주문시 수량감소 -->
+<update id="orderCntDown" parameterType="int">
+	UPDATE T_BOOKINFO SET stock_cnt = stock_cnt - #{order_cnt}
+	<![CDATA[WHERE bookid = #{bookid}]]>
+</update>
+
 <!-- 관리자 주문이력 -->
 <select id="list" parameterType="Map" resultType="OrderDTO">
 	SELECT orderno, del_method, recipient, total, order_cnt, order_comment, bookid, bookname, userid, del_zipcode, del_address1, del_address2, order_date, r

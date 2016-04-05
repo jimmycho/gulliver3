@@ -105,7 +105,8 @@ public class OrderController {
 		String[] order_cnt = requset.getParameterValues("order_cnt");
 		String[] cartno = requset.getParameterValues("cartno");
 		int cnt = 0;
-		int Cartcnt=0;
+		int Cartcnt = 0;
+		int downCnt = 0;
 		for(int i=0; i<bookid.length; i++){
 			System.out.println(bookid[i]+ " : " + order_cnt[i]);
 			dto.setBookid(Integer.parseInt(bookid[i]));
@@ -113,9 +114,9 @@ public class OrderController {
 			cnt = dao.create(dto);
 			Cartcnt=cartdao.delete(Integer.parseInt(cartno[i]));
 			System.out.println("cartno["+i+"] :"+cartno[i]);
-
+			downCnt = dao.orderCntDown(dto);
 		}
-		
+		System.out.println("downCnt : " + downCnt);
 
 		
 		if(cnt > 0){

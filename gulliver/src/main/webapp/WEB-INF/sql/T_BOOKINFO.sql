@@ -169,5 +169,8 @@ WHERE bookid = 4
 DELETE FROM T_BOOKINFO 
 WHERE bookid = 2
 
+-- 주문시 수량 감소
+UPDATE T_BOOKINFO SET stock_cnt = (stock_cnt - 2)
+WHERE bookid = 8
 
-
+select * from T_BOOKINFO;
