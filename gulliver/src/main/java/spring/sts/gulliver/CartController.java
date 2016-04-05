@@ -158,7 +158,7 @@ public class CartController {
 	public String delete(HttpServletRequest request){
 		
 		int cartno=Integer.parseInt(request.getParameter("cartno"));
-		System.out.println("delete cartno: "+cartno);
+		//System.out.println("delete cartno: "+cartno);
 		dao.delete(cartno);
 		
 		return "redirect:list";

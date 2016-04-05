@@ -34,6 +34,7 @@ public class CartDAO {
 
 	public int delete(int cartno) {
 		// TODO Auto-generated method stub
+		System.out.println("delete cartno: "+cartno);
 		return (sqlSessionTemplate.delete("cart.delete", cartno));
 		
 	}

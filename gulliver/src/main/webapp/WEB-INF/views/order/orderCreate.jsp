@@ -45,6 +45,7 @@
 							<input type="hidden" name="userid" value="${userdto.userid}"> 
 							<input type="hidden" name="bookid" value="${cartdto.bookid}">
 							<input type="hidden" name="order_cnt" value="${cartdto.cart_cnt}">
+							<input type="hidden" name="cartno" value="${cartdto.cartno}">
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
