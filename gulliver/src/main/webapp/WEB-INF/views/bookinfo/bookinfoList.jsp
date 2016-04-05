@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <script type="text/javascript">
@@ -13,7 +14,6 @@ function read(bookid){
 		url = url + "&col=${col}";
 		url = url + "&word=${word}";
 		url = url + "&nowPage=${nowPage}";
-		
 		location.href = url;
 }
 </script>
@@ -21,8 +21,7 @@ function read(bookid){
 <body>
 	<form action="" method="post" name="frm">
 		<br> <br>
-		<table align="center" border="1" cellpadding="1" cellspacing="1"
-			style="width: 800px;">
+		<table width="800" border="0" class="BTABLE2">
 			<c:choose>
 				<c:when test="${empty list}">
 					<tr>
@@ -35,15 +34,13 @@ function read(bookid){
 							<c:if test="${Status.index % 5 eq 0 }">
 								<tr></tr>
 							</c:if>
-							<td>
-								<a href="javascript:read('${dto.bookid}')">
-									<img src="${dto.bookfront_photo}" /><br>
-									${dto.bookname}<br> 
-<%-- 									저자 : ${dto.writer}<br>  --%>
-<%-- 									출판사 :	${dto.publisher}<br>  --%>
-									정가 : <s><fmt:formatNumber value="${dto.cur_price}" pattern="#,###" />원</s> | 
-									할인가 : <fmt:formatNumber value="${dto.sale_price}" pattern="#,###" />원
-								</a>
+							<td width="230" align="center">
+									<img src="${dto.bookfront_photo}" style="width: 100px;" border=0/><br>
+									<a href="javascript:read('${dto.bookid}')" class="bk3">${dto.bookname}</a><br> 
+									<span class="author">${dto.writer}|${dto.publisher}<br> </span>
+									<span class="br2010_p"><s><fmt:formatNumber value="${dto.cur_price}" pattern="#,###" />원</s> | 
+									<fmt:formatNumber value="${dto.sale_price}" pattern="#,###" />원
+								
 							</td>
 						</c:forEach>
 					</tr>

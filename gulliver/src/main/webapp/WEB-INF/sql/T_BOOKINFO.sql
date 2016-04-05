@@ -167,7 +167,7 @@ WHERE bookid = 4
 
 --T_BOOKINFO 삭제
 DELETE FROM T_BOOKINFO 
-WHERE bookid = 2
+WHERE BOOK_CATE_CD =2210
 
 -- 주문시 수량 감소
 UPDATE T_BOOKINFO SET stock_cnt = (stock_cnt - 2)

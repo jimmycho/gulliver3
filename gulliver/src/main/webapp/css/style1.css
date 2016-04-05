@@ -1,3 +1,11 @@
+a.bk3:link {  color: #333333; font-weight: bold; text-decoration: none}
+a.bk3:visited {  color: #333333; font-weight: bold; text-decoration: none}
+a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
+.author {color:#919191;}
+.br2010_p {color:#cc0066;font-weight: bold;}
+.br2010_p2 {color:#cc0066;}
+.br2010_p3 {color:#00aaff;}
+
 .BA:link,.BA:visited {text-decoration:none;color:#ffffff}
 .BA:hover{text-decoration:yes;color:#fff200;}
 
