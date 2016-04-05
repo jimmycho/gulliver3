@@ -7,12 +7,7 @@
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 14px; 
-} 
-</style>  
+
 <script language="javascript"> 
   // 자바스크립트는 리턴 타입이 없습니다. 
   function send(){ 

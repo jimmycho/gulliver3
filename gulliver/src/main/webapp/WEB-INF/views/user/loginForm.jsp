@@ -12,12 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<style type="text/css">
-* {
-	font-family: gulim;
-	font-size: 14px;
-}
-</style>
+
 <script type="text/javascript">
 window.onload=function(){
 	var c_id="${c_id_val}";
