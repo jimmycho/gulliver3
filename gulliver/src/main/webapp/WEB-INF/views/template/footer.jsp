@@ -1,41 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
-<style>
-#jb-container {
-	width: 1200px; margin : 0px auto;
-	padding: 2px;
-	border: 1px solid #ffffff;
-	margin: 0px auto;
-}
 
-#jb-header {
-	padding: 20px;
-	margin-bottom: 10px;
-	border: 1px solid #bcbcbc;
-}
-
-#jb-sidebar {
-	width: 235px;
-	padding: 0px;
-	margin-bottom: 10px;
-	float: left;
-	border: 1px solid #bcbcbc;
-}
-
-#jb-content {
-	width: 950px;
-	padding: 0px;
-	margin-bottom: 10px;
-	float: right;
-	border: 1px solid #bcbcbc;
-}
-
-#jb-footer {
-	clear: both;
-	padding: 2px;
-	border: 1px solid #bcbcbc;
-	background-color: #009AFF
-}
-</style>
 <div id="jb-container">
 <!-- 하단 메뉴 시작 -->
 	<div id="jb-footer">

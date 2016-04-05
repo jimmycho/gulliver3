@@ -23,60 +23,7 @@ String grade = (String)session.getAttribute("grade") ;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<style>
-.menu a {
-	cursor: pointer;
-	font-weight: bold;}
-.menu .hide li{
-	display: none;}
-ul{
-list-style-type: none;
-padding-left: 0;}
-li{
-padding-left: 20px }
-</style>		
-<style>
-#jb-container {
-	width: 1200px;
-	margin: 0px auto;
-	padding: 2px;
-	border: 1px solid #ffffff;
-	margin: 0px auto;
-}
 
-#jb-header {
-	padding: 20px;
-	margin-bottom: 10px;
-	border: 1px solid #bcbcbc;
-}
-
-#jb-sidebar {
-	width: 235px;
-	padding: 0px;
-	margin-bottom: 10px;
-	float: left;
-	border: 1px solid #bcbcbc;
-}
-
-#jb-content {
-	width: 950px;
-	padding: 0px;
-	margin-bottom: 10px;
-	float: right;
-	border: 1px solid #bcbcbc;
-}
-
-#jb-footer {
-	clear: both;
-	padding: 2px;
-	border: 1px solid #bcbcbc;
-	background-color: #009AFF
-}
-.LTABLE{
-	FONT-SIZE: 10.5pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon ����� 530_TT,verdana,tahoma;
-	BORDER:0; BACKGROUND-COLOR:#f1f1f1;
-}
-</style>	
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script>	 -->
 
 <script type="text/javascript">
