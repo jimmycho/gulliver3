@@ -95,11 +95,3 @@ function response(subCode) {
 
 </ul>
 	</div>
-
-
-	<!-- 상단 메뉴 끝 -->
-
-<!-- 	내용 시작 -->
-<!-- 	<div style="width: 100%; padding-top: 10px;"> -->
-	
-<!-- 	</div> -->

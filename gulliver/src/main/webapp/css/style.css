@@ -172,7 +172,7 @@ A:link {     /* A 태그의 링크 속성 */
  
 A:hover{     /* A 태그에 마우스가 올라 갔을 경우 */
   text-decoration: none;     /* 문자열 꾸미기값을 지정하지 않음, 밑줄 삭제 */
-  background-color: #E6F7FF; /* 배경 색 변경*/
+  background-color: none; /* 배경 색 변경*/
   color: black;              /* 문자열 색깔 */ 
 }
  
