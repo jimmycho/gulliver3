@@ -116,7 +116,7 @@ border-color: #AAAAAA;     /* 테이블 외곽선 색깔 */
 }
  
 td{
-  border-color: #AAAAAA;     /* 테이블 외곽선 색깔 */ 
+  border-color: #ffffff;     /* 테이블 외곽선 색깔 */ 
   border-width: 1px;         /* 테이블 외곽선 두께 */ 
   border-style: solid;       /* 테이블 외곽선 스타일 */
  
