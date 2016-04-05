@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import spring.model.cart.CartDAO;
+import spring.model.comment.CommentDAO;
 import spring.model.order.OrderDAO;
 import spring.model.user.UserDAO;
 import spring.model.user.UserDTO;
@@ -33,6 +34,8 @@ public class UserController {
 	private CartDAO cdao; 
 	@Autowired
 	private OrderDAO odao; 
+	@Autowired
+	private CommentDAO cmdao;
 	
 	@RequestMapping(value="/user/delete", method=RequestMethod.POST)
 	public String delete(String userid, String userphoto, HttpSession session, HttpServletRequest request){
@@ -40,8 +43,10 @@ public class UserController {
 		
 		int cnt_cart=cdao.deleteUserCart(userid);
 		int cnt_order=odao.deleteUserOrder(userid);
+		int cnt_comment=cmdao.deleteUserComment(userid);
 		
-		if(cnt_cart==0 && cnt_order==0){
+		if(cnt_cart==0 && cnt_order==0 && cnt_comment==0){
+			
 			int cnt=dao.delete(userid);
 			if(cnt==1){
 				if(!userphoto.equals("member.jpg")) Utility.deleteFile(upDir, userphoto);

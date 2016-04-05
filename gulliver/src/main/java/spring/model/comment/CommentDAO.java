@@ -48,5 +48,11 @@ public class CommentDAO {
 	public int total(int bookid){
 		return sqlSessionTemplate.selectOne("comment.total", bookid);
 	}
+
+	public int deleteUserComment(String userid) {
+		// TODO Auto-generated method stub
+		System.out.println("deleteUserComment호출");
+		return sqlSessionTemplate.delete("comment.deleteUser", userid);
+	}
 	
 }

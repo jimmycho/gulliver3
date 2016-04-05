@@ -82,8 +82,8 @@ TH {
 </TABLE>
 <div style='text-align: center; margin-top: 20px'>
 ${paging }
-</div>
-<br>
-
+</div><br>
+<div style='text-align: center; '>	<input type='button' value='신규작성' onclick="location.href='./create'">
+</div> 
 </body>
 </html>

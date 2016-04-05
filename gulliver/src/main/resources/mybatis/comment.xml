@@ -52,6 +52,15 @@ FROM(
 	FROM T_COMMENT
 	WHERE seq = #{seq}
 </delete>
+<!-- 탈퇴시에 회원의 댓글 모두 삭제 -->
+<delete id="deleteUser" parameterType="String">
+	DELETE 
+	FROM T_COMMENT
+	WHERE userid = #{userid}
+</delete>
+
+
+
 
 <!-- 댓글 총갯수 -->
 <select id="total" parameterType="int" resultType="int">

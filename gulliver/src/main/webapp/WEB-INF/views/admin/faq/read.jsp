@@ -79,7 +79,7 @@ TD {
 		</TR>
 	</TABLE>
 	<DIV style='text-align: center; margin-top: 20px'>
-		<input type='button' value='등록' onclick="location.href='./create'"> 
+	
 		<input type='button' value='목록' onclick="listB()"> 
 		<input type='button' value='수정' onclick="updateB()"> 
 		<input type='button' value='삭제' onclick="deleteB()"> 

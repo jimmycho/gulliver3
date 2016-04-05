@@ -68,7 +68,7 @@ public class CartDAO {
 			 sqlSessionTemplate.delete("cart.deleteUserCart", userid);
 			 cnt_Cart=sqlSessionTemplate.selectOne("cart.cartCount", userid);
 		 }
-		  System.out.println("cnt_cart: "+cnt_Cart);
+		 System.out.println("cnt_cart: "+cnt_Cart);
 		 return cnt_Cart;
 	}
 
