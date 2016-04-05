@@ -1,4 +1,29 @@
 select * from T_BOOKINFO;
+--오리지널 코드
+SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	   		stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
+FROM (
+	      SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+				 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, rownum r      
+	      FROM (
+	          SELECT b.bookid, b.bookname, b.sale_price, b.bookfront_photo, b.book_explain, b.ISBN10, b.ISBN13, 
+					 b.stock_cnt, b.cur_price, b.publisher, b.pub_date, b.BOOK_CATE_CD, b.writer, b.traductor, b.input_date
+	          FROM T_BOOKINFO B, T_BOOKCATE C
+		          where
+					C.BOOK_CATE_CD = 3111 AND B.bookname LIKE '%글로리%'
+		          ORDER BY bookid DESC
+	          )
+	      )
+	   WHERE r >= 1 and r <= 5;
+--테스트용	   
+ SELECT bookid, bookname, BOOK_CATE_CD
+	          FROM T_BOOKINFO 
+		          where
+					BOOK_CATE_CD >= 1000 and BOOK_CATE_CD < (1000+1000) AND bookname LIKE '%글로리%'
+		          ORDER BY bookid DESC	   
+	   
+
+
 DROP TABLE T_BOOKINFO CASCADE CONSTRAINTS;
   
 CREATE TABLE T_BOOKINFO (

@@ -3,6 +3,29 @@
  
 <mapper namespace="bookinfo">
 
+<select id="mainList" parameterType="map" resultType="BookinfoDTO">
+	SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	   		stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
+	FROM (
+	      SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+				 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, rownum r      
+	      FROM (
+	          SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+					 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
+	          FROM T_BOOKINFO  
+		          <where>
+					<if test="word != null">
+						<![CDATA[BOOK_CATE_CD >= #{col} AND BOOK_CATE_CD < #{col} + 2000 AND bookname LIKE '%'|| #{word} ||'%' ]]>
+					</if>
+
+		          </where>
+		          ORDER BY bookid DESC
+	          )
+	      )
+	      <![CDATA[WHERE r >= #{sno} and r <= #{eno}]]>
+</select> 
+
+
 <!-- 리스트 페이징 -->
 <select id="list" parameterType="map" resultType="BookinfoDTO">
 	SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
@@ -40,8 +63,8 @@
 </select>
 
 
-<!-- main 리스트 페이징 -->
-<select id="mainList" parameterType="map" resultType="BookinfoDTO">
+<!-- main 리스트 페이징 _original -->
+<select id="mainList_original" parameterType="map" resultType="BookinfoDTO">
 	SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
 	   		stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
 	FROM (

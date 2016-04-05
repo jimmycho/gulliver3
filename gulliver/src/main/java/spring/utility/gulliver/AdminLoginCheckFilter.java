@@ -31,7 +31,7 @@ public class AdminLoginCheckFilter implements Filter { //Filter는 인터페이�
         
         if (session != null) { // session 객체가 생성되어 있는지 확인
             // 로그인을 했으면서 관리자인지 확인합니다.
-            if (session.getAttribute("id") != null 
+            if (session.getAttribute("userid") != null 
                     && session.getAttribute("grade").equals("A")) {
                 login = true;  // 관리자라면
             }
@@ -43,7 +43,7 @@ public class AdminLoginCheckFilter implements Filter { //Filter는 인터페이�
         } else {
             // 로그인이 안되었다면 로그인 페이지로 이동
             RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("../member/login");
+                request.getRequestDispatcher("/bookinfo/list");
             dispatcher.forward(request, response);//forward : "/member/loginForm.jsp" 로 대신 요청했기 때문에 url 상 loginForm은 안나온다
         }
     }

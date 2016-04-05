@@ -21,7 +21,7 @@
 <script type="text/javascript">
 window.onload=function(){
 	var c_id="${c_id_val}";
-	alert("c_id_val :"+c_id);
+	//alert("c_id_val :"+c_id);
 }
 </script>
 <script type="text/javascript">

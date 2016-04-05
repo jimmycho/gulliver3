@@ -23,7 +23,6 @@ String grade = (String)session.getAttribute("grade") ;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-
 <style>
 .menu a {
 	cursor: pointer;
@@ -179,7 +178,8 @@ function hide(elementId) {
     if (element) {
         element.style.display = 'none';
     }
-} </script>
+} 
+</script>
 
 <script type="text/javascript">
 var xmlDoc = null;
@@ -231,11 +231,9 @@ function WriteCookie(cName,cValue)
     //alert("subCate in WriteCookie(): " + cookievalue );
 }
 </script>
-
-
 <script type="text/javascript">  
 function inputCheck(){
-	var f=document.frm;
+	var f=document.frm1;
 	if(f.userid.value==""){
 		alert("아이디를 입력하여 주세요");
 		f.userid.focus();
@@ -257,7 +255,7 @@ function inputCheck(){
 <br>
 <div >
 
-	<FORM name='frm' method='POST' action='${pageContext.request.contextPath}/user/login'
+	<FORM name='frm1' method='POST' action='${pageContext.request.contextPath}/user/login'
 	onsubmit="return inputCheck()">
 		<TABLE class='table'>
 		<% if(userid==null){%>
