@@ -1,0 +1,52 @@
+.HA:link,.HA:visited {text-decoration:none;color:#6d6e71}
+.HA:hover{text-decoration:yes;color:#23A41A;}
+
+.HHA:link,.HHA:visited {text-decoration:none;color:#ffffff}
+.HHA:hover{text-decoration:yes;color:#ffffff;}
+
+.HTABLE{
+	FONT-SIZE: 10pt; COLOR: #ffffff; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	TEXT-ALIGN:center; BORDER:0; 
+}
+.HTABLE2{
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	TEXT-ALIGN:center; BORDER:0; BACKGROUND-COLOR:#23A41A;
+}
+.HTD {
+	FONT-SIZE: 10pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	BORDER:0; 
+}
+.HTD2 {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	BORDER:0; 
+}
+ .HTEXT {
+
+	FONT-SIZE: 11pt; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	TEXT-ALIGN:right;  border:2px solid #23A41A;
+} 
+.HSELECT {
+	FONT-SIZE: 12pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;border:2px solid #23A41A;
+}
+ .HBUTTON {
+	BORDER:0pt;
+	FONT-SIZE: 11pt; 	COLOR: #ffffff;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #23A41A;TEXT-ALIGN:center;
+} 
+ .HBUTTON:hover {
+	COLOR: #ffffff;  BACKGROUND-COLOR: #bdbebf;
+} 
+ .HBUTTON2 {
+	BORDER:0pt;
+	FONT-SIZE: 10pt; 	COLOR: #f1f1f1;  FONT-FAMILY: -À±°íµñ340,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:left; BACKGROUND-COLOR:#23A41A;TEXT-ALIGN:center;
+} 
+ .HBUTTON2:hover {
+	COLOR: #6d6e71;  BACKGROUND-COLOR: #ffffff;
+} 
+
+/*  .HBUTTON {
+	LINE-HEIGHT: 160%; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; backgroundcolor:#6db33f;
+}  */

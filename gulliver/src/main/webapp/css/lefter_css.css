@@ -1,0 +1,109 @@
+.LA:link,.LA:visited {text-decoration:none;color:#6d6e71}
+.LA:hover{text-decoration:yes;color:#23A41A;}
+
+.LTABLE{
+	FONT-SIZE: 10.5pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	BORDER:0; BACKGROUND-COLOR:#f1f1f1;
+}
+.LTABLE2{
+	FONT-SIZE: 10pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	BORDER:0; BACKGROUND-COLOR:#ffffff;
+}
+ .LBUTTON {
+	BORDER:0pt;
+	FONT-SIZE: 10pt; 	COLOR: #ffffff;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #23A41A;
+} 
+ .LBUTTON2 {
+	BORDER:0pt;
+	FONT-SIZE: 10pt; 	COLOR: #595959;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:left; BACKGROUND-COLOR:#f1f1f1;
+} 
+ .LBUTTON3 {
+	BORDER:0pt;
+	FONT-SIZE: 10pt; 	COLOR: #595959;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:left; BACKGROUND-COLOR:#FFFFFF;
+} 
+ .LBUTTON:hover {
+	COLOR: #000000;  BACKGROUND-COLOR: #fff200;
+} 
+ .LBUTTON2:hover {
+	COLOR: #ffffff;  BACKGROUND-COLOR: #23A41A;
+} 
+ .LBUTTON3:hover {
+	COLOR: #ffffff;  BACKGROUND-COLOR: #23A41A;
+} 
+.LTD {
+	BACKGROUND-COLOR: #ffffff; COLOR: #6d6e71;
+}
+.LTD2 {
+	BACKGROUND-COLOR: #23A41A; COLOR: #ffffff;
+}
+/*
+.RTABLE2{
+	FONT-SIZE: 9pt; COLOR: #6c5337; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; BORDER:0; BACKGROUND-COLOR:#d1d3d4;
+}
+.RTD {
+	FONT-SIZE: 9pt; COLOR: #ffffff; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER:0; 
+}
+.RTD2 {
+	FONT-SIZE: 9pt; COLOR: #6c5337; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER:0; 
+}
+ .RTEXT {
+	LINE-HEIGHT: 160%; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; 
+} 
+.RSELECT {
+	FONT-SIZE: 9pt; COLOR: #6c5337; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+ .RBUTTON {
+	LINE-HEIGHT: 160%; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; backgroundcolor:#d1d3d4;
+} 
+
+
+
+BODY {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+
+
+TD {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center;
+}
+.BUTTON_A {
+	BORDER-RIGHT: 1px solid #CCCCCC; BORDER-TOP: 1px solid #CCCCCC; 
+	BORDER-LEFT: 1px solid #CCCCCC; BORDER-BOTTOM: 1px solid #CCCCCC; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma; COLOR: #6c5337; 
+	LINE-HEIGHT: 160%; TEXT-ALIGN:center; 
+} 
+ 
+
+
+ SELECT {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+DIV {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+FORM {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+TEXTAREA {
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; 
+	BORDER-LEFT: 1px solid #999999 ; COLOR: #6d6e71; BORDER-BOTTOM: 1px solid #999999; 
+	FONT-FAMILY: ±¼¸²,verdana; BACKGROUND-COLOR: white
+}
+ INPUT {
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; 
+	BORDER-LEFT: 1px solid #999999; COLOR: #6d6e71; BORDER-BOTTOM: 1px solid #999999; 
+	LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; BACKGROUND-COLOR: #fff685
+} 
+ */

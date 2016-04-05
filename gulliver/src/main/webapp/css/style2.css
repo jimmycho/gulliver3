@@ -1,0 +1,188 @@
+.BA:link,.BA:visited {text-decoration:none;color:#fff200}
+.BA:hover{text-decoration:yes;color:#fff200;}
+
+.BBA:link,.BBA:visited {text-decoration:none;color:#ffffff}
+.BBA:hover{text-decoration:yes;color:#ffffff;}
+
+.BTABLE{
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	BACKGROUND-COLOR:#f7f8f9;
+}
+.BTABLE2{
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+}
+ .BBUTTON {
+	BORDER:0pt;
+	FONT-SIZE: 9pt; 	COLOR: #ffffff;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #6db33f;
+} 
+ .BBUTTON:hover {
+	COLOR: #ffffff;  BACKGROUND-COLOR: #bdbebf;
+} 
+ .BBUTTON2 {
+	BORDER:0pt;
+	FONT-SIZE: 9pt; COLOR: #ffffff;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #bdbebf;
+} 
+ .BBUTTON2:hover {
+	COLOR: #ffffff;  BACKGROUND-COLOR: #828181;
+} 
+ .BBUTTON3 {
+	BORDER:0pt; WIDTH:70px;
+	FONT-SIZE: 9pt; COLOR: #ffffff;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #bdbebf;
+} 
+ .BBUTTON4 {
+	BORDER:0pt; FONT-SIZE: 9pt; COLOR: #ffffff;  FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #bdbebf;
+	BACKGROUND:url(tiles/img/icon_1.gif);
+} 
+.BTD {
+	BACKGROUND-COLOR: #828181; COLOR: #ffffff;
+}
+.BTD2 {
+	BACKGROUND-COLOR: #bdbebf; COLOR: #ffffff;
+}
+.BTD3 {
+	BACKGROUND-COLOR: #6db33f; COLOR: #ffffff;
+}
+.BTD4 {
+	BACKGROUND-COLOR: #ffffff; COLOR: #828181;
+}
+.BTD5 {
+	BACKGROUND-COLOR: #D9F212; COLOR: #ffffff;
+}
+.BTD6 {
+	BACKGROUND-COLOR: #ffffff; COLOR: #ffffff;
+}
+.BSELECT {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	BORDER: 1px solid #e7e3e1; 
+}
+ .BTEXT {
+	LINE-HEIGHT: 160%;  BORDER:0pt;
+	FONT-SIZE: 9pt; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma;
+	TEXT-ALIGN:center; 
+} 
+.BHR {
+	LINE-HEIGHT: 160%; BORDER: 1px solid #828181; 
+}
+.BFONT {
+	FONT-SIZE: 9pt; COLOR: #bdbebf; FONT-FAMILY: Yoon À±°íµñ 530_TT,verdana,tahoma; LINE-HEIGHT: 160%; 
+}
+.BFONT2{
+	FONT-SIZE: 12pt; COLOR: #6db33f; 
+}
+
+
+/*
+.BA:link,.BA:visited {text-decoration:none;color:#6d6e71}
+.BA:hover{text-decoration:yes;color:#66CCFF}
+BODY {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+TABLE{
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER-TOP: 1px solid #CCCCCC; BORDER-BOTTOM: 1px solid #CCCCCC; TEXT-ALIGN:center;
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER-TOP: 1px solid #CCCCCC; BORDER-BOTTOM: 1px solid #CCCCCC; TEXT-ALIGN:center;
+}
+SELECT {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+DIV {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+FORM {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+TEXTAREA {
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999 ; COLOR: #6d6e71; BORDER-BOTTOM: 1px solid #999999; FONT-FAMILY: ±¼¸²,verdana; BACKGROUND-COLOR: white
+}
+INPUT {
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999; COLOR: #6d6e71; BORDER-BOTTOM: 1px solid #999999; FONT-FAMILY: ±¼¸²,verdana; HEIGHT: 19px; BACKGROUND-COLOR: white
+}
+ 
+
+
+.FTABLE{
+	FONT-SIZE: 8pt; COLOR: #ffffff; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER:0; BACKGROUND-COLOR:#5d5d5d;
+}
+ .FBUTTON {
+	BORDER:0pt;
+	FONT-SIZE: 9pt; 	COLOR: #ffffff;  FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #6db33f;
+} 
+ .FBUTTON:hover {
+	COLOR: #6d6e71;  BACKGROUND-COLOR: #fff200;
+} 
+.FSELECT {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+}
+ .FBUTTON {
+	LINE-HEIGHT: 160%; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; BACKGROUNDCOLOR:#6c5337;
+} 
+.RTABLE2{
+	FONT-SIZE: 9pt; COLOR: #6c5337; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; BORDER:0; BACKGROUND-COLOR:#d1d3d4;
+}
+.RTD {
+	FONT-SIZE: 9pt; COLOR: #ffffff; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER:0; 
+}
+.RTD2 {
+	FONT-SIZE: 9pt; COLOR: #6c5337; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	BORDER:0; 
+}
+ .RTEXT {
+	LINE-HEIGHT: 160%; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; 
+} 
+.RSELECT {
+	FONT-SIZE: 9pt; COLOR: #6c5337; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+ .RBUTTON {
+	LINE-HEIGHT: 160%; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; backgroundcolor:#d1d3d4;
+} 
+BODY {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center;
+}
+.BUTTON_A {
+	BORDER-RIGHT: 1px solid #CCCCCC; BORDER-TOP: 1px solid #CCCCCC; 
+	BORDER-LEFT: 1px solid #CCCCCC; BORDER-BOTTOM: 1px solid #CCCCCC; 
+	FONT-SIZE: 9pt; FONT-FAMILY: ±¼¸²,verdana,tahoma; COLOR: #6c5337; 
+	LINE-HEIGHT: 160%; TEXT-ALIGN:center; 
+} 
+ SELECT {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+DIV {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+FORM {
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma
+}
+TEXTAREA {
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; 
+	BORDER-LEFT: 1px solid #999999 ; COLOR: #6d6e71; BORDER-BOTTOM: 1px solid #999999; 
+	FONT-FAMILY: ±¼¸²,verdana; BACKGROUND-COLOR: white
+}
+ INPUT {
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; 
+	BORDER-LEFT: 1px solid #999999; COLOR: #6d6e71; BORDER-BOTTOM: 1px solid #999999; 
+	LINE-HEIGHT: 160%; FONT-FAMILY: ±¼¸²,verdana,tahoma;
+	TEXT-ALIGN:center; BACKGROUND-COLOR: #fff685
+} 
+ */
