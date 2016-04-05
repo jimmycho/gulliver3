@@ -55,10 +55,13 @@ public class BookinfoTest {
 		Map map = new HashMap();
 		map.put("sno", sno);
 		map.put("eno", eno);
-		map.put("bookid", 1); 
-		map.put("BOOK_CATE_CD", 1101); //카테고리 번호 받아서 검색하기 위한 부분
+//		map.put("bookid", 1); 
+		map.put("col", 1000);
+		map.put("word", "칼의");
+//		map.put("BOOK_CATE_CD", 1101); //카테고리 번호 받아서 검색하기 위한 부분
 		
-		List<BookinfoDTO> list = dao.list(map);
+		List<BookinfoDTO> list = dao.mainList(map);
+//		List<BookinfoDTO> list = dao.list(map);
 
 		for (int i = 0; i < list.size(); i++) {
 			BookinfoDTO dto = list.get(i);

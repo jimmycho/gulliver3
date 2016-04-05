@@ -30,7 +30,47 @@
 		          		</when>
 		          	</choose>
 		          	<if test="BOOK_CATE_CD != NULL">
-		          		<![CDATA[AND BOOK_CATE_CD = #{BOOK_CATE_CD}]]>
+		          		<![CDATA[BOOK_CATE_CD = #{BOOK_CATE_CD}]]>
+		          	</if>
+		          </where>
+		          ORDER BY bookid DESC
+	          )
+	      )
+	      <![CDATA[WHERE r >= #{sno} and r <= #{eno}]]>
+</select>
+
+
+<!-- main 리스트 페이징 -->
+<select id="mainList" parameterType="map" resultType="BookinfoDTO">
+	SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	   		stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
+	FROM (
+	      SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+				 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, rownum r      
+	      FROM (
+	          SELECT b.bookid, b.bookname, b.sale_price, b.bookfront_photo, b.book_explain, b.ISBN10, b.ISBN13, 
+					 b.stock_cnt, b.cur_price, b.publisher, b.pub_date, b.BOOK_CATE_CD, b.writer, b.traductor, b.input_date
+	          FROM T_BOOKINFO B, T_BOOKCATE C
+		          <where>
+<!-- 		          	<choose> -->
+<!-- 		          		<when test="col == 'title'"> -->
+<!-- 		          			WHERE bookname LIKE '%'|| #{word} ||'%' -->
+<!-- 		          		</when> -->
+<!-- 		          		<when test="col == 'writer'"> -->
+<!-- 		          			WHERE writer LIKE '%'|| #{word} ||'%' -->
+<!-- 		          		</when> -->
+<!-- 		          		<when test="col == 'isbn10'"> -->
+<!-- 		          			WHERE isbn10 LIKE '%'|| #{word} ||'%' -->
+<!-- 		          		</when> -->
+<!-- 		          		<when test="col == 'isbn13'"> -->
+<!-- 		          			WHERE isbn13 LIKE '%'|| #{word} ||'%' -->
+<!-- 		          		</when> -->
+<!-- 		          	</choose> -->
+					<if test="word != null">
+						<![CDATA[C.BOOK_CATE_CD = #{col} AND B.bookname LIKE '%'|| #{word} ||'%' ]]>
+					</if>
+		          	<if test="BOOK_CATE_CD != NULL">
+		          		<![CDATA[B.BOOK_CATE_CD = #{BOOK_CATE_CD}]]>
 		          	</if>
 		          </where>
 		          ORDER BY bookid DESC

@@ -271,6 +271,58 @@ public class BookinfoController {
 		return "/bookinfo/read";
 	}
 	
+	
+	// 책정보 목록
+	@RequestMapping("/bookinfo/mainList")
+	public String mainList(HttpServletRequest request) {
+		// 검색 부분
+		String col = Utility.checkNull(request.getParameter("col"));
+		String word = Utility.checkNull(request.getParameter("word"));
+
+		if (col.equals("total")) {
+			word = "";
+		}
+
+		// 페이징 관련 부분
+		int nowPage = 1;
+
+		if (request.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+
+		int recordPerPage = 20; // 한 페이지당 출력할 레코드 수
+
+		// DB에서 가져올 순번
+		int sno = ((nowPage - 1) * recordPerPage) + 1;
+		int eno = nowPage * recordPerPage;
+
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+//		map.put("BOOK_CATE_CD", request.getParameter("BOOK_CATE_CD")); //카테고리 번호 받아서 검색하기 위한 부분
+		
+		
+		// 글의 총 갯수를 구한다
+		int total = dao.total(col, word);
+
+		List<BookinfoDTO> list = dao.mainList(map);
+
+		String paging = new Paging().paging5(total, nowPage, recordPerPage, col, word);
+
+		if (list.size() == 0) {
+			nowPage = 1;
+		}
+
+		request.setAttribute("list", list);
+		request.setAttribute("paging", paging);
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("nowPage", nowPage);
+
+		return "/bookinfo/list";
+	}
 
 	
 	// 책정보 목록

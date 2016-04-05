@@ -21,13 +21,37 @@ CREATE TABLE T_BOOKINFO (
        FOREIGN KEY (BOOK_CATE_CD) REFERENCES T_BOOKCATE
 );
 
---T_BOOKINFO 글 읽기
-SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
-	stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
+SELECT *
+FROM T_BOOKCATE
+SELECT *
 FROM T_BOOKINFO
-WHERE bookid = 1;
+--T_BOOKINFO 메인 목록
+SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	   stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
+FROM (
+      SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+			 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, rownum r      
+      FROM (
+	          SELECT b.bookid, b.bookname, b.sale_price, b.bookfront_photo, b.book_explain, b.ISBN10, b.ISBN13, 
+					 b.stock_cnt, b.cur_price, b.publisher, b.pub_date, b.BOOK_CATE_CD, b.writer, b.traductor, b.input_date, c.BOOK_CATE_CD
+	          FROM T_BOOKINFO B, T_BOOKCATE C	    
+	          WHERE b.bookname LIKE '%노인%' and c.BOOK_CATE_CD = 1102
+	          GROUP BY b.BOOK_CATE_CD
+	          --ORDER BY b.bookid DESC
+          )
+      )
+WHERE r >= 1 and r <=5;
 
---T_BOOKINFO 목록
+
+	          SELECT b.bookid, b.bookname, b.sale_price, b.bookfront_photo, b.book_explain, b.ISBN10, b.ISBN13, 
+					 b.stock_cnt, b.cur_price, b.publisher, b.pub_date, b.BOOK_CATE_CD, b.writer, b.traductor, b.input_date
+	          FROM T_BOOKINFO B, T_BOOKCATE C	    
+	          WHERE b.bookname LIKE '%노인%' and c.HIGH_LINK_CD = 1000
+	          GROUP BY b.bookid, b.bookname, b.sale_price, b.bookfront_photo, b.book_explain, b.ISBN10, b.ISBN13, 
+					 b.stock_cnt, b.cur_price, b.publisher, b.pub_date, b.BOOK_CATE_CD, b.writer, b.traductor, b.input_date
+
+
+--T_BOOKINFO 책 목록
 SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
 	   stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date, r 
 FROM (
@@ -37,15 +61,21 @@ FROM (
 	          SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
 					 stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
 	          FROM T_BOOKINFO 
-	          --WHERE bookname LIKE '%칼의%' AND BOOK_CATE_CD = 1101
-	          ORDER BY bookid DESC
+	          --WHERE b.bookname LIKE '%칼의%' AND c.BOOK_CATE_CD = 1000
+	          ORDER BY b.bookid DESC
           )
       )
 WHERE r >= 1 and r <=5;
 
-
 --T_BOOKINFO 총 갯수
 SELECT COUNT(*) FROM T_BOOKINFO
+
+
+--T_BOOKINFO 책 읽기
+SELECT bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13, 
+	stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date
+FROM T_BOOKINFO
+WHERE bookid = 1;
 
 
 --T_BOOKINFO 입력
@@ -112,7 +142,7 @@ WHERE bookid = 4
 
 --T_BOOKINFO 삭제
 DELETE FROM T_BOOKINFO 
-WHERE bookid = 16 and BOOK_CATE_CD = 1101;
+WHERE bookid = 2
 
 
 

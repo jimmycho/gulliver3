@@ -28,9 +28,14 @@ public class BookinfoDAO {
 		return sqlSessionTemplate.insert("bookinfo.create", dto);
 	}
 	
-	//목록
+	//책목록
 	public List<BookinfoDTO> list(Map map){
 		return sqlSessionTemplate.selectList("bookinfo.list", map);
+	}
+	
+	//메인 책목록
+	public List<BookinfoDTO> mainList(Map map){
+		return sqlSessionTemplate.selectList("bookinfo.mainList", map);
 	}
 	
 	//수정

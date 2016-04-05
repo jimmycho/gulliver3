@@ -145,6 +145,39 @@ padding-left: 20px }
 	
 }
 </style>
+
+<script type="text/javascript">
+var xmlDoc = null;
+var xslDoc = null;
+function loadSubCate(subCode) {
+	var params="subCode="+subCode;
+    sendRequest("<%=root%>/bookcate/listSubCate",params,response,"GET");
+}
+function response(subCode) {
+    if (httpRequest.readyState == 4) { // 전송을 전부 받았다면
+        if (httpRequest.status == 200) { // 요청한 서버 파일이 실행 됐다면
+            var xmlDoc = httpRequest.responseXML;
+            var SubCategoryList = xmlDoc.getElementsByTagName("SubCategory");            
+            if(SubCategoryList.item(0)==null) alert("마지막 카테고리입니다 !");
+            var parCode = SubCategoryList.item(0).getElementsByTagName("parent_code").item(0)
+            				.firstChild.nodeValue;
+           
+            var topC=document.getElementById(parCode); 
+            topC.innerHTML="";
+            for(var i=0;i<SubCategoryList.length;i++){
+            	var SubCate =SubCategoryList.item(i);
+            	var name =SubCate.getElementsByTagName("name").item(0).firstChild.nodeValue;
+            
+            	var code =SubCate.getElementsByTagName("code").item(0).firstChild.nodeValue;
+            	//alert("name:code"+name+code) ;
+            	topC.innerHTML +="<option><a onclick='loadSubCate("+code+")' style='cursor: pointer;'></a>";
+            	 //topC.innerHTML += name;   
+            	 topC.innerHTML +="</option>"+"\n";
+            	 
+            }
+            //alert(topC.innerHTML);
+           }}}
+</script> 
 </head>
 <body>
 	<!-- 상단 메뉴 -->
@@ -190,14 +223,21 @@ padding-left: 20px }
 	
 	<div id="jb-header" style="text-align: center;">
 		<br><br>
-		<form style="text-align: center;; padding-bottom: 5px ;padding-right:10px;">
-			<select style="font-size: large;">
-				<option name="" selected="selected">국내도서</option>
-				<option name="">외국도서  </option>
-			</select> <input type="text" name="" value="" style="font-size: large;">
-		<input type="button" name="" value="검색" style="font-size: large;">
+		<form action="<%=root %>/bookinfo/mainList" style="text-align: center;; padding-bottom: 5px ;padding-right:10px;">
+			<select name="col" style="font-size: large;">
+				<c:forEach var="dto" items="${topCateList}">
+				<c:set var="i" value="${i+1}"/>
+					<option <c:if test="${col == dto.BOOK_CATE_CD }">selected='selected'</c:if> value="${dto.BOOK_CATE_CD}"> ${dto.BOOK_CATE_NAME} ${dto.BOOK_CATE_CD}</option>
+				</c:forEach>
+			</select> 
+		<input type="text" name="word" value="${word}" style="font-size: large;">
+		<input type="submit" value="검색" style="font-size: large;">
 		</form>
+		<ul>
+
+</ul>
 	</div>
+
 
 	<!-- 상단 메뉴 끝 -->
 
