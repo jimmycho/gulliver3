@@ -77,7 +77,7 @@ CREATE TABLE T_USER (
 );
 
 
-
+ 
 CREATE TABLE T_CART (
        CARTNO               NUMBER(7) NOT NULL,
        cart_cnt             NUMBER(7) DEFAULT 0 NULL,
