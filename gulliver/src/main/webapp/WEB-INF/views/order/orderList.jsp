@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -31,21 +32,21 @@ function read(orderno){
 		</div>
 	</form>
 	<br>
-	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px";>
+	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 800px" class="BTABLE">
 		<tr>
-			<td>주문번호</td>
-			<td>주문인</td>
-			<td>주문일</td>
-			<td>책제목</td>
-			<td>배송방법</td>
+			<td class="BTD2">주문번호</td>
+			<td class="BTD2">주문인</td>
+			<td class="BTD2">주문일</td>
+			<td class="BTD2">책제목</td>
+			<td class="BTD2">배송방법</td>
 		</tr>
 		<c:choose>
 			<c:when test="${empty list }">
-				<tr><td colspan="5" align="center">주문이력이 없습니다.</td></tr>
+				<tr class="BTD4"><td colspan="5" align="center">주문이력이 없습니다.</td></tr>
 			</c:when>
 			<c:otherwise>
 				<c:forEach var="dto" items="${list}">
-					<tr>
+					<tr class="BTD4">
 						<td><a href="javascript:read('${dto.orderno}')">${dto.orderno}</a></td> 
 						<td>${dto.recipient}</td> 
 						<td>${dto.order_date}</td> 
