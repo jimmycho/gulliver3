@@ -219,13 +219,10 @@
  <div style="text-align: center"> 
   <input id="agree" type="checkbox" name="agree" value="1" > 
   <label for="agree" class="BTABLE4">약관에 동의합니다</label> 
-  <input type="submit" value="회원가입" class="BBUTTON"></input>  
-  <input type="button" value="취소" onclick="history.back();" class="BBUTTON"/> 
+  &nbsp;&nbsp;<input type="submit" value="회원가입" class="BBUTTON"></input>  
+  <input type="button" value="취    소" onclick="history.back();" class="BBUTTON"/> 
 </div> 
 </form> 
 <br><br>
- 
-<!-- *********************************************** -->
 </body>
-<!-- *********************************************** -->
 </html> 
