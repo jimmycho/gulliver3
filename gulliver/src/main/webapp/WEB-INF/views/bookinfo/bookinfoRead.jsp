@@ -247,10 +247,12 @@ function cdelete(seq){
 		</tr> 
 		<tr>
 			<td >
-			<TEXTAREA id="contentHelp" cols="100" rows="4" name="say100ja"  onclick="rcheck(this)">
-			</TEXTAREA>
+				<TEXTAREA id="contentHelp" cols="100" rows="4" name="say100ja"  onclick="rcheck(this)"></TEXTAREA>
+				<DIV class=remaining>남은 글자수: <SPAN class="count">100</SPAN></DIV>
 			</td>
-			<td ><input type="submit" name="csubmit" value="등록" style=" height:65px; width: 65px;" class="BBUTTON">
+			<td>
+				<input type="submit" name="csubmit" value="등록" style=" height:65px; width: 65px;" class="BBUTTON">
+				&nbsp;
 			</td>			
 		</tr>
 		</table><br>
@@ -271,7 +273,7 @@ function cdelete(seq){
 					<input type="submit" name="csubmit" value="등 록" />
 				</div> -->
 				<c:forEach var="cdto" items="${clist }">
-					
+					<div class="rlist">
 						<c:choose>
 							<c:when test="${cdto.star_cnt == 0}">
 								☆☆☆☆☆
@@ -299,13 +301,9 @@ function cdelete(seq){
 								<a href="javascript:cdelete('${cdto.seq}')">삭제</a>
 							</span>
 						</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
+						<br>
 						${(fn:replace(cdto.say100ja, n, br))}
-					</td>
-				</tr>
+						</div>
 				</c:forEach>
 			</table>
 		
