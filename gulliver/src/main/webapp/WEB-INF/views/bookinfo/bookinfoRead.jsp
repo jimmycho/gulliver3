@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css"> 
@@ -148,79 +147,78 @@ function cdelete(seq){
 </script>
 </head>
 <body>
-<br>
-		<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/0008-1.jpg"></td></tr>
-<br>
+	<br><br>
 	<form name="frm1" action="../cart/create" method="post" onsubmit="return checkLogin(${sessionScope.userid})">
-		<table class="BTABLE" style="width:800px;">
+		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:800px;">
 			<tr>
-				<td class="BTD" height="20" colspan="3" align="center"><strong>도서상세보기</strong></td>
-			</tr>
-			<tr>
-				<td rowspan="10" width="150" valign="top" align="center">
+				<td rowspan="11" width="30%">
 					<p style="text-align: center;">
-						<img src="${dto.bookfront_photo }" width="180" height="270"/>
+						<img src="${dto.bookfront_photo }" width="200" height="300"/>
 					</p>
 				</td>
 			</tr>
 			<tr>
-				<td height="20" class="BTD2">서명</td>
+				<td>책이름</td>
 				<td>${dto.bookname}</td>
 			</tr>
 			<tr>
-				<td height="20" class="BTD2">저자</td>
+				<td>저자</td>
 				<td>${dto.writer}</td>
 			</tr>
 			<tr>
-				<td height="20" class="BTD2">역자</td>
-				<td height="20" >${dto.traductor}</td>
+				<td>번역자</td>
+				<td>${dto.traductor}</td>
 			</tr>
 			<tr>
-				<td height="20" class="BTD2">발행</td>
+				<td>출판일시</td>
 				<td>${dto.pub_date}</td>
 			</tr>
 			<tr>
-				<td height="20" width="20%" class="BTD2">ISBN-10</td>
+				<td width="20%">ISBN 10자리</td>
 				<td>${dto.ISBN10}</td>
 			</tr>
 			<tr>
-				<td height="20" width="20%" class="BTD2">ISBN-13</td>
+				<td width="20%">ISBN 13자리</td>
 				<td>${dto.ISBN13}</td>
 			</tr>
 			<tr>
-				<td class="BTD2">정가</td>
+				<td>정가</td>
 				<td><s><fmt:formatNumber value="${dto.cur_price}" pattern="#,###" />원</s></td>
 			</tr>
 			<tr>
-				<td class="BTD2">할인가</td>
+				<td>할인가</td>
 				<td><fmt:formatNumber value="${dto.sale_price}" pattern="#,###" />원</td>
 			</tr>
 			<tr>
-				<td class="BTD2">재고량</td>
-				<td><input type="number" name="cart_cnt" min="1" max="100" value="1" >&nbsp;
-				<input type="submit" value="장바구니담기" class="BBUTTON">
-				<input type="hidden" name="bookid" value="${dto.bookid }">
-				<input type="hidden" name="userid" value="${sessionScope.userid}">
-				</td>
+				<td>수량</td>
+				<td><input type="number" name="cart_cnt" min="1" max="100" value="1" ></td>
 			</tr>
 			<tr>
-				<td class="BTD2">책소개</td>
 				<td colspan="2">
+				<p style="text-align: center;">
+					<input type="submit" value="장바구니담기">
+					<input type="button" onclick="location.href='./list'" value="목록">
+<!-- 					<input type="button" onclick="history.back()" value="돌아가기" /> -->
+					<input type="hidden" name="bookid" value="${dto.bookid }">
+					<input type="hidden" name="userid" value="${sessionScope.userid}">
+				</td>
+			</tr>		
+			<tr>
+				<td colspan="3">
 					${dto.book_explain}
 				</td>
 			</tr>					
 		</table>
 	</form>
-		</div> 
-	<div style="text-align: center;"><br>
-	<input type="button" onclick="location.href='./list'" value="목록으로 돌아가기" class="BBUTTON">
-	</div>
+	<br>
 	<div style="text-align: center;">
 		<c:if test="${'A' eq sessionScope.grade}">
+<!-- 			<input type="button" value="수정"> -->
+<%-- 			<input type="button" value="삭제" onclick="deleteB('${dto.bookid}')"> --%>
+<!-- 			<input type="button" onclick="location.href='./list'" value="목록"> -->
 		</c:if>
 	</div>
-
-
+	
 	<!-- 100자평 시작 -->
 	<form action="./ccreate" method="post" name="frm2" onsubmit="return input(this)">
 		<input type="hidden" name="bookid" value="${bookid}">
@@ -230,35 +228,21 @@ function cdelete(seq){
 		<input type="hidden" name="nPage" value="${nPage}">		
 		<input type="hidden" name="userid" value="${sessionScope.userid}">
 		<input type="hidden" name="seq" value="0">	 <!-- 0은 의미없음 seq값을 javascript 로 변경해서 보낼것임 -->
-	
-	<table  class="BTABLE4" border="1" width="800px">
-		<tr >
-			<td align="left"><span class="br2010_p" style="font-size: small;">  100자평 쓰기 &nbsp;&nbsp;</span>
-			별점주기 
-			<select name="star_cnt">
-					<option value="0">☆☆☆☆☆</option>
-					<option value="1">★☆☆☆☆</option>
-					<option value="2">★★☆☆☆</option>
-					<option value="3">★★★☆☆</option>
-					<option value="4">★★★★☆</option>
-					<option value="5">★★★★★</option>
-			</select>
-			</td><td></td>
-		</tr> 
-		<tr>
-			<td >
-			<TEXTAREA id="contentHelp" cols="100" rows="4" name="say100ja"  onclick="rcheck(this)">
-			</TEXTAREA>
-			</td>
-			<td ><input type="submit" name="csubmit" value="등록" style=" height:65px; width: 65px;" class="BBUTTON">
-			</td>			
-		</tr>
-		</table><br>
-		<table class="BTABLE4" border="1" width="800px">
-		<tr >
-			<td colspan="2">
+				<div class="rcreate">
+					<select name = "star_cnt">
+						<option value = "0">☆☆☆☆☆</option>
+						<option value = "1">★☆☆☆☆</option>
+						<option value = "2">★★☆☆☆</option>
+						<option value = "3">★★★☆☆</option>
+						<option value = "4">★★★★☆</option>
+						<option value = "5">★★★★★</option>
+					</select>
+						<TEXTAREA id="contentHelp" cols="120" name="say100ja" rows="5" onclick="rcheck(this)"></TEXTAREA>
+						<DIV class=remaining>남은 글자수: <SPAN class="count">100</SPAN></DIV>
+					<input type="submit" name="csubmit" value="등 록" />
+				</div>
 				<c:forEach var="cdto" items="${clist }">
-					
+					<div class="rlist">
 						<c:choose>
 							<c:when test="${cdto.star_cnt == 0}">
 								☆☆☆☆☆
@@ -280,27 +264,21 @@ function cdelete(seq){
 							</c:when>
 						</c:choose>
 							| ${cdto.name } | ${cdto.input_date} 
-						<c:if test="${sessionScope.userid == cdto.userid }"> <!-- 현재 로그인한 아이디의 것만 보여준다 -->
-							<span style="float: right;">
-								<a href="javascript:cupdate('${cdto.seq}','${cdto.say100ja }','${cdto.star_cnt }')">수정</a>|
-								<a href="javascript:cdelete('${cdto.seq}')">삭제</a>
-							</span>
-						</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						${(fn:replace(cdto.say100ja, n, br))}
-					</td>
-				</tr>
+							<c:if test="${sessionScope.userid == cdto.userid }"> <!-- 현재 로그인한 아이디의 것만 보여준다 -->
+								<span style="float: right;">
+									<a href="javascript:cupdate('${cdto.seq}','${cdto.say100ja }','${cdto.star_cnt }')">수정</a>|
+									<a href="javascript:cdelete('${cdto.seq}')">삭제</a>
+								</span>
+							</c:if>
+							<br><br>
+							${(fn:replace(cdto.say100ja, n, br))}
+
+					</div>
 				</c:forEach>
-			</table>
-		
 
 		${paging }
 	</form>
 	<br>
 	<!-- 100자평 끝 -->
-
 </body>
 </html>
