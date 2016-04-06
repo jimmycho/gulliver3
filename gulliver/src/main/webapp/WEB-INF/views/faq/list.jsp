@@ -55,14 +55,12 @@ TH {
 			<td align="center" width="100px" class="BTD2">등록일시</td>
 			<td align="center" width="8%" class="BTD2">조회수</td>			
 		</TR>
-
 <c:choose>
 	<c:when test="${empty list }">
 			<TR>
 				<TD colspan='8' align='center'>등록된 FAQ가 없습니다.</TD>
 			</TR>
 	</c:when>
-
 <c:otherwise>
 	<c:forEach var="dto" items="${list}" >
 		<TR class="BTD4">
@@ -70,8 +68,8 @@ TH {
 			<TD valign="top">${dto.faq_cat }</TD>
 			<TD valign="top"> 
           		<a href="#" onclick="kuisin('${dto.faqno}'); return false"> ${dto.title }</a>
-          		<div id="${dto.faqno }" style="font-size:small; color:blue;  border:none 1px #404040; display: none;">
-          		<p>${dto.content }</p>
+          		<div id="${dto.faqno }" style="font-size:9pt; color:blue;  border:none 1px #404040; display: none;">
+          		└ ${dto.content }
           		</div> 
           	</TD>
 			<TD valign="top">${dto.in_date.subSequence(0,10)}</TD>

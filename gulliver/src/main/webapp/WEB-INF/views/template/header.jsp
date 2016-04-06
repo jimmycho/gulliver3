@@ -8,7 +8,7 @@
 
 <html>
 <head>
-
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript">
 var xmlDoc = null;
@@ -46,19 +46,19 @@ function response(subCode) {
 <body>
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
-	<div id="jb-header">
-		<div style="text-align: right;">
+	<div id="jb-header"><br>
+		<div style="text-align: right;" class="BTABLE3">
 			<% if(userid==null){%>
-				<a href="<%=root %>/user/agree">회원가입</a> |
-				<a href="<%=root %>/user/login">로그인</a>
+				<a href="<%=root %>/user/agree">회원가입  </a> /
+				<a href="#">ID/PW찾기&nbsp; &nbsp; </a>
 			<% } else { 
 				if(grade.equals("M")){
 			%>
-				<a href="<%=root %>/user/logout">로그아웃</a> |
-				<a href="<%=root %>/user/MyPage">마이페이지</a>
+				<a href="<%=root %>/user/logout">로그아웃</a> /
+				<a href="<%=root %>/user/MyPage">마이페이지&nbsp; &nbsp;</a>
 			<%} else if(grade.equals("A")){ %>
-				<a href="<%=root %>/user/logout">로그아웃</a> |
-				<a href="<%=root %>/adm/adminPage">관리자메뉴</a>
+				<a href="<%=root %>/user/logout">로그아웃</a> /
+				<a href="<%=root %>/adm/adminPage">관리자메뉴&nbsp; &nbsp;</a>
 			<%} }%>
 		</div>
 	
