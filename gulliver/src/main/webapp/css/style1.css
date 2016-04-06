@@ -1,10 +1,23 @@
+
 a.bk3:link {  color: #333333; font-weight: bold; text-decoration: none}
 a.bk3:visited {  color: #333333; font-weight: bold; text-decoration: none}
 a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
+
 .author {color:#919191;}
 .br2010_p {color:#cc0066;font-weight: bold;}
 .br2010_p2 {color:#cc0066;}
 .br2010_p3 {color:#00aaff;}
+
+.LTABLE{
+	FONT-SIZE: 10.5pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: Yoon ����� 530_TT,verdana,tahoma;
+	BORDER:0; BACKGROUND-COLOR:#f1f1f1;
+}
+.LTD {
+	BACKGROUND-COLOR: #ffffff; COLOR: #6d6e71;
+}
+.LTD2 {
+	BACKGROUND-COLOR: #23A41A; COLOR: #ffffff;
+}
 
 .BA:link,.BA:visited {text-decoration:none;color:#ffffff}
 .BA:hover{text-decoration:yes;color:#fff200;}
@@ -15,6 +28,9 @@ a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
 }
 .BTABLE2{
 	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
+}
+.BTABLE3{
+	font-weight:bold; font-size: 10pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
 }
  .BBUTTON {
 	BORDER:0pt;

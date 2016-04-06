@@ -263,15 +263,23 @@ onsubmit="return inputCheck()">
 </table>
 --%>
 </div>
+<br>
+
+<table width="230" class="LTABLE">
+	<tr>
+		<td colspan="3" class="LTD2" align="center">책 카테고리</td>
+	</tr>
+	</table>
+	<div class="BTABLE3">
 	<ul>
 		<c:forEach var="dto" items="${topCateList}">
 			<li>
-				<a onclick="loadSubCate(${dto.BOOK_CATE_CD})" style=><strong>
-				 ${dto.BOOK_CATE_NAME} </strong></a>
+				<a onclick="loadSubCate(${dto.BOOK_CATE_CD})" class="bk3" style='cursor: pointer'> ${dto.BOOK_CATE_NAME}</a>
 				 <ul id="${dto.BOOK_CATE_CD}"><div id="cookie_div"></div></ul>
 			</li>
 		</c:forEach>
 	</ul>
+	</div>
 <div align="center"><img   src="../images/sideimage01.jpg">
 	</div>
 </div>

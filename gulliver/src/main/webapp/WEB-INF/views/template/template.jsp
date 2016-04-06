@@ -48,21 +48,21 @@
 </style>
 
 <style>
-.menu a {
+/* .menu a {
 	cursor: pointer;
 	font-weight: bold;
 }
 .menu .hide li{
 	display: none;
-}
-ul{
+} */
+ ul{
 list-style-type: none;
 padding-left: 0;
 
 }
 li{
 
-padding-left: 20px }
+padding-left: 20px } */ */
 </style>
 <style>
 #topMenu {
