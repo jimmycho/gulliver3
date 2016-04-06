@@ -5,6 +5,7 @@
 <!DOCTYPE html> 
 <html>  
 <head> 
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title> 
 
@@ -28,12 +29,13 @@
 <!-- onsubmit 이벤트는 form이 submit이 될 때 발생함. 
     실행된 함수가 false를 리턴하면 submit을 하지 않음. 
  --> 
+<body>
 <form name="frm" method="post" action="./createForm" onsubmit="return send();"> 
-
-<div class='title'>가입 약관</div> 
 <div align="center">
-  <textarea cols="120" rows="20" style="font-size: 5;">
-  걸리버 서비스약관 (2005. 7. 18 부터 유효) 
+<img style="width: 753px; " src="../images/0012-1.jpg">
+
+<textarea cols="110" rows="15" style="font-size: 4;">
+걸리버 서비스약관 (2005. 7. 18 부터 유효) 
  
 제1조(목적 등) 
  
@@ -213,16 +215,15 @@
   
 본 약관은 2016. 3. 1. 부터 적용하고, 2015. 10. 1.부터 적용되던 종전의 약관은 본 약관으로 대체합니다.  
  </textarea> 
-
-</div> 
+</div> <br>
  <div style="text-align: center"> 
   <input id="agree" type="checkbox" name="agree" value="1" > 
-  <label for="agree">약관에 동의합니다</label> 
-  <input type="submit" value="회원가입"></input>  
-  <input type="button" value="취소" onclick="history.back();" /> 
+  <label for="agree" class="BTABLE4">약관에 동의합니다</label> 
+  <input type="submit" value="회원가입" class="BBUTTON"></input>  
+  <input type="button" value="취소" onclick="history.back();" class="BBUTTON"/> 
 </div> 
- 
 </form> 
+<br><br>
  
 <!-- *********************************************** -->
 </body>

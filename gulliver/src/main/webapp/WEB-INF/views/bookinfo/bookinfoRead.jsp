@@ -149,7 +149,7 @@ function cdelete(seq){
 </head>
 <body>
 <br>
-		<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/0008-1.jpg"></td></tr>
+		<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/0008.jpg"></td></tr>
 <br>
 	<form name="frm1" action="../cart/create" method="post" onsubmit="return checkLogin(${sessionScope.userid})">
 		<table class="BTABLE" style="width:800px;">
