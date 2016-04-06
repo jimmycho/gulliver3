@@ -53,7 +53,7 @@ hr{
  
  
 </style>  
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script type="text/javascript">
 function checkLogin(userid){
 	if(userid==null) alert("로그인 상태에서 이용가능합니다.")	;
@@ -237,7 +237,7 @@ function cdelete(seq){
 						<option value = "4">★★★★☆</option>
 						<option value = "5">★★★★★</option>
 					</select>
-						<TEXTAREA id="contentHelp" cols="120" name="say100ja" rows="5" onclick="rcheck(this)"></TEXTAREA>
+						<TEXTAREA id="contentHelp" cols="100" name="say100ja" rows="5" onclick="rcheck(this)"></TEXTAREA>
 						<DIV class=remaining>남은 글자수: <SPAN class="count">100</SPAN></DIV>
 					<input type="submit" name="csubmit" value="등 록" />
 				</div>
