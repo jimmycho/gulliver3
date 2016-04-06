@@ -26,6 +26,10 @@ a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
 	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
 	BACKGROUND-COLOR:#f7f8f9;
 }
+.BTABLE4{
+	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
+	BACKGROUND-COLOR:green; text-align: left; border: thin;
+}
 .BTABLE2{
 	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
 }
