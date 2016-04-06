@@ -60,9 +60,8 @@ function read(noticeno){
 			</c:choose>
 		</table>
 		<div style="text-align: center;">
-<!-- 			<input type="button" name="delete" value="삭제" onclick="delete('')">&nbsp; -->
-<!-- 			<input type="button" name="create" value="수정" onclick="update('')">&nbsp; -->
-			${paging}
+			<input type="button" name="create" value="등록" onclick="location.href='./create'" class="BBUTTON">
+			<br><br>${paging}
 		</div>
 	</form>
 	<br>
