@@ -86,7 +86,7 @@ function listB(){
 		<input type="button" name="delete" value="목록" onclick="listB()" class="BBUTTON" >&nbsp;
 		<c:if test="${sessionScope.grade == 'A' }">
 			<input type="button" name="delete" value="삭제" onclick="deleteB('${dto.noticeno}')" class="BBUTTON" >&nbsp;
-			<input type="button" name="create" value="수정" onclick="updateB('${dto.noticeno}')" class="BBUTTON" >&nbsp;
+			<input type="button" name="update" value="수정" onclick="updateB('${dto.noticeno}')" class="BBUTTON" >&nbsp;
 			<input type="button" name="create" value="등록" onclick="location.href='./create'" class="BBUTTON" >
 		</c:if>
 	</div>
