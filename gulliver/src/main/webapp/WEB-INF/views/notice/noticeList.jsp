@@ -60,7 +60,10 @@ function read(noticeno){
 			</c:choose>
 		</table>
 		<div style="text-align: center;">
-			<input type="button" name="create" value="등록" onclick="location.href='./create'" class="BBUTTON">
+			<c:if test="${sessionScope.grade == 'A' }">
+				<input type="button" name="create" value="등록" onclick="location.href='./create'" class="BBUTTON">
+			</c:if>
+			
 			<br><br>${paging}
 		</div>
 	</form>
