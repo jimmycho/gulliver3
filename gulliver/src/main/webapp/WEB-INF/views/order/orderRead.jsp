@@ -19,7 +19,7 @@ function listB(){
 <body>
 	<br>
 	<br>
-	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 900px;">
+	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 800px;">
 
 		<tr>
 			<td>주문번호</td>
@@ -72,9 +72,9 @@ function listB(){
 	</table>
 	<br>
 	<p style="text-align: center;">
-		<input name="" type="button" value="목록" onclick="listB()"/>&nbsp; 
-		<input name="submit" type="submit" value="삭제" />&nbsp; 
-		<input name="" type="button" value="수정" />
+		<input type="button" value="목록" onclick="listB()" class="BBUTTON"/>&nbsp; 
+		<input name="submit" type="submit" value="삭제" class="BBUTTON"/>&nbsp; 
+		<input type="button" value="수정" class="BBUTTON"/>
 	</p>
 </body>
 </html>

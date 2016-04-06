@@ -53,16 +53,18 @@ function read(noticeno){
 							<td><a href="javascript:read('${dto.noticeno}')">${dto.title}</a></td>
 							<td>${dto.writer}</td>
 							<td>${dto.notice_cnt}</td>
-							<td>${dto.in_date}</td>
+							<td>${dto.in_date}</td> 
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
 		<div style="text-align: center;">
-<!-- 			<input type="button" name="delete" value="삭제" onclick="delete('')">&nbsp; -->
-<!-- 			<input type="button" name="create" value="수정" onclick="update('')">&nbsp; -->
-			${paging}
+			<c:if test="${sessionScope.grade == 'A' }">
+				<input type="button" name="create" value="등록" onclick="location.href='./create'" class="BBUTTON">
+			</c:if>
+			
+			<br><br>${paging}
 		</div>
 	</form>
 	<br>

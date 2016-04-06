@@ -77,7 +77,7 @@ CREATE TABLE T_USER (
 );
 
 
-
+ 
 CREATE TABLE T_CART (
        CARTNO               NUMBER(7) NOT NULL,
        cart_cnt             NUMBER(7) DEFAULT 0 NULL,
@@ -92,18 +92,20 @@ CREATE TABLE T_CART (
 
 
 
+
 CREATE TABLE T_ORDER (
-       orderno              NUMBER(7) NOT NULL,
-       del_method           VARCHAR2(20) NULL,
-       recipient            VARCHAR2(20) NULL,
-       total                NUMBER(10) DEFAULT 0 NULL,
-       order_cnt            NUMBER(7) NULL,
-       del_zipcode          VARCHAR(50) NULL,
-       del_address1         VARCHAR(100) NULL,
-       del_address2         VARCHAR(100) NULL,
-       order_comment        VARCHAR2(100) NULL,
-       bookid               NUMBER(7) NOT NULL,
-       userid               VARCHAR2(50) NOT NULL,
+       orderno              NUMBER(7) NOT NULL,			-- 주문번호
+       del_method           VARCHAR2(20) NULL,			-- 배송방법
+       recipient            VARCHAR2(20) NULL,			-- 수령인
+       total                NUMBER(10) DEFAULT 0 NULL,	-- 총금액
+       order_cnt            NUMBER(7) NULL,				-- 수량
+       del_zipcode          VARCHAR(50) NULL,			-- 우편번호
+       del_address1         VARCHAR(100) NULL,			-- 주소1
+       del_address2         VARCHAR(100) NULL,			-- 주소2
+       order_comment        VARCHAR2(100) NULL,			-- 배달원에게 남기는 말
+       order_date			DATE NOT NULL,				-- 주문일
+       bookid               NUMBER(7) NOT NULL,			-- bookid
+       userid               VARCHAR2(50) NOT NULL,		-- userid
        PRIMARY KEY (orderno), 
        FOREIGN KEY (userid) REFERENCES T_USER, 
        FOREIGN KEY (bookid) REFERENCES T_BOOKINFO
