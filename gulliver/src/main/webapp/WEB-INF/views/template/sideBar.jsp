@@ -21,6 +21,7 @@ String grade = (String)session.getAttribute("grade") ;
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 
@@ -204,7 +205,7 @@ function inputCheck(){
 
 	<FORM name='frm1' method='POST' action='${pageContext.request.contextPath}/user/login'
 	onsubmit="return inputCheck()">
-		<TABLE class='table'>
+		<TABLE class="LTABLE">
 		<% if(userid==null){%>
 		<TR>
 			<TD style="font-size: x-small; background-color: #00A5FF;">아이디</TD>

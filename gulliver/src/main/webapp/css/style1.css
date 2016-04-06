@@ -54,6 +54,9 @@ a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
 .BTD4 {
 	BACKGROUND-COLOR: #ffffff; COLOR: #000000;
 }
+.BTD5 {
+	BACKGROUND-COLOR: #6db33f; COLOR: #000000;
+}
 .BSELECT {
 	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
 	BORDER: 1px solid #e7e3e1; 

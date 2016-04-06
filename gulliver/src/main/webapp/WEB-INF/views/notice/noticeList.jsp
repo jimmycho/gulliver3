@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>걸리버서점 프로젝트</title>
+<title> </title>
 <script type="text/javascript">
 function read(noticeno){
 	var url = "read?noticeno=" + noticeno;
@@ -17,10 +18,8 @@ function read(noticeno){
 
 </head>
 <body>
-<div align="center" style="font-size: xx-large;">공지사항</div>
 	<form action="./list" method="post" name="frm">
-	<br>
-	<div style="text-align: center;">
+	<%-- <div style="text-align: center;">
 		<select name="col">
 			<option value="total" <c:if test="${col=='total'}">selected='selected'</c:if>>전체</option>
 			<option value="content" <c:if test="${col=='content'}">selected='selected'</c:if>>내용</option>
@@ -28,45 +27,44 @@ function read(noticeno){
 		</select>
 		
 	<input type="text" name="word" value="${word}">&nbsp;<input type="submit" value="검색">
-	</div>
-	<br>
-		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:800px;">
+	</div> --%>
+		<table width="800px" class="BTABLE">
 			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>등록일</th>
-<!-- 				<th>선택</th> -->
+				<td height="23" colspan="5" align="center">
+				<img style="width: 753px;" src="../images/0006.jpg"></td>
 			</tr>
-		<c:choose>
-			<c:when test="${empty list}">
-				<tr>
-					<td colspan="5" align="center">등록된 글이 없습니다.</td>
-				</tr>
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="dto" items="${list}">
+			<tr>
+				<td align="center" class="BTD2">번호</td>
+				<td align="center" class="BTD2">제목</td>
+				<td align="center" class="BTD2">작성자</td>
+				<td align="center" class="BTD2">조회수</td>
+				<td align="center" class="BTD2">등록일</td>
+			</tr>
+			<c:choose>
+				<c:when test="${empty list}">
 					<tr>
-						<td>${dto.noticeno}</td>
-						<td><a href="javascript:read('${dto.noticeno}')">${dto.title}</a></td>
-						<td>${dto.writer}</td>
-						<td>${dto.notice_cnt}</td>
-						<td>${dto.in_date}</td>
+						<td colspan="5" align="center">등록된 글이 없습니다.</td>
 					</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="dto" items="${list}">
+						<tr>
+							<td>${dto.noticeno}</td>
+							<td><a href="javascript:read('${dto.noticeno}')">${dto.title}</a></td>
+							<td>${dto.writer}</td>
+							<td>${dto.notice_cnt}</td>
+							<td>${dto.in_date}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</table>
-		<br>
 		<div style="text-align: center;">
 <!-- 			<input type="button" name="delete" value="삭제" onclick="delete('')">&nbsp; -->
 <!-- 			<input type="button" name="create" value="수정" onclick="update('')">&nbsp; -->
-			<input type="button" name="create" value="등록" onclick="location.href='./create'">
-			<br><br>
 			${paging}
-			<br><br>
 		</div>
 	</form>
+	<br>
 </body>
 </html>

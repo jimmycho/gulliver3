@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <script type="text/javascript">
@@ -27,10 +28,8 @@ TH {
 
 </head>
 <body>
-<div align="center" style="font-size: xx-large;"> FAQ 목록 </div>
-<br>
 <DIV style='width: 80%; text-align: center; margin: 1px auto;'>
-		<FORM name='frm' method='post' action="./list">
+<%-- 		<FORM name='frm' method='post' action="./list">
 			<SELECT name='col'>
 				<!-- 검색할 컬럼 -->
 				<OPTION value='wname'
@@ -43,16 +42,18 @@ TH {
 			<input type='text' name='word' value='${word}'>
 			<!-- 검색어 -->
 			<input type='submit' value='검색'> 
-		</FORM>
+		</FORM> --%>
 </DIV>
-<br>
-	<TABLE width="800px">
+	<TABLE width="800px" class="BTABLE">
+	<tr>
+		<td height="23" colspan="5" align="center" ><img style="width: 753px; " src="../images/0007-1.jpg"></td>
+	</tr>
 		<TR>
-			<TH width="5%">번호</TH>
-			<TH width="100px">분류</TH>
-			<TH>제목</TH>
-			<TH width="15%">등록일시</TH>
-			<TH width="8%">조회수</TH>			
+			<td align="center" width="5%" class="BTD2">번호</td>
+			<td align="center" width="100px" class="BTD2">분류</td>
+			<td align="center" class="BTD2">제목</td>
+			<td align="center" width="100px" class="BTD2">등록일시</td>
+			<td align="center" width="8%" class="BTD2">조회수</td>			
 		</TR>
 
 <c:choose>
@@ -64,7 +65,7 @@ TH {
 
 <c:otherwise>
 	<c:forEach var="dto" items="${list}" >
-		<TR>
+		<TR class="BTD4">
 			<TD valign="top">${dto.faqno }</TD>
 			<TD valign="top">${dto.faq_cat }</TD>
 			<TD valign="top"> 
@@ -73,7 +74,7 @@ TH {
           		<p>${dto.content }</p>
           		</div> 
           	</TD>
-			<TD valign="top">${dto.in_date.subSequence(0,16)}</TD>
+			<TD valign="top">${dto.in_date.subSequence(0,10)}</TD>
 			<TD valign="top">${dto.faq_cnt}</TD>
 		</TR>
   </c:forEach>
@@ -81,7 +82,7 @@ TH {
 
 </c:choose>
 </TABLE>
-<div style='text-align: center; margin-top: 20px'>
+<div style='text-align: center; '>
 ${paging }
 </div>
 <br>
