@@ -4,29 +4,30 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
+ <link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8"> 
 <title></title> 
-<!-- <style type="text/css">
-td {
+<style type="text/css">
+/* TH {
 	border-color: #AAAAAA; /* 테이블 외곽선 색깔 */
 	border-width: 1px; /* 테이블 외곽선 두께 */
 	border-style: solid; /* 테이블 외곽선 스타일 */
 	color: black; /* 글자 색 */
 	background-color: #FFD549; /* 배경 색 */
 	padding: 5px; /* 셀 내부 간격 */
-}
-</style> -->
+} */
+</style>
 
 
 <script type="text/javascript"> 
   // 입력 값 검사후 서버로 전송 
-  function inputCheck(){ 
+  function inputCheck(){
+	  
     var f = document.frm; // <FORM>태그 객체 
      
     if(f.id.value == ""){ 
       alert("아이디를 입력해 주세요."); 
       f.id.focus(); // 폼이름.input 태그명.커서 셋팅    
- 
       return;       // 프로그램 종료, 값을 돌려줌 
     } 
     if(f.passwd.value == ""){ 
@@ -146,101 +147,100 @@ td {
         }).open();
     }
 </script> 
- <link href="../css/style1.css" rel="stylesheet" type="text/css">
+ 
 </head> 
-<!-- *********************************************** -->
 <body leftmargin="0" topmargin="0">
-<!-- *********************************************** -->
  
-<img style="width: 753px; " src="../images/0012-1.jpg">
- 
+<img style="width: 753px; " src="../images/0012-1.jpg"> 
 <FORM name='frm' 
-      metdod='POST' 
+      method='POST' 
       action='./create'
       enctype='multipart/form-data'   
-      onsubmit="return inputCheck()">
+      onsubmit='return inputCheck();'>
      
 <!-- <!-- 이 경우에 request.getParameter 사용불가함 --> 
       
 <TABLE class="BTABLE" width="700px" border="0">
-<tr>
-	<td align="center" class="BTD2" height="23" width="150px">아이디</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-name="userid" size="15" value=''> <input type="button"
-value="ID중복확인" onclick="idCheck(document.frm.userid.value)" class="BBUTTON">
-</td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">패스워드</td>
-	<td style="background-color: #FAFAFA"><input type="password"
-		name="passwd" size="15" value='' ></td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">패스워드
-		확인</td>
-	<td style="background-color: #FAFAFA"><input type="password"
-		name="repasswd" size="15" value=''></td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">이름</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="name" size="15" value=''></td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">생년월일</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="birtddate" size="15" value='' ></td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">이메일</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-name="email" size="27" value=''> <input type="button"
-value="Email 중복확인"
-onclick="javascript:emailCheck(document.frm.email.value)" class="BBUTTON">
+			
+    <tr>  
+       <td align="center" class="BTD2" height="23" width="150px">아이디</td> 
+       <td style="background-color: #FAFAFA"> 
+           <input type="text" name="userid" size="15" value=''> 
+           <input type="button" value="ID중복확인" onclick="idCheck(document.frm.userid.value)" class="BBUTTON"> 
+                  <!-- 
+                  document.frm.id.value = this.form.id.value와 동일 
+                  this: Button 태그 
+                  form: Button 태그가 있는 폼 
+                  id: id란 이름을 가지고 있는 태그 
+                  value: id태그의 태그의 값  
+                  --> 
+       </td> 
+     </tr> 
 
-	</td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">핸드폰번호</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="callphone" value=""></td>
-</tr>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">전화번호</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="phone" value=""></td>
-</tr>
-
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">우편번호</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-id="sample5_postcode" name="zipcode" placeholder="우편번호"> <input
-type="button" onclick="sample5_execDaumPostcode()" value="우편번호 찾기" class="BBUTTON"><br>
-	</td>
-</tr>
-<tr>
-	<td rowspan="2" align="center" class="BTD2" height="40" width="100px">주소</td>
-	<td style="background-color: #FAFAFA">
-<input type="text" id="sample5_address" name="address1" size="40" placeholder="주소"  >
-</td>
-<tr><td style="background-color: #FAFAFA">
-<input type="text" id="sample5_address2" name="address2" size="40" placeholder="상세주소">
-<div id="map" style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-</td>
-<tr>
-	<td align="center" class="BTD2" height="23" width="100px">회원사진(jpg,png파일)</td>
-	<td style="background-color: #FAFAFA"><input type='file'
-		name='userphotoMF' value='' ></td>
-</tr>
-</TABLE>
+     
+    <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">패스워드</td> 
+       <td style="background-color: #FAFAFA"> <input type="password" name="passwd" size="15" value='1234'> </td> 
+     </tr> 
+     <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">패스워드 확인</th> 
+       <td style="background-color: #FAFAFA"> <input type="password" name="repasswd" size="15" value='1234'> </td> 
+     </tr> 
+     <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">이름</th> 
+       <td style="background-color: #FAFAFA"> <input type="text" name="name" size="15" value='왕눈이'> </td> 
+     </tr> 
+     <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">생년월일</th> 
+       <td style="background-color: #FAFAFA"> <input type="text" name="birthdate" size="15" value='왕눈이'> </td> 
+     </tr>
+     <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">이메일</th> 
+       <td style="background-color: #FAFAFA"> 
+           <input type="text" name="email" size="27"  value='email@mail.com'> 
+           <input type="button" value="Email 중복확인"  
+                   onclick="javascript:emailCheck(document.frm.email.value)" class="BBUTTON"> 
+        
+       </td> 
+     </tr> 
+     <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">핸드폰번호</th> 
+       <td style="background-color: #FAFAFA"><input type="text" name="callphone" value="010-123-1234"></td> 
+     </tr>    
+     <tr>  
+       <td align="center" class="BTD2" height="23" width="100px">전화번호</th> 
+       <td style="background-color: #FAFAFA"><input type="text" name="phone" value="010-123-1234"></td> 
+     </tr>        
+     
+     <tr>   
+       <td align="center" class="BTD2" height="23" width="100px">우편번호</th> 
+       <td style="background-color: #FAFAFA"> 
+		<input type="text" id="sample5_postcode" name="zipcode" placeholder="우편번호">
+		<input type="button" onclick="sample5_execDaumPostcode()" value="우편번호 찾기" class="BBUTTON"><br>
+       </td> 
+     </tr> 
+     <tr>   
+       <td align="center" class="BTD2" height="23" width="100px">주소</th> 
+       <td style="background-color: #FAFAFA"> 
+		<input type="text" id="sample5_address" name="address1" size="40" placeholder="주소"><br>
+		<input type="text" id="sample5_address2"  name="address2" size="40" placeholder="상세주소">
+		<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div> 
+       </td> 
+     </tr> 
+     <tr> 
+       <td align="center" class="BTD2" height="23" width="100px">회원사진(jpg, png형식)</th> 
+       <td style="background-color: #FAFAFA"><input type='file' name='userphotoMF' value='' ></td> 
+     </tr> 
+  </TABLE>
   
   <DIV class='bottom'>
-    <input type='submit' value='회원가입' class="BBUTTON">
-    <input type='button' value='취소' class="BBUTTON" onclick="location.href='../bookinfo/list'">
+    <input type='submit' value='회원가입' class="BBUTTON" style="font-size:large; height:60px; width: 120px;">&nbsp;&nbsp;&nbsp;
+    <input type='reset' value='취소' class="BBUTTON" style="font-size:large; height:60px; width: 120px;">
   </DIV>
 </FORM>
-<!-- *********************************************** -->
+</body>
 </html> 
+
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=	a672872a4be165f31fc21dc3b98bd97d&libraries=services"></script>
 <script>
