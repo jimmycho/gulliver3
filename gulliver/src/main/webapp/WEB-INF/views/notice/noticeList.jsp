@@ -53,7 +53,7 @@ function read(noticeno){
 							<td><a href="javascript:read('${dto.noticeno}')">${dto.title}</a></td>
 							<td>${dto.writer}</td>
 							<td>${dto.notice_cnt}</td>
-							<td>${dto.in_date}</td>
+							<td>${dto.in_date}</td> 
 						</tr>
 					</c:forEach>
 				</c:otherwise>
