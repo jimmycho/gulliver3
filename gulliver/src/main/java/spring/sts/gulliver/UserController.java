@@ -106,16 +106,17 @@ public class UserController {
 		String basePath=request.getRealPath("/storage");
 		String fname = null;
 		int size=(int)dto.getUserphotoMF().getSize() ;
-		
+		System.out.println("size : " + size);
 		if(size>0){
 			fname=Utility.saveFileSpring30(dto.getUserphotoMF(), basePath);
 		}else{
 			fname="member.jpg";
 		}
+		System.out.println("fname : " + fname);
 		dto.setUserphoto(fname);
 		int cnt=dao.create(dto);
 		if(cnt==1){
-			return "redirect:/";
+			return "redirect:../bookinfo/list";
 		}else{
 			return "/error";
 		}

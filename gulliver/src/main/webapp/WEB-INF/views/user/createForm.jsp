@@ -66,29 +66,7 @@ td {
     } 
  
  
-  // 중복 아이디를 검사합니다. 
-  function idCheck(userid){ 
-    if(userid == ""){ 
-      window.alert("아이디를 입력해 주세요."); 
-      f.userid.focus(); // 커서 이동 
-    }else{ 
-      url="./checkId?userid=" + userid;  // GET 
-      wr = window.open(url,"아이디검색","width=500,height=400"); 
-      wr.moveTo((window.screen.width-500)/2, (window.screen.height-400)/2);// x, y 
-    } 
-  } 
- 
-  //중복 이메일을 검사합니다. 
-  function emailCheck(email){ 
-    if(email == ""){ 
-      window.alert("이메일을 입력해 주세요"); 
-      f.email.focus(); 
-    }else{ 
-      url="./checkEmail?email=" + email;  // GET 
-      wr = window.open(url,"이메일검색","width=500,height=400"); 
-      wr.moveTo((window.screen.width-500)/2, (window.screen.height - 400)/2);// x, y 
-    } 
-  } 
+
  
    
   if(f.callphone.value == ""){ 
@@ -176,6 +154,33 @@ td {
         }).open();
     }
 </script> 
+
+<script type="text/javascript">
+// 중복 아이디를 검사합니다. 
+var f = document.frm; // <FORM>태그 객체 
+function idCheck(userid){ 
+  if(userid == ""){ 
+    window.alert("아이디를 입력해 주세요."); 
+    f.userid.focus(); // 커서 이동 
+  }else{ 
+    url="./checkId?userid=" + userid;  // GET 
+    wr = window.open(url,"아이디검색","width=500,height=400"); 
+    wr.moveTo((window.screen.width-500)/2, (window.screen.height-400)/2);// x, y 
+  } 
+} 
+
+//중복 이메일을 검사합니다. 
+function emailCheck(email){ 
+  if(email == ""){ 
+    window.alert("이메일을 입력해 주세요"); 
+    f.email.focus(); 
+  }else{ 
+    url="./checkEmail?email=" + email;  // GET 
+    wr = window.open(url,"이메일검색","width=500,height=400"); 
+    wr.moveTo((window.screen.width-500)/2, (window.screen.height - 400)/2);// x, y 
+  } 
+} 
+</script>
  <link href="../css/style1.css" rel="stylesheet" type="text/css">
 </head> 
 <!-- *********************************************** -->
@@ -185,7 +190,7 @@ td {
 <img style="width: 753px; " src="../images/0012-1.jpg">
  
 <FORM name='frm' 
-      metdod='POST' 
+      method='POST' 
       action='./create'
       enctype='multipart/form-data'   
       onsubmit="return inputCheck()">
@@ -221,12 +226,12 @@ td {
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">생년월일</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="birtddate" size="15" value='' ></td>
+	<td style="background-color: #FAFAFA">
+	<input type="text" name="birthdate" size="15" value='' ></td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">이메일</td>
-	<td style="background-color: #FAFAFA"><input type="text" name="email" size="27" value=''>
+	<td style="background-color: #FAFAFA"><input type="text" name="email" size="27" >
  	<input type="button" value="Email 중복확인" onclick="javascript:emailCheck(document.frm.email.value)" class="BBUTTON">
 
 	</td>

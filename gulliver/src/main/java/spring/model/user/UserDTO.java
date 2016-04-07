@@ -19,7 +19,7 @@ public class UserDTO {
 	private MultipartFile userphotoMF;
 	
 	public MultipartFile getUserphotoMF() {
-		return userphotoMF;
+		return this.userphotoMF;
 	}
 	public void setUserphotoMF(MultipartFile userphotoMF) {
 		this.userphotoMF = userphotoMF;
