@@ -17,64 +17,60 @@ td {
 }
 </style> -->
 
-
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"> 
   // 입력 값 검사후 서버로 전송 
   function inputCheck(){ 
     var f = document.frm; // <FORM>태그 객체 
      
-    if(f.id.value == ""){ 
+    if(f.userid.value == ""){ 
       alert("아이디를 입력해 주세요."); 
-      f.id.focus(); // 폼이름.input 태그명.커서 셋팅    
+      f.userid.focus(); // 폼이름.input 태그명.커서 셋팅    
  
-      return;       // 프로그램 종료, 값을 돌려줌 
+      return false;       // 프로그램 종료, 값을 돌려줌 
     } 
     if(f.passwd.value == ""){ 
       alert("비밀번호를 입력해 주세요."); 
       f.passwd.focus(); 
-      return; 
+      return false; 
     } 
     if(f.repasswd.value == ""){ 
       alert("비밀번호를 확인해 주세요"); 
       f.repasswd.focus(); 
-      return; 
+      return false; 
     } 
-     
+    
     //비밀번호가 일치하는지 검사 
     if(f.passwd.value != f.repasswd.value){ 
       alert("비밀번호가 일치하지 않습니다. 다시 입력해 주세요."); 
       f.passwd.focus(); 
-      return; 
+      return false; 
     } 
      
     if(f.name.value == ""){ 
       alert("이름을 입력해 주세요."); 
-      f.mname.focus(); 
-      return; 
+      f.name.focus(); 
+      return false; 
     } 
  
+    if(f.birtddate.value == ""){ 
+        alert("생년월일을 입력해 주세요"); 
+        f.birtddate.focus(); 
+        return false; 
+      } 
+    
     if(f.email.value == ""){ 
       alert("이메일을 입력해 주세요."); 
       f.email.focus(); 
-      return; 
+      return false; 
     } 
  
-    if(f.job.value == "0"){ 
-      alert("직업을 선택해 주세요."); 
-      f.job.focus(); 
-      return; 
-    } 
-    // Form onsubmit 이벤트일경우 
-    // return false; 
-     
-    f.submit(); 
-  } 
  
   // 중복 아이디를 검사합니다. 
   function idCheck(userid){ 
     if(userid == ""){ 
       window.alert("아이디를 입력해 주세요."); 
-      f.id.focus(); // 커서 이동 
+      f.userid.focus(); // 커서 이동 
     }else{ 
       url="./checkId?userid=" + userid;  // GET 
       wr = window.open(url,"아이디검색","width=500,height=400"); 
@@ -85,7 +81,7 @@ td {
   //중복 이메일을 검사합니다. 
   function emailCheck(email){ 
     if(email == ""){ 
-      window.alert("이메일을 입력해 주세요."); 
+      window.alert("이메일을 입력해 주세요"); 
       f.email.focus(); 
     }else{ 
       url="./checkEmail?email=" + email;  // GET 
@@ -94,6 +90,25 @@ td {
     } 
   } 
  
+   
+  if(f.callphone.value == ""){ 
+      alert("핸드폰번호를 입력해 주세요"); 
+      f.callphone.focus(); 
+      return false; 
+    } 
+  
+  if(f.phone.value == ""){ 
+      alert("전화번호를 입력해 주세요"); 
+      f.phone.focus(); 
+      return false; 
+    }
+  
+  if(f.zipcode.value == ""){ 
+      alert("우편번호를 입력해 주세요"); 
+      f.zipcode.focus(); 
+      return false; 
+    }
+  
   // 우편번호 검색 
   function zipCheck(){ 
     url="zipCheck"; 
@@ -101,9 +116,24 @@ td {
     wr.moveTo((window.screen.width-550)/2, (window.screen.height - 450)/2);// x, y 
   } 
  
-</script> 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
+  
+	if(f.userphotoMF.value==''){
+		alert("파일을 선택하세요");
+		f.userphotoMF.focus();
+		return false; 
+	}else{
+	   var fvalue = f.userphotoMF.value;
+	   var ext = fvalue.slice(fvalue.lastIndexOf(".")+1).toLowerCase();
+	   if(!(ext =="gif" || ext =="jpg" || ext == "png")){
+		  alert("이미지 파일만 업로드 가능합니다.");
+		  f.userphotoMF.focus();
+		  return false
+	   }
+	}
+  }
+
+
+
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -165,26 +195,29 @@ td {
 <TABLE class="BTABLE" width="700px" border="0">
 <tr>
 	<td align="center" class="BTD2" height="23" width="150px">아이디</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-name="userid" size="15" value=''> <input type="button"
-value="ID중복확인" onclick="idCheck(document.frm.userid.value)" class="BBUTTON">
-</td>
+	<td style="background-color: #FAFAFA">
+		<input type="text" name="userid" size="15" value=''> 
+		<input type="button" value="ID중복확인" onclick="idCheck(document.frm.userid.value)" class="BBUTTON">
+	</td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">패스워드</td>
-	<td style="background-color: #FAFAFA"><input type="password"
-		name="passwd" size="15" value='' ></td>
+	<td style="background-color: #FAFAFA">
+		<input type="password" name="passwd" size="15" value='' >
+	</td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">패스워드
 		확인</td>
-	<td style="background-color: #FAFAFA"><input type="password"
-		name="repasswd" size="15" value=''></td>
+	<td style="background-color: #FAFAFA">
+		<input type="password" name="repasswd" size="15" value=''>
+	</td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">이름</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="name" size="15" value=''></td>
+	<td style="background-color: #FAFAFA">
+		<input type="text" name="name" size="15" value=''>
+	</td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">생년월일</td>
@@ -193,44 +226,46 @@ value="ID중복확인" onclick="idCheck(document.frm.userid.value)" class="BBUTT
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">이메일</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-name="email" size="27" value=''> <input type="button"
-value="Email 중복확인"
-onclick="javascript:emailCheck(document.frm.email.value)" class="BBUTTON">
+	<td style="background-color: #FAFAFA"><input type="text" name="email" size="27" value=''>
+ 	<input type="button" value="Email 중복확인" onclick="javascript:emailCheck(document.frm.email.value)" class="BBUTTON">
 
 	</td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">핸드폰번호</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="callphone" value=""></td>
+	<td style="background-color: #FAFAFA">
+		<input type="text" name="callphone" value="">
+	</td>
 </tr>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">전화번호</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-		name="phone" value=""></td>
+	<td style="background-color: #FAFAFA">
+		<input type="text" name="phone" value="">
+	</td>
 </tr>
 
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">우편번호</td>
-	<td style="background-color: #FAFAFA"><input type="text"
-id="sample5_postcode" name="zipcode" placeholder="우편번호"> <input
-type="button" onclick="sample5_execDaumPostcode()" value="우편번호 찾기" class="BBUTTON"><br>
+	<td style="background-color: #FAFAFA">
+		<input type="text" id="sample5_postcode" name="zipcode" placeholder="우편번호"> 
+		<input type="button" onclick="sample5_execDaumPostcode()" value="우편번호 찾기" class="BBUTTON"><br>
 	</td>
 </tr>
 <tr>
 	<td rowspan="2" align="center" class="BTD2" height="40" width="100px">주소</td>
 	<td style="background-color: #FAFAFA">
-<input type="text" id="sample5_address" name="address1" size="40" placeholder="주소"  >
-</td>
-<tr><td style="background-color: #FAFAFA">
-<input type="text" id="sample5_address2" name="address2" size="40" placeholder="상세주소">
-<div id="map" style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-</td>
+		<input type="text" id="sample5_address" name="address1" size="40" placeholder="주소"  >
+	</td>
+<tr>
+	<td style="background-color: #FAFAFA">
+		<input type="text" id="sample5_address2" name="address2" size="40" placeholder="상세주소">
+		<div id="map" style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
+	</td>
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">회원사진(jpg,png파일)</td>
-	<td style="background-color: #FAFAFA"><input type='file'
-		name='userphotoMF' value='' ></td>
+	<td style="background-color: #FAFAFA">
+		<input type='file' name='userphotoMF' value='' >
+	</td>
 </tr>
 </TABLE>
   
