@@ -8,31 +8,50 @@
 
 <html>
 <head>
-
+<link href="../../css/style1.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
 <div id="jb-sidebar">
-			
+			<table>
+				<tr>
+					<td align="center"><div style="text-align: center;">${userid }님환영합니다</div></td>
+				</tr>
+			</table>
 			<% if(userid!=null && grade.equals("M")){%>
-				<ul ><a  href="<%=root %>/user/MyPage"><strong>&nbsp;마이페이지</a><br></strong>
-					<li><a  href="<%=root %>/user/read">나의정보</a></li>
-					<li><a  href="<%=root %>/cart/list">장바구니보기</a></li>
-					<li><a  href="<%=root%>/order/list">주문이력</a></li>
+			<table width="230" class="LTABLE">
+				<tr>
+					<td colspan="3" class="LTD2" align="center">마이페이지</td>
+				</tr>
+			</table>
+			<div class="BTABLE3">
+				<ul ><%-- <a  href="<%=root %>/user/MyPage"><strong>&nbsp;마이페이지</a><br></strong> --%>
+					<li><a  href="<%=root %>/user/read" class="bk3">나의정보</a></li>
+					<li><a  href="<%=root %>/cart/list" class="bk3">장바구니보기</a></li>
+					<li><a  href="<%=root%>/order/list" class="bk3">주문이력</a></li>
 				</ul>
 			</ul>
+			</div>
 			<%} %>
 			<%if(userid!=null && grade.equals("A")){ %>
-				<ul><a  href="<%=root %>/adm/adminPage"><strong>&nbsp;관리자 메뉴<br></strong>
-					<li><a href="<%=root%>/adm/faq/list">FAQ관리</a></li>
-					<li><a href="<%=root%>/adm/user/list">회원관리</a></li>
-					<li><a href="<%=root%>/adm/cart/list">장바구니관리</a></li>
-					<li><a href="<%=root%>/order/list">전체주문조회</a></li>
-					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoCreate">서적등록</a></li>
-					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoList">서적관리</a></li>
+			<table width="230" class="LTABLE">
+				<tr>
+					<td colspan="3" class="LTD2" align="center">관리자메뉴</td>
+				</tr>
+			</table>
+			<div class="BTABLE3">
+				<ul>
+					<%-- <a  href="<%=root %>/adm/adminPage"><strong>&nbsp;관리자 메뉴<br></strong> --%>
+					<li><a href="<%=root%>/adm/faq/list" class="bk3">FAQ관리</a></li>
+					<li><a href="<%=root%>/adm/user/list" class="bk3">회원관리</a></li>
+					<li><a href="<%=root%>/adm/cart/list" class="bk3">장바구니관리</a></li>
+					<li><a href="<%=root%>/order/list" class="bk3">전체주문조회</a></li>
+					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoCreate" class="bk3">서적등록</a></li>
+					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoList" class="bk3">서적관리</a></li>
 				</ul>
 				</li>
+			</div>
 			<%} %>
 </div>
 </div>

@@ -15,11 +15,13 @@
 <style type="text/css">
 
 </style>
-<!-- <link href='../css/style.css' rel='Stylesheet' type='text/css'> -->
+<link href='../../css/style1.css' rel='Stylesheet' type='text/css'>
 </head>
-
 <body>
-	<DIV align="center" style="font-size: xx-large;">회원 목록</DIV>
+	<div height="23" colspan="10" align="center">
+		<img style="width: 753px;" src="../../images/adminUser.jpg">
+		
+	</div><br>
 	<DIV align="center">
 		<FORM method="POST" action="./list">
 			<select name="col">
@@ -37,27 +39,27 @@
 for(int i=0; i < list.size(); i++){ 
   MemberDTO dto = list.get(i);   
 %> --%>
-
+<center>
 <c:forEach var="dto" items="${list }" >
-	<TABLE border='1' align='center' width='70%'>
+	<TABLE class="BTABLE" width="800px" border="0">
 		<TR>
-			<TD rowspan='4' width='20%' align="center">
-			<IMG src='${pageContext.request.contextPath}/storage/${dto.userphoto}' width='100%'></TD>
-			<TH width='20%'>아이디</TH>
-			<TD ><A href='../user/read?id=${dto.userid}'>${dto.userid}</A></TD>
+			<TD rowspan='3' width='120px' align="center">
+			<IMG src='${pageContext.request.contextPath}/storage/${dto.userphoto}' width='100px'></TD>
+			<TD align="center" class="BTD2" height="23">아이디</TD>
+			<TD ><A href='<%-- ../user/read?id=${dto.userid} --%>'>${dto.userid}</A></TD>
 
-			<TH width='20%'>성명</TH>
+			<TD align="center" class="BTD2" height="23">성명</TD>
 			<TD>${dto.name}</TD>
 		</TR>
 		<TR>
-			<TH>전화번호</TH>
+			<TD align="center" class="BTD2" height="23">전화번호</TH>
 			<TD>${dto.phone}</TD>
 		
-			<TH width='20%'>이메일</TH>
+			<TD align="center" class="BTD2" height="23">이메일</TD>
 			<TD>${dto.email}</TD>
 		</TR>
 		<TR>
-			<TH>주소</TH>
+			<TD align="center" class="BTD2" height="23">주소</TD>
 			<TD colspan="3">${dto.address1} 
 		<%-- 	<% if (dto.getAddress2() != null){
              out.print(dto.getAddress2());
@@ -74,9 +76,7 @@ for(int i=0; i < list.size(); i++){
 %> --%>
 	<DIV class="bottom">
 		${paging}
-	</DIV>
-	<div align="center">
-	<input type='button' value='회원 등록' onclick="location.href='../user/agree'">
-	</div>
+	</DIV><br>
+</center>
 </body>
 </html>

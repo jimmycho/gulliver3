@@ -49,8 +49,6 @@ TH {
 <div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/cartMenu.jpg"></td></tr>
 	</div>
 <table class="BTABLE" width="800px" border="0" >
-
-		<tbody>
 			<tr> 
 				<td align="center" class="BTD2" height="23">No</td>
 				<td align="center" class="BTD2" height="23">입력일시</td>
@@ -97,7 +95,6 @@ TH {
 				</td>  
 					
 			</tr>
-		</tbody>
 	</table>
 	
 </form>

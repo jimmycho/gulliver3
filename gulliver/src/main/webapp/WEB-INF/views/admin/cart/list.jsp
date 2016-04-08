@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="./css/style1.css" rel="stylesheet" type="text/css">
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <title></title>
 <script type="text/javascript">
 function read(faqno){

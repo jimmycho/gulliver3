@@ -18,7 +18,8 @@ function read(orderno){
 </script>
 </head>
 <body>
-<br>
+	<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/orderList.jpg">
+	</div>
 	<form action="./list" method="post" name="frm">
 		<div style="text-align: center;">
 			<select name="col">
@@ -31,14 +32,13 @@ function read(orderno){
 			<input type="submit" value="검색">
 		</div>
 	</form>
-	<br>
 	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 800px" class="BTABLE">
 		<tr>
-			<td class="BTD2">주문번호</td>
-			<td class="BTD2">주문인</td>
-			<td class="BTD2">주문일</td>
-			<td class="BTD2">책제목</td>
-			<td class="BTD2">배송방법</td>
+			<td align="center" class="BTD2">주문번호</td>
+			<td align="center" class="BTD2">주문인</td>
+			<td align="center" class="BTD2">주문일</td>
+			<td align="center" class="BTD2">책제목</td>
+			<td align="center" class="BTD2">배송방법</td>
 		</tr>
 		<c:choose>
 			<c:when test="${empty list }">

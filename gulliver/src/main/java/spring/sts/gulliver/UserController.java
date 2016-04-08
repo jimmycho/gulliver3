@@ -303,7 +303,7 @@ public class UserController {
 		UserDTO dto = dao.read(userid);
 	    model.addAttribute("dto",dto);
 		
-		return "/user/MyPage";
+		return "/user/read";
 		
 	}
 	@RequestMapping("/adm/adminPage")
