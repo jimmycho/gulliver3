@@ -22,7 +22,7 @@
 			<% if(userid!=null && grade.equals("M")){%>
 			<table width="230" class="LTABLE">
 				<tr>
-					<td colspan="3" class="LTD2" align="center">마이페이지</td>
+					<td colspan="3" class="LTD3" align="center">마이페이지</td>
 				</tr>
 			</table>
 			<div class="BTABLE3">
@@ -37,7 +37,7 @@
 			<%if(userid!=null && grade.equals("A")){ %>
 			<table width="230" class="LTABLE">
 				<tr>
-					<td colspan="3" class="LTD2" align="center">관리자메뉴</td>
+					<td colspan="3" class="LTD3" align="center">관리자메뉴</td>
 				</tr>
 			</table>
 			<div class="BTABLE3">

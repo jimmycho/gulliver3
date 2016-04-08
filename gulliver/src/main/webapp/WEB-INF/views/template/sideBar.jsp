@@ -232,7 +232,7 @@ function inputCheck(){
 
 
 		<%} else {%>
-		<td align="center"><div style="text-align: center;">${userid }님환영합니다</div></td>
+		<td align="center" style="font-size: small; background-color: #F2F2F2;"><div style="text-align: center;">${userid }님환영합니다</div></td>
 		<td><input type="button" name="logout" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/user/logout'"></td>
 		<%} %>
 		</TABLE>
@@ -267,7 +267,7 @@ onsubmit="return inputCheck()">
 
 <table width="230" class="LTABLE">
 	<tr>
-		<td colspan="3" class="LTD2" align="center">책 카테고리</td>
+		<td colspan="3" class="LTD3" align="center">책 카테고리</td>
 	</tr>
 	</table>
 	<div class="BTABLE3">

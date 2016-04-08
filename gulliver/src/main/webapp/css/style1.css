@@ -18,6 +18,10 @@ a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
 .LTD2 {
 	BACKGROUND-COLOR: #23A41A; COLOR: #ffffff;
 }
+.LTD3 {
+	BACKGROUND-COLOR: #00A5FF; COLOR: #ffffff;
+}
+
 
 .BA:link,.BA:visited {text-decoration:none;color:#ffffff}
 .BA:hover{text-decoration:yes;color:#fff200;}
