@@ -32,7 +32,7 @@ function read(orderno){
 			<input type="submit" value="검색">
 		</div>
 	</form>
-	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 800px" class="BTABLE">
+	<table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 800px" class="BTABLE">
 		<tr>
 			<td align="center" class="BTD2">주문번호</td>
 			<td align="center" class="BTD2">주문인</td>

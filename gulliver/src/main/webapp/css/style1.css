@@ -140,11 +140,11 @@ A:hover{text-decoration:yes;color:#66CCFF}
 } 
  .FBUTTON:hover {
 	COLOR: #6d6e71;  BACKGROUND-COLOR: #fff200;
-} 
+}
 .FSELECT {
 	FONT-SIZE: 9pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
 }
- .FBUTTON {
+.FBUTTON {
 	LINE-HEIGHT: 160%; 
 	FONT-SIZE: 9pt; FONT-FAMILY: 굴림,verdana,tahoma;
 	TEXT-ALIGN:center; BACKGROUNDCOLOR:#6c5337;

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../../css/style1.css" rel="stylesheet" type="text/css">
 <title></title>
 <script type="text/javascript">
 function bCreate(){
@@ -31,9 +32,11 @@ function bDelete(bookid){
 </script>
 </head>
 <body>
+<div  height="23" colspan="10" align="center" >
+ <img style="width: 753px; " src="../../images/adminBookInfo.jpg">
+</div>
 	<form action="" method="post" name="frm">
-	<br><br>
-		<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:800px;">
+		<table align="center" border="1" style="width: 800px" class="BTABLE">
 			<c:choose>
 				<c:when test="${empty list}">
 					<tr>
@@ -42,25 +45,28 @@ function bDelete(bookid){
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td width="10%">책 코드</td>
-						<td width="30%">책이름</td>
-						<td width="10%">원가격</td>
-						<td width="10%">할인가격</td>
-						<td width="10%">현재수량</td>
-						<td>저자</td>
-						<td>책표지</td>
-						<td>선택</td>
+						
+						<td  align="center" class="BTD2">코드</td>
+						<td align="center" class="BTD2">책표지</td>
+						<td  align="center" class="BTD2">책이름</td>
+						<td  align="center" class="BTD2">원가격</td>
+						<td  align="center" class="BTD2">할인가격</td>
+						<td  align="center" class="BTD2">현재수량</td>
+						<td align="center" class="BTD2">저자</td>
+						
+						<td align="center" class="BTD2">선택</td>
 					</tr>
 					<c:forEach var="dto" items="${list}">
 						<tr>
 							<td>${dto.bookid }</td>
+							<td><img src="${dto.bookfront_photo }" style="width: 80px;" border=0/></td>
 							<td><a href="javascript:bRead('${dto.bookid}')">${dto.bookname}</a></td>
 							<td><fmt:formatNumber value="${dto.cur_price }" pattern="#,###" />원</td>
 							<td><fmt:formatNumber value="${dto.sale_price }" pattern="#,###" />원</td>
 							<td>${dto.stock_cnt }</td>
 							<td>${dto.writer }</td>
-							<td><img src="${dto.bookfront_photo }"/></td>
-							<td><input type="button" onclick="bDelete('${dto.bookid}')" value="삭제"></td>
+							
+							<td><input type="button" onclick="bDelete('${dto.bookid}')" value="삭제" class="BBUTTON"></td>
 						</tr>
 					</c:forEach>
 
@@ -70,7 +76,7 @@ function bDelete(bookid){
 		
 		<br>
 		<div style="text-align: center;">
-			<input type="button" onclick="bCreate()" name="create" value="등록"><br><br>
+			<input type="button" onclick="bCreate()" name="create" value="등록" class="BBUTTON"><br><br>
 			${paging }
 		</div>
 		<br>

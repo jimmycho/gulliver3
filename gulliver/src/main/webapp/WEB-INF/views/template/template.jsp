@@ -12,23 +12,24 @@
 #jb-container {
 	width: 1200px; margin : 0px auto;
 	padding: 0px;
-	border: 1px solid #ffffff;
+	border: 0px solid #ffffff;
 	margin: 0px auto;
 }
 
 #jb-header {
 	padding: 0px;
 	margin-bottom: 10px;
-	border: 1px solid #bcbcbc;
+	border: 0px solid #bcbcbc;
 	height: 143px;
 }
 
 #jb-sidebar {
 	width: 235px;
-	padding: 0px;
+	padding: 0px 0px 0px 0px;
 	margin-bottom: 10px;
 	float: left;
-	border: 1px solid #bcbcbc;
+	border: 0px solid #bcbcbc;
+	background-color: #F2F2F2;
 }
 
 #jb-content {
@@ -36,13 +37,13 @@
 	padding: 0px;
 	margin-bottom: 10px;
 	float: right;
-	border: 1px solid #bcbcbc;
+	border: 0px solid #bcbcbc;
 }
 
 #jb-footer {
 	clear: both;
 	padding: 2px;
-	border: 1px solid #bcbcbc;
+	border: 0px solid #bcbcbc;
 	background-color: #009AFF
 }
 </style>

@@ -8,7 +8,13 @@
 
 <html>
 <head>
-<link href="../css/style1.css" rel="stylesheet" type="text/css">
+<!-- <link href="../css/style1.css" rel="stylesheet" type="text/css"> --> 
+<style type="text/css">
+.BTABLE3{
+	font-weight:bold; font-size: 10pt; COLOR: #6d6e71; LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma;
+}
+
+</style>
 
 <script type="text/javascript">
 var xmlDoc = null;
@@ -43,22 +49,22 @@ function response(subCode) {
            }}}
 </script> 
 </head>
-<body>
+<body> 
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
 	<div id="jb-header"><br>
 		<div style="text-align: right;" class="BTABLE3">
 			<% if(userid==null){%>
-				<a href="<%=root %>/user/agree">회원가입  </a> /
-				<a href="#">ID/PW찾기&nbsp; &nbsp; </a>
+				<a href="<%=root %>/user/agree">회원가입&nbsp;&nbsp;</a>
+				<!-- <a href="#">ID/PW찾기&nbsp; &nbsp; </a> -->
 			<% } else { 
 				if(grade.equals("M")){
 			%>
 				<a href="<%=root %>/user/logout">로그아웃</a> /
-				<a href="<%=root %>/user/MyPage">마이페이지&nbsp; &nbsp;</a>
+				<a href="<%=root %>/user/MyPage">마이페이지&nbsp;</a>
 			<%} else if(grade.equals("A")){ %>
 				<a href="<%=root %>/user/logout">로그아웃</a> /
-				<a href="<%=root %>/adm/adminPage">관리자메뉴&nbsp; &nbsp;</a>
+				<a href="<%=root %>/adm/adminPage">관리자메뉴</a>
 			<%} }%>
 		</div>
 	
@@ -67,7 +73,7 @@ function response(subCode) {
 			<select name="col" style="font-size: large;">
 				<c:forEach var="dto" items="${topCateList}">
 				<c:set var="i" value="${i+1}"/>
-					<option <c:if test="${col == dto.BOOK_CATE_CD }">selected='selected'</c:if> value="${dto.BOOK_CATE_CD}"> ${dto.BOOK_CATE_NAME} ${dto.BOOK_CATE_CD}</option>
+					<option <c:if test="${col == dto.BOOK_CATE_CD }">selected='selected'</c:if> value="${dto.BOOK_CATE_CD}"> ${dto.BOOK_CATE_NAME}</option>
 				</c:forEach>
 			</select> 
 		<input type="text" name="word" value="${word}" style="font-size: large;">

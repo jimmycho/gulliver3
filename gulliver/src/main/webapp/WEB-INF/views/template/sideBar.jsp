@@ -201,14 +201,14 @@ function inputCheck(){
 <div id="jb-sidebar">
 <body>
 <br>
-<div >
+<div>
 
 	<FORM name='frm1' method='POST' action='${pageContext.request.contextPath}/user/login'
 	onsubmit="return inputCheck()">
 		<TABLE class="LTABLE">
 		<% if(userid==null){%>
 		<TR>
-			<TD style="font-size: x-small; background-color: #00A5FF;">아이디</TD>
+			<TD style="font-size: x-small; background-color: #F2F2F2;">아이디</TD>
 			<TD><input type="text" name="userid" size="6"> </TD>
 			<td rowspan="2">
 			<c:choose>
@@ -226,7 +226,7 @@ function inputCheck(){
 			</td>
 		</TR>
 		<TR>
-			<TD style="font-size: x-small; background-color: #00A5FF;;">비밀번호</TD>
+			<TD style="font-size: x-small; background-color: #F2F2F2;;">비밀번호</TD>
 			<TD><input type="password" name="passwd" size="6"></TD>
 		</TR>
 
@@ -280,8 +280,8 @@ onsubmit="return inputCheck()">
 		</c:forEach>
 	</ul>
 	</div>
-<div align="center"><img   src="../images/sideimage01.jpg">
-	</div>
+<div align="center"><img src="../images/sideimage01.jpg">
+	</div><br><br>
 </div>
 </div>
 </body>

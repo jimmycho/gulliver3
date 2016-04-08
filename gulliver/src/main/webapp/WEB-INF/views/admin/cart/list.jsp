@@ -17,21 +17,10 @@ function read(faqno){
 }
 </script>
 
-<!-- <style type="text/css">
-TH {
-	border-color: #AAAAAA; /* 테이블 외곽선 색깔 */
-	border-width: 1px; /* 테이블 외곽선 두께 */
-	border-style: solid; /* 테이블 외곽선 스타일 */
-	color: black; /* 글자 색 */
-	background-color: #FFD549; /* 배경 색 */
-	padding: 5px; /* 셀 내부 간격 */
-}
-</style> -->
-
 </head>
 <body>
-<div align="center" style="font-size: xx-large;"> [관리자]장바구니 목록 </div>
-<br>
+<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../../images/adminCart.jpg">
+	</div>
 <DIV style='width: 80%; text-align: center; margin: 1px auto;'>
 		<FORM name='frm' method='post' action="./list">
 			<SELECT name='col'>
@@ -47,15 +36,14 @@ TH {
 			<!-- 검색어 -->
 			<input type='submit' value='검색'> 
 		</FORM>
-</DIV>
-<br>
-	<TABLE width="800px" align="center" >
+</DIV><br>
+	<TABLE align="center" border="0" cellpadding="1" cellspacing="1" style="width: 800px" class="BTABLE">
 		<TR>
-			<TH width="5%">번호</TH>
-			<TH width="5%">주문자ID</TH>
-			<TH width="5%">책이름</TH>
-			<TH width="15%">등록일시</TH>
-			<TH width="8%">수량</TH>			
+			<td align="center" class="BTD2">번호</td>
+			<td align="center" class="BTD2">주문자ID</td>
+			<td align="center" class="BTD2">책이름</td>
+			<td align="center" class="BTD2">등록일시</td>
+			<td align="center" class="BTD2">수량</td>			
 		</TR>
 
 <c:choose>

@@ -26,10 +26,11 @@ TH {
 	padding: 5px; /* 셀 내부 간격 */
 }
 </style>
-
+<link href='../../css/style1.css' rel='Stylesheet' type='text/css'>
 </head>
 <body>
-<div align="center" style="font-size: xx-large;"> [관리자]FAQ 목록 </div>
+<div height="23" colspan="10" align="center">
+		<img style="width: 753px;" src="../../images/adminFaq.jpg">
 <br>
 <DIV style='width: 80%; text-align: center; margin: 1px auto;'>
 		<FORM name='frm' method='post' action="./list">
@@ -48,13 +49,13 @@ TH {
 		</FORM>
 </DIV>
 <br>
-	<TABLE width="800px" align="center" >
+	<TABLE class="BTABLE" width="800px" border="0" >
 		<TR>
-			<TH width="5%">번호</TH>
-			<TH width="100px">분류</TH>
-			<TH>제목</TH>
-			<TH width="15%">등록일시</TH>
-			<TH width="8%">조회수</TH>			
+			<TD align="center" class="BTD2" height="23" width="5%">번호</TD>
+			<TD align="center" class="BTD2" height="23" width="100px">분류</TD>
+			<TD align="center" class="BTD2" height="23">제목</TD>
+			<TD  align="center" class="BTD2" height="23">등록일시</TD>
+			<TD  align="center" class="BTD2" height="23">조회수</TD>			
 		</TR>
 
 <c:choose>
@@ -83,7 +84,7 @@ TH {
 <div style='text-align: center; margin-top: 20px'>
 ${paging }
 </div><br>
-<div style='text-align: center; '>	<input type='button' value='신규작성' onclick="location.href='./create'">
+<div style='text-align: center; '>	<input class="BBUTTON" type='button' value='신규작성' onclick="location.href='./create'">
 </div> 
 </body>
 </html>
