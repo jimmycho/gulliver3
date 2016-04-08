@@ -53,40 +53,54 @@ function response(subCode) {
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
 	<div id="jb-header">
-	<table><tr>
-	<td width="20%">
-		<img style="width: 324px; " src="../images/gullivers_logo.jpg">
-	</td>
-	<td>
-		<div style="text-align: right;" class="BTABLE3">
-			<% if(userid==null){%>
-				<a href="<%=root %>/user/agree">회원가입&nbsp;&nbsp;</a>
-				<!-- <a href="#">ID/PW찾기&nbsp; &nbsp; </a> -->
-			<% } else { 
-				if(grade.equals("M")){
+<table>
+<tr align="center">
+<td width="20%">
+	<img style="width: 324px;"src="../images/gullivers_logo.jpg">
+</td>
+<td>
+	<form action="<%=root%>/bookinfo/mainList"
+		style="text-align: center; padding-bottom: 5px; padding-right: 10px;">
+		<select name="col" style="font-size: large;">
+			<c:forEach var="dto" items="${topCateList}">
+				<c:set var="i" value="${i+1}" />
+				<option
+					<c:if test="${col == dto.BOOK_CATE_CD }">selected='selected'</c:if>
+					value="${dto.BOOK_CATE_CD}">${dto.BOOK_CATE_NAME}</option>
+			</c:forEach>
+		</select> <input type="text" name="word" value="${word}"
+			style="font-size: large;"> <input type="submit"
+			value="검색" style="font-size: large;">
+	</form>
+	<ul>
+</td>
+<td valign=top>
+		<div style="" class="BTABLE3">
+			<%
+				if (userid == null) {
 			%>
-				<a href="<%=root %>/user/logout">로그아웃</a> /
-				<a href="<%=root %>/user/MyPage">마이페이지&nbsp;</a>
-			<%} else if(grade.equals("A")){ %>
-				<a href="<%=root %>/user/logout">로그아웃</a> /
-				<a href="<%=root %>/adm/adminPage">관리자메뉴</a>
-			<%} }%>
-		</div>
-		<br>
-		<form action="<%=root %>/bookinfo/mainList" style="text-align: right; padding-bottom: 5px ;padding-right:10px;">
-			<select name="col" style="font-size: large;">
-				<c:forEach var="dto" items="${topCateList}">
-				<c:set var="i" value="${i+1}"/>
-					<option <c:if test="${col == dto.BOOK_CATE_CD }">selected='selected'</c:if> value="${dto.BOOK_CATE_CD}"> ${dto.BOOK_CATE_NAME}</option>
-				</c:forEach>
-			</select> 
-		<input type="text" name="word" value="${word}" style="font-size: large;">
-		<input type="submit" value="검색" style="font-size: large;">
-		</form>
-		<ul></td>
+			<a href="<%=root%>/user/agree">회원가입&nbsp;&nbsp;</a>
+			<!-- <a href="#">ID/PW찾기&nbsp; &nbsp; </a> -->
+			<%
+				} else {
+					if (grade.equals("M")) {
+			%>
+			<a href="<%=root%>/user/logout">로그아웃</a> / <a
+				href="<%=root%>/user/MyPage">마이페이지&nbsp;</a>
+			<%
+				} else if (grade.equals("A")) {
+			%>
+			<a href="<%=root%>/user/logout">로그아웃</a> / <a
+				href="<%=root%>/adm/adminPage">관리자메뉴</a>
+			<%
+				}
+				}
+			%>
+		</div> </td>
+
 		</tr>
-		</table>
-		<nav id="topMenu">
+	</table>
+<nav id="topMenu">
 		<ul>
 			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/">H O M E</a>
 			</li>

@@ -10,7 +10,7 @@
 
 <style>
 #jb-container {
-	width: 1200px; margin : 0px auto;
+	width: 1100px; margin : 0px auto;
 	padding: 0px;
 	border: 0px solid #ffffff;
 	margin: 0px auto;
@@ -33,7 +33,7 @@
 }
 
 #jb-content {
-	width: 950px;
+	width: 850px;
 	padding: 0px;
 	margin-bottom: 10px;
 	float: right;
