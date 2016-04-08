@@ -20,7 +20,6 @@ function read(bookid){
 </head>
 <body>
 	<form action="" method="post" name="frm">
-		<br>
 		<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/0008.jpg"></td></tr>
 	</div>
 		<table width="800" border="0" class="BTABLE2">

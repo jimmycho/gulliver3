@@ -52,7 +52,12 @@ function response(subCode) {
 <body> 
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
-	<div id="jb-header"><br>
+	<div id="jb-header">
+	<table><tr>
+	<td width="20%">
+		<img style="width: 324px; " src="../images/gullivers_logo.jpg">
+	</td>
+	<td>
 		<div style="text-align: right;" class="BTABLE3">
 			<% if(userid==null){%>
 				<a href="<%=root %>/user/agree">회원가입&nbsp;&nbsp;</a>
@@ -67,8 +72,7 @@ function response(subCode) {
 				<a href="<%=root %>/adm/adminPage">관리자메뉴</a>
 			<%} }%>
 		</div>
-	
-		<br><br>
+		<br>
 		<form action="<%=root %>/bookinfo/mainList" style="text-align: right; padding-bottom: 5px ;padding-right:10px;">
 			<select name="col" style="font-size: large;">
 				<c:forEach var="dto" items="${topCateList}">
@@ -79,10 +83,9 @@ function response(subCode) {
 		<input type="text" name="word" value="${word}" style="font-size: large;">
 		<input type="submit" value="검색" style="font-size: large;">
 		</form>
-		<ul>
-		
-		
-		
+		<ul></td>
+		</tr>
+		</table>
 		<nav id="topMenu">
 		<ul>
 			<li class="topMenuLi"><a class="menuLink" href="<%=root %>/">H O M E</a>
@@ -96,8 +99,5 @@ function response(subCode) {
 			</li>		
 		</ul>
 	</nav>
-	
-
-
 </ul>
-	</div>
+</div>

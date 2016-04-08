@@ -18,7 +18,7 @@
 
 #jb-header {
 	padding: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 2px;
 	border: 0px solid #bcbcbc;
 	height: 143px;
 }
