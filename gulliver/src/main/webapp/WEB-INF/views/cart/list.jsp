@@ -43,12 +43,12 @@ TH {
 </head>
 <body>
 <center>
-<div align="center" style="font-size: xx-large;"><c:out value="${list[0].name}"/>  님 장바구니 목록 </div>
+<%-- <div align="center" style="font-size: xx-large;"><c:out value="${list[0].name}"/>  님 장바구니 목록 </div> --%>
 <br>
 <form action="../order/create" method="get" name="frm">
 <div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/cartMenu.jpg"></td></tr>
 	</div>
-<table class="BTABLE" width="85%" border="0" >
+<table class="BTABLE" width="800px" border="0" >
 
 		<tbody>
 			<tr> 
