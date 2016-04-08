@@ -208,8 +208,8 @@ function inputCheck(){
 		<TABLE class="LTABLE">
 		<% if(userid==null){%>
 		<TR>
-			<TD style="font-size: x-small; background-color: #F2F2F2;">아이디</TD>
-			<TD><input type="text" name="userid" size="6"> </TD>
+			<TD style="font-size: small; ">아이디</TD>
+			<TD><input type="text" name="userid" size="4"> </TD>
 			<td rowspan="2">
 			<c:choose>
 					<c:when test="${c_id eq 'Y'}">
@@ -226,13 +226,13 @@ function inputCheck(){
 			</td>
 		</TR>
 		<TR>
-			<TD style="font-size: x-small; background-color: #F2F2F2;;">비밀번호</TD>
-			<TD><input type="password" name="passwd" size="6"></TD>
+			<TD style="font-size: small; ">비밀번호</TD>
+			<TD><input type="password" name="passwd" size="4"></TD>
 		</TR>
 
 
 		<%} else {%>
-		<td align="center" style="font-size: small; background-color: #F2F2F2;"><div style="text-align: center;">${userid }님환영합니다</div></td>
+		<td align="center" style="font-size: small; "><div style="text-align: center;">${userid }님 환영합니다</div></td>
 		<td><input type="button" name="logout" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/user/logout'"></td>
 		<%} %>
 		</TABLE>

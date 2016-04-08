@@ -14,11 +14,14 @@
 	<!-- 상단 메뉴 -->
 <div id="jb-container">
 <div id="jb-sidebar">
+			<br>
 			<table>
 				<tr>
-					<td align="center"><div style="text-align: center;">${userid }님환영합니다</div></td>
+					<td align="center" style="font-size: small; "><div style="text-align: center;">${userid }님환영합니다</div></td>
+				<td><input type="button" name="logout" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/user/logout'"></td>
 				</tr>
 			</table>
+			<br>
 			<% if(userid!=null && grade.equals("M")){%>
 			<table width="230" class="LTABLE">
 				<tr>
