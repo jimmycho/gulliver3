@@ -278,8 +278,8 @@ public class BookinfoController {
 		
 		System.out.println("/bookinfo/mainList호출222");
 		// 검색 부분
-		String col = Utility.checkNull(request.getParameter("col"));
-		String word = Utility.checkNull(request.getParameter("word"));
+		String col = Utility.checkNull(request.getParameter("col_h"));
+		String word = Utility.checkNull(request.getParameter("word_h"));
 
 		if (col.equals("total")) {
 			word = "";
@@ -320,8 +320,8 @@ public class BookinfoController {
 
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
-		request.setAttribute("col", col);
-		request.setAttribute("word", word);
+		request.setAttribute("col_h", col);
+		request.setAttribute("word_h", word);
 		request.setAttribute("nowPage", nowPage);
 
 		return "/bookinfo/list";
