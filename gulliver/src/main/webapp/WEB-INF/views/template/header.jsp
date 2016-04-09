@@ -56,7 +56,7 @@ function response(subCode) {
 <table>
 <tr align="center">
 <td width="20%">
-	<img style="width: 324px;"src="<%=root %>/images/gullivers_logo.jpg">
+	<img style="width: 324px;"src="../images/gullivers_logo.jpg">
 </td>
 <td>
 	<form action="<%=root%>/bookinfo/mainList"
@@ -74,7 +74,7 @@ function response(subCode) {
 	</form>
 	<ul>
 </td>
-<td valign=top>
+<td valign="top">
 		<div style="" class="BTABLE3">
 			<%
 				if (userid == null) {
