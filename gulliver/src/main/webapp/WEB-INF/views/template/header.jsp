@@ -25,7 +25,7 @@
 <table>
 <tr align="center">
 <td width="20%">
-	<img style="width: 324px;"src="../images/gullivers_logo.jpg">
+	<img style="width: 324px;"src="<%=root %>/images/gullivers_logo.jpg">
 </td>
 <td>
 	<form action="<%=root%>/bookinfo/mainList"
@@ -42,11 +42,11 @@
 			<option value="2000">영미도서</option>
 			<option value="3000">일본도서</option>
 		</select>
-		<input type="text" name="word_h" value="${word_h}" style="font-size: large;"> 
-		<input type="submit" value="검색" style="font-size: large;">
+		<input type="text" name="word_h" value="${word_h}" style="font-size: large; border: 3px solid #00A5FF;"> 
+		<input type="submit" value="검색"  class="BBUTTON5">
 	</form>
 </td>
-<td valign="top">
+<td valign="bottom" align="right">
 		<div style="" class="BTABLE3">
 			<%
 				if (userid == null) {
@@ -57,13 +57,13 @@
 				} else {
 					if (grade.equals("M")) {
 			%>
-			<a href="<%=root%>/user/logout">로그아웃</a> / <a
-				href="<%=root%>/user/MyPage">마이페이지&nbsp;</a>
+			<%-- <a href="<%=root%>/user/logout">로그아웃</a> /  --%>
+			<a href="<%=root%>/user/MyPage">마이페이지&nbsp;</a>
 			<%
 				} else if (grade.equals("A")) {
 			%>
-			<a href="<%=root%>/user/logout">로그아웃</a> / <a
-				href="<%=root%>/adm/adminPage">관리자메뉴</a>
+			<%-- <a href="<%=root%>/user/logout">로그아웃</a> /  --%>
+			<a href="<%=root%>/adm/adminPage">관리자메뉴</a>
 			<%
 				}
 				}

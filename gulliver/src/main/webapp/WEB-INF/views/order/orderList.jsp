@@ -50,7 +50,7 @@ function read(orderno){
 						<td><a href="javascript:read('${dto.orderno}')">${dto.orderno}</a></td> 
 						<td>${dto.recipient}</td> 
 						<td>${dto.order_date}</td> 
-						<td>${dto.bookname}</td> 
+						<td style="text-align: center;" >${dto.bookname}</td> 
 						<td>${dto.del_method}</td> 
 					</tr>
 				</c:forEach>

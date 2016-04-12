@@ -22,7 +22,7 @@
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate.jsp" />
 	</definition>
 	<definition name="/adm/bookinfo/admin_bookinfoList" extends="main2">
-		<put-attribute name="title" value="책목록"></put-attribute>
+		<put-attribute name="title" value="온라인서점 걸리버"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoList.jsp" />
 	</definition>
 	<definition name="/adm/bookinfo/admin_bookinfoRead" extends="main2">
@@ -37,7 +37,7 @@
 <!-- 관리자용 끝-->
 
 	<definition name="/home" extends="main">
-		<put-attribute name="title" value="기본페이지"></put-attribute>
+		<put-attribute name="title" value="온라인서점 걸리버"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/bookinfoList.jsp" />
 	</definition>
 	<definition name="/bookcate/listTopCate" extends="main2">
@@ -45,7 +45,7 @@
 		<put-attribute name="body"	value="/WEB-INF/views/bookcate/listTopCate.jsp" />
 	</definition>
 	<definition name="/bookinfo/list" extends="main">
-		<put-attribute name="title" value="책목록"></put-attribute>
+		<put-attribute name="title" value="온라인서점 걸리버"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/bookinfo/bookinfoList.jsp" />
 	</definition>
 	<definition name="/bookinfo/read" extends="main">

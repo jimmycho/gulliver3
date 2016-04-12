@@ -65,6 +65,11 @@ a.bk3:hover {  color: #6d72b4; font-weight: bold; text-decoration: underline}
 	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #bdbebf;
 	BACKGROUND:url(tiles/img/icon_1.gif);
 } 
+ .BBUTTON5 {
+	BORDER:0pt; WIDTH:70px;
+	FONT-SIZE: 13pt; COLOR: #ffffff;  FONT-FAMILY: 굴림,verdana,tahoma;
+	LINE-HEIGHT: 160%; 	TEXT-ALIGN:center; BACKGROUND-COLOR: #00A5FF;
+} 
 .BTD {
 	BACKGROUND-COLOR: #828181; COLOR: #ffffff;
 }

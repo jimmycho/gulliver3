@@ -252,7 +252,7 @@ function emailCheck(email){
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">우편번호</td>
 	<td style="background-color: #FAFAFA">
-		<input type="text" id="sample5_postcode" name="zipcode" placeholder="우편번호"> 
+		<input type="text" id="sample5_postcode" name="zipcode" placeholder="우편번호" value="우편번호"> 
 		<input type="button" onclick="sample5_execDaumPostcode()" value="우편번호 찾기" class="BBUTTON"><br>
 	</td>
 </tr>

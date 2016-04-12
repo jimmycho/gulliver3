@@ -50,7 +50,7 @@ var cText="";
 //alert("readCookie: "+rCookie);
 var rC=ReadCookie('subCategory');
 
-window.onload= function()
+/* window.onload= function()
 {
 	//alert("rC : "+rC);
 	//alert("cText : "+cText);
@@ -59,7 +59,7 @@ window.onload= function()
 		var cdiv=document.getElementById("cookie_div"); 
 		cdiv.innerHTML=rC;
 	} 
-}
+} */
 // url: 요청 주소 
 // params: 서버로 보내는 값의 목록
 // response_function_name: 응답 결과를 처리할 함수 
@@ -208,8 +208,9 @@ function inputCheck(){
 		<TABLE class="LTABLE">
 		<% if(userid==null){%>
 		<TR>
-			<TD style="font-size: small; ">아이디</TD>
-			<TD><input type="text" name="userid" size="4"> </TD>
+			<!-- <TD style="font-size: small; ">아이디</TD> -->
+			<!-- <TD><input type="text" name="userid" size="4" > </TD> -->
+			<TD><input style="height: 30px; font-size: large;" type="text" name="userid" size="9" autocomplete="off"  value='' autocapitalize="off" placeholder="ID 입력"> </TD>
 			<td rowspan="2">
 			<c:choose>
 					<c:when test="${c_id eq 'Y'}">
@@ -226,8 +227,9 @@ function inputCheck(){
 			</td>
 		</TR>
 		<TR>
-			<TD style="font-size: small; ">비밀번호</TD>
-			<TD><input type="password" name="passwd" size="4"></TD>
+			<!-- <TD style="font-size: small; ">비밀번호</TD> -->
+			<!-- <TD><input type="password" name="passwd" size="4"></TD> -->
+			<TD><input style="height: 30px; font-size: large;" type="password" name="passwd" size="9" placeholder="비밀번호입력"></TD>
 		</TR>
 
 

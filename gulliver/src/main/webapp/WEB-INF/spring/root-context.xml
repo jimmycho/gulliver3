@@ -48,7 +48,8 @@
         
         <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory">
 		</property>
-    </bean>  
+    </bean>
+    
     <bean id="bookCate" class="spring.sts.gulliver.Bookcate"/>
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> <!-- 위에있는 곳에서 viewname을 찾는다 없을경우 order 2 에서 찾는다 -->
         <property name="viewClass"> 
