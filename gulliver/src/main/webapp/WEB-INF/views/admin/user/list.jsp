@@ -46,24 +46,19 @@ for(int i=0; i < list.size(); i++){
 			<TD rowspan='3' width='120px' align="center">
 			<IMG src='${pageContext.request.contextPath}/storage/${dto.userphoto}' width='100px'></TD>
 			<TD align="center" class="BTD2" height="23">아이디</TD>
-			<TD ><A href='<%-- ../user/read?id=${dto.userid} --%>'>${dto.userid}</A></TD>
-
+			<TD ><A href='../../user/read?userid=${dto.userid} '>${dto.userid}</A></TD>
 			<TD align="center" class="BTD2" height="23">성명</TD>
 			<TD>${dto.name}</TD>
 		</TR>
 		<TR>
 			<TD align="center" class="BTD2" height="23">전화번호</TH>
 			<TD>${dto.phone}</TD>
-		
 			<TD align="center" class="BTD2" height="23">이메일</TD>
 			<TD>${dto.email}</TD>
 		</TR>
 		<TR>
 			<TD align="center" class="BTD2" height="23">주소</TD>
 			<TD colspan="3">${dto.address1} 
-		<%-- 	<% if (dto.getAddress2() != null){
-             out.print(dto.getAddress2());
-           }%> --%>
            <c:if test="${not empty dto.address2 }">${dto.address2}</c:if>
            </TD>
 		</TR>

@@ -20,7 +20,8 @@ function read(bookid){
 </head>
 <body>
 	<form action="" method="post" name="frm">
-		<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/0008.jpg"></td></tr>
+		<div  height="23" colspan="10" align="center" >
+		<img style="width: 753px; " src="../images/0008.jpg">
 	</div>
 		<table width="800" border="0" class="BTABLE2">
 			<c:choose>
@@ -32,17 +33,19 @@ function read(bookid){
 				<c:otherwise>
 					<tr>
 						<c:forEach var="dto" items="${list}" varStatus="Status">
-							<c:if test="${Status.index % 5 eq 0 }">
-								<tr></tr>
-							</c:if>
+							
 							<td width="230" align="center">
 									<img src="${dto.bookfront_photo}" style="width: 100px;" border=0/><br>
 									<a href="javascript:read('${dto.bookid}')" class="bk3">${dto.bookname}</a><br> 
 									<span class="author">${dto.writer}|${dto.publisher}<br> </span>
 									<span class="br2010_p"><s><fmt:formatNumber value="${dto.cur_price}" pattern="#,###" />원</s> | 
-									<fmt:formatNumber value="${dto.sale_price}" pattern="#,###" />원
+									<fmt:formatNumber value="${dto.sale_price}" pattern="#,###" />원<br>
+									<span class="author">${(Status.index +1)}</span>
 								
 							</td>
+							<c:if test="${(Status.index+1) % 5 eq 0 }">
+								</tr><tr>
+							</c:if>
 						</c:forEach>
 					</tr>
 				</c:otherwise>
