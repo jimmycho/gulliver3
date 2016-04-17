@@ -32,27 +32,33 @@
   function send(){ 
     // Checkbox 체크 검사 
     // 폼이름.input 태그의 주어진 이름.속성 
-    
-    if(document.frm.isOrder.checked == false){ 
-      alert('주문항목에 체크를 하여 주세요'); 
-      return false; // 서브밋 중지 
-    }else{ 
-      return true;  // 서브밋 진행 
-    } 
+    var count=0;
+    if(document.frm.isOrder.length==undefined)
+    {
+    	if(document.frm.isOrder.checked==true){
+    		count++;
+    	}
+    }
+    else
+    {
+    for(i=0;i<document.frm.isOrder.length;i++)
+    	{
+    	if(document.frm.isOrder[i].checked==true)
+    		{
+    		count++;
+    		}
+    	}
+    }
+    if(count > 0)
+     { 
+   		//alert("count="+count+"1개이상체크하셨군요");
+	    return true; // 서브밋 중지 
+     }else{ 
+    	alert("한 개이상 주문 선택 하셔야합니다");
+      	return false;  // 서브밋 진행 
+     }
   } 
 </script>
-
-<!-- 
-<style type="text/css">
-TH {
-	border-color: #AAAAAA; /* 테이블 외곽선 색깔 */
-	border-width: 1px; /* 테이블 외곽선 두께 */
-	border-style: solid; /* 테이블 외곽선 스타일 */
-	color: black; /* 글자 색 */
-	background-color: #FFD549; /* 배경 색 */
-	padding: 5px; /* 셀 내부 간격 */
-}
-</style> -->
 
 </head>
 <body>
@@ -94,7 +100,7 @@ TH {
 				<input type="button" onclick="location.href='delete?cartno=${dto.cartno}'" value="삭제">
 				</td>
 				<td align="center">
-				<input style="" name="isOrder" type="checkbox" value="${dto.cartno }" />
+				<input style="" name="isOrder" type="checkbox" value="${dto.cartno }" onclick="send();"/>
 				</td>
 			</tr>
 		
@@ -105,7 +111,8 @@ TH {
 				<td colspan="7" style="text-align: right;">
 					총 상품 가격: ${totalPrice }원<br>
 					총 상품 수량: 총 ${totalCart_cnt}권<br>
-					<div align="right"><input type="submit" style="" value="   주   문   하   기   " class="BBUTTON"></div>
+					<div align="right">
+				<input type="submit" style="" value="   주   문   하   기   " class="BBUTTON"></div>
 				</td>  
 					
 			</tr>
