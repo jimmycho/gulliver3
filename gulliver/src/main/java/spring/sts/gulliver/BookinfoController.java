@@ -276,7 +276,7 @@ public class BookinfoController {
 	@RequestMapping("/bookinfo/mainList")
 	public String mainList(HttpServletRequest request) {
 		
-		System.out.println("/bookinfo/mainList호출222");
+		System.out.println("/bookinfo/mainList호출");
 		// 검색 부분
 		String col = Utility.checkNull(request.getParameter("col_h"));
 		String word = Utility.checkNull(request.getParameter("word_h"));
@@ -307,10 +307,17 @@ public class BookinfoController {
 		
 		
 		// 글의 총 갯수를 구한다
-		System.out.println("Col: "+col+"word: "+word);
+		
 		int total = dao.total(col, word);
+		System.out.println("col: "+col+", word:"+word+", 갯수:"+total );
 
 		List<BookinfoDTO> list = dao.mainList(map);
+		System.out.println("검색갯수:"+list.size());
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("===");
+			System.out.println(list.get(i).getBookname());
+		}
+		
 
 		String paging = new Paging().paging5(total, nowPage, recordPerPage, col, word);
 

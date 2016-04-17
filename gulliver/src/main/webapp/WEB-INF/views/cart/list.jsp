@@ -27,6 +27,20 @@
 	  
   }
 </script>
+<script language="javascript"> 
+  // 자바스크립트는 리턴 타입이 없습니다. 
+  function send(){ 
+    // Checkbox 체크 검사 
+    // 폼이름.input 태그의 주어진 이름.속성 
+    
+    if(document.frm.isOrder.checked == false){ 
+      alert('주문항목에 체크를 하여 주세요'); 
+      return false; // 서브밋 중지 
+    }else{ 
+      return true;  // 서브밋 진행 
+    } 
+  } 
+</script>
 
 <!-- 
 <style type="text/css">
@@ -43,8 +57,8 @@ TH {
 </head>
 <body>
 <center>
-<%-- <div align="center" style="font-size: xx-large;"><c:out value="${list[0].name}"/>  님 장바구니 목록 </div> --%>
-<form action="../order/create" method="get" name="frm">
+
+<form action="../order/create" method="get" name="frm" onsubmit="return send();">
 <div  height="23" colspan="10" align="center" >
 <img style="width: 753px; " src="../images/cartMenu2.jpg">
 </div>
@@ -69,7 +83,7 @@ TH {
 			<tr bgcolor="#ffffff">
 				<td>${dto.cartno }</td>
 				<td>${dto.input_date }</td>
-				<td>${dto.bookname }</td>
+				<td>${dto.bookname}</td>
 				<td><fmt:formatNumber value="${dto.cur_price }" pattern="#,###"/></td>
 				<td align="right">
 				<input id="${status.index }" style="border:none;  ;" size="1"type="text" 

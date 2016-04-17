@@ -15,7 +15,7 @@
 	          FROM T_BOOKINFO  
 		          <where>
 					<if test="word != null">
-						<![CDATA[BOOK_CATE_CD >= #{col} AND BOOK_CATE_CD < #{col} + 2000 AND bookname LIKE '%'|| #{word} ||'%' ]]>
+						<![CDATA[BOOK_CATE_CD >= #{col} AND BOOK_CATE_CD < #{col} + 1000 AND bookname LIKE '%'|| #{word} ||'%' ]]>
 					</if>
 
 		          </where>
@@ -144,21 +144,20 @@ UPDATE T_BOOKINFO SET
 	FROM T_BOOKINFO
 	<where>
 		<choose>
-			<when test="col == 'title'">
-				WHERE bookname LIKE '%'|| #{word} ||'%'
+			<when test="col == '1000'">
+				<![CDATA[BOOK_CATE_CD >= #{col} AND BOOK_CATE_CD < #{col} + 1000 AND bookname LIKE '%'|| #{word} ||'%' ]]>
 			</when>
-			<when test="col == 'writer'">
-				WHERE writer LIKE '%'|| #{word} ||'%'
+			<when test="col == '2000'">
+				<![CDATA[BOOK_CATE_CD >= #{col} AND BOOK_CATE_CD < #{col} + 1000 AND bookname LIKE '%'|| #{word} ||'%' ]]>
 			</when>
-			<when test="col == 'isbn10'">
-				WHERE isbn10 LIKE '%'|| #{word} ||'%'
-			</when>
-			<when test="col == 'isbn13'">
-				WHERE isbn13 LIKE '%'|| #{word} ||'%'
+			<when test="col == '3000'">
+				<![CDATA[BOOK_CATE_CD >= #{col} AND BOOK_CATE_CD < #{col} + 1000 AND bookname LIKE '%'|| #{word} ||'%' ]]>
 			</when>
 		</choose>
 	 </where>
 </select>
+
+
 
 <!-- 글 읽기 -->
 <select id="read" parameterType="int" resultType="BookinfoDTO">

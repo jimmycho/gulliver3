@@ -210,7 +210,7 @@ function inputCheck(){
 		<TR>
 			<!-- <TD style="font-size: small; ">아이디</TD> -->
 			<!-- <TD><input type="text" name="userid" size="4" > </TD> -->
-			<TD><input style="height: 30px; font-size: large;" type="text" name="userid" size="9" autocomplete="off"  value='' autocapitalize="off" placeholder="ID 입력"> </TD>
+			<TD><input style="height: 30px; font-size: large;" type="text" name="userid" size="9" autocomplete="off"   autocapitalize="off" placeholder="ID 입력"> </TD>
 			<td rowspan="2">
 			<c:choose>
 					<c:when test="${c_id eq 'Y'}">

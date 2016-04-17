@@ -1,12 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@ page import="model.member.*,java.util.*,utility.*"%>
-<% 
-   String col=(String)request.getAttribute("col");
-   String word=(String)request.getAttribute("word");
-   String paging=(String)request.getAttribute("paging");
-   List<MemberDTO> list=(List)request.getAttribute("list");
-%> --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,28 +19,24 @@
 	<DIV align="center">
 		<FORM method="POST" action="./list">
 			<select name="col">
-				<option value="name"<c:if test="${col=='name'}">selected='selected'</c:if>>성명</option>
-				<option value="email"<c:if test="${col=='email'}">selected='selected'</c:if>>이메일</option>
-				<option value="userid"<c:if test="${col=='userid'}">selected='selected'</c:if>>아이디</option>
-				<option value="total" <c:if test="${col=='total'}">selected='selected'</c:if>>전체출력</option>
+				<option value="total" <c:if test="${col=='total'}">selected='selected'</c:if>>전체회원보기</option>
+				<option value="userid"<c:if test="${col=='userid'}">selected='selected'</c:if>>아이디검색</option>
+				<option value="name"<c:if test="${col=='name'}">selected='selected'</c:if>>성명검색</option>
+				<option value="email"<c:if test="${col=='email'}">selected='selected'</c:if>>이메일검색</option>
+				
+				
 			</select> 
 			<input type="text" name="word" value="${word }"> 
 			<input type="submit" value="검색" />
 		</FORM>
-		
-	</DIV>
-<%-- 	<%
-for(int i=0; i < list.size(); i++){ 
-  MemberDTO dto = list.get(i);   
-%> --%>
-<center>
+	</DIV><br>
 <c:forEach var="dto" items="${list }" >
 	<TABLE class="BTABLE" width="800px" border="0">
 		<TR>
 			<TD rowspan='3' width='120px' align="center">
 			<IMG src='${pageContext.request.contextPath}/storage/${dto.userphoto}' width='100px'></TD>
-			<TD align="center" class="BTD2" height="23">아이디</TD>
-			<TD ><A href='../../user/read?userid=${dto.userid} '>${dto.userid}</A></TD>
+			<TD align="center" class="BTD2" width='150px' height="23">아이디</TD>
+			<TD width='200px'><A href='./read?userid=${dto.userid} '>${dto.userid}</A></TD>
 			<TD align="center" class="BTD2" height="23">성명</TD>
 			<TD>${dto.name}</TD>
 		</TR>
@@ -72,6 +62,5 @@ for(int i=0; i < list.size(); i++){
 	<DIV class="bottom">
 		${paging}
 	</DIV><br>
-</center>
 </body>
 </html>

@@ -202,7 +202,8 @@ stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, inpu
 VALUES((SELECT NVL(MAX(bookid),0) + 1 AS bookid FROM T_BOOKINFO), '어린왕자의 영문법 길들이기', 10620, 'https://t1.search.daumcdn.net/thumb/R110x160/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbook%2FKOR9788982205866%3Fmoddttm=20160303063400', '세상에서 가장 쉽고 재밌는 영문법 가이드북 ≪어린 왕자의 영문법 길들이기-보급판≫. 이 책은 기존의 문법 용어나 문장 형태에 국한된 설명 대신 영어식 사고를 익힘으로써 영문법을...', 1186748605, 9791186748602, 
 10, 11800, '넥서스', '20050705', 2210, '이재웅', '', sysdate);
 
-
+INSERT INTO T_BOOKINFO(bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13,stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date)VALUES((SELECT NVL(MAX(bookid),0) + 1 AS bookid FROM T_BOOKINFO),'도올의 <b>중국 일기</b>. 4',17100,'https://t1.search.daumcdn.net/thumb/R110x160/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbook%2FKOR9788982644542%3Fmoddttm=20160417063017','도올 김용옥의 새로운 지적 모험 『도올의 중국 일기』는 한국을 대표하는 사상가인 도올 김용옥이 한 학기 동안 중국 연변자치주의 문화적 센터인 연변대학에서 객좌교수로서 강의를...',8982644547,9788982644542,30,19000,'통나무','20151124',1101,'김용옥','', sysdate);
+ INSERT INTO T_BOOKINFO(bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13,stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date)VALUES((SELECT NVL(MAX(bookid),0) + 1 AS bookid FROM T_BOOKINFO),'[비밀독서단2] 국가론 (돋을새김 푸른책장 시리즈 6...',9000,'https://t1.search.daumcdn.net/thumb/R110x160/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbook%2FKOR9788961671729%3Fmoddttm=20160417061619','국가 혹은 정의에 관한 철학적 향연! 청소년과 철학입문자들을 위해 이해하기 쉽도록 정리하고 구성한 「돋을새김 푸른책장 시리즈」 여섯 번째 이야기 『국가론』. 우리에게 가장...',8961671723,9788961671729,30,10000,'돋을새김도','20141230',1101,'플라톤','', sysdate);
 
 --T_BOOKINFO 수정
 UPDATE T_BOOKINFO SET

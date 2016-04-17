@@ -254,6 +254,19 @@ public class UserController {
 		return "/user/read";
 	}//read method
 	
+	@RequestMapping(value="/adm/user/read",method=RequestMethod.GET)
+	public String admin_read(String userid, Model model, HttpSession session){
+		/*if(userid==null){
+	        userid = (String)session.getAttribute("userid");
+	    }*/
+
+		UserDTO dto = dao.read(userid);
+		System.out.println("dto.name"+dto.getName());
+	    model.addAttribute("dto",dto);
+		
+		return "/admin/user/read";
+	}//read method
+	
 	@RequestMapping("/adm/user/list")
 	public String UserList(HttpServletRequest request){
 		//1.model사용
@@ -323,10 +336,6 @@ public class UserController {
 	@RequestMapping(value="/user/update", method=RequestMethod.GET)
 	public String update(String id, HttpSession session, Model model){//model에 저장해서 view 페이지로 넘긴다
 		
-		/*if(id==null){
-			id=(String) session.getAttribute("id");
-		}*/
-		
 		UserDTO dto=dao.read(id);
 		model.addAttribute("dto",dto);
 		return "/user/update";
@@ -334,7 +343,6 @@ public class UserController {
 	
 	@RequestMapping(value="/user/update", method=RequestMethod.POST)
 	public String update(UserDTO dto,HttpServletRequest request, HttpServletResponse response){//model에 저장해서 view 페이지로 넘긴다
-		
 		int cnt=dao.update(dto);
 		System.out.println(dto.getPhone());
 		if(cnt==1){
@@ -343,6 +351,28 @@ public class UserController {
 					return "/user/error";
 				}
 		}
+	
+	@RequestMapping(value="/adm/user/update", method=RequestMethod.GET)
+	public String admin_update(String userid, HttpSession session, Model model){//model에 저장해서 view 페이지로 넘긴다
+		UserDTO dto=dao.read(userid);
+		model.addAttribute("dto",dto);
+		return "/admin/user/update";
+	}
+	
+	@RequestMapping(value="/adm/user/update", method=RequestMethod.POST)
+	public String admin_update(UserDTO dto,HttpServletRequest request, HttpServletResponse response){//model에 저장해서 view 페이지로 넘긴다
+		
+		int cnt=dao.update(dto);
+		System.out.println(dto.getPhone());
+		if(cnt==1){
+			request.setAttribute("userid", dto.getUserid());
+			return "redirect:/adm/user/list";
+		}else{
+			return "/error";
+		}
+	}
+	
+	
 	@RequestMapping(value="/user/updateFile", method=RequestMethod.POST)
 	public String updateFile(String userid, String userphoto, MultipartFile fname,HttpServletRequest request){
 		
