@@ -1,22 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%-- <%@ page import="model.member.*,utility.*"%> --%>
-
-<% 
-/*    MemberDTO dto = (MemberDTO)request.getAttribute("dto");
-   String job = dto.getJob(); */
-%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
-<style type="text/css">
-* {
-	font-family: gulim;
-	font-size: 14px;
-}
-</style>
+
 <link href="../css/style1.css" rel="Stylesheet" type="text/css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"> 
@@ -105,52 +94,57 @@ function sample6_execDaumPostcode() {
 }
 </script>
 </head>
+
 <body leftmargin="0" topmargin="0">
-	<DIV class="title">정보수정</DIV>
+<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/userInfo.jpg">
 <FORM name='frm' method='POST' action='./update'
 	onsubmit="return inputCheck()">
 	<input type="hidden" name="userid" value="${dto.userid}" />
-	<TABLE class='table'>
-		<tr>
-			<td width="20%">*아이디</td>
-			<td colspan='2'>${dto.userid}</td>
-		</tr>
-		<tr>
-			<td>*이름</td>
-			<td><input type="text" name="name" size="15"
-				value='${dto.name}'></td>
-		</tr>
-		<tr>
-			<td>전화번호</td>
-			<td><input type="text" name="callphone" value="${dto.callphone}"></td>
-		</tr>
-		<tr>
-			<td>이메일</td>
-			<td>
-			<input type="text" name="email" size="27" value='${dto.email}'> 
-			<input type="button" value="Email 중복확인" onclick="javascript:emailCheck(document.frm.email.value)">
-			</td>
-		</tr>
-		<tr>
-			<td align="center" class="BTD2" height="23" width="100px">우편번호</td>
-			<td style="background-color: #FAFAFA">
-				<input type="text" id="sample6_postcode" name="zipcode" size="10"	value='${dto.zipcode}'> 
-				<input type="button" value="우편번호찾기" onclick="sample6_execDaumPostcode()">
-			</td>
-		</tr>
-		<tr>
-			<td>주소</td>
-			<td>
-			 <input type="text" id="sample6_address" name="address1" size="45" value='${dto.address1}'><br> 
-			 <input type="text" id="sample6_address2" name="address2" size="45" value='${dto.address2}'>
-			</td>
-		</tr>
+	<TABLE class="BTABLE" style="width:800px;">
+	<tr>
+	<td class="BTD" height="20" colspan="2" align="center">
+		<strong>${dto.name}회원님의 정보입니다</strong>
+	</td>
+	</tr>
+	<tr>
+		<td height="20" class="BTD2">*아이디</td>
+		<td colspan='2'>${dto.userid}</td>
+	</tr>
+	<tr>
+		<td height="20" class="BTD2">*이름</td>
+		<td><input type="text" name="name" size="15" value='${dto.name}'></td>
+	</tr>
+	<tr>
+		<td height="20" class="BTD2">전화번호</td>
+		<td><input type="text" name="callphone" value="${dto.callphone}"></td>
+	</tr>
+	<tr>
+		<td height="20" class="BTD2">이메일</td>
+		<td>
+		<input type="text" name="email" size="27" value='${dto.email}'> 
+		<input class="BBUTTON" type="button" value="Email 중복확인" onclick="javascript:emailCheck(document.frm.email.value)">
+		</td>
+	</tr>
+	<tr>
+		<td height="20" class="BTD2">우편번호</td>
+		<td style="background-color: #FAFAFA">
+			<input type="text" id="sample6_postcode" name="zipcode" size="10"	value='${dto.zipcode}'> 
+			<input type="button" value="우편번호찾기" onclick="sample6_execDaumPostcode()" class="BBUTTON">
+		</td>
+	</tr>
+	<tr>
+		<td height="20" class="BTD2">주소</td>
+		<td>
+		 <input type="text" id="sample6_address" name="address1" size="45" value='${dto.address1}'><br> 
+		 <input type="text" id="sample6_address2" name="address2" size="45" value='${dto.address2}'>
+		</td>
+	</tr>
 		
 	</TABLE>
 
 	<DIV class='bottom'>
-		<input type='submit' value='정보수정'> <input type='button'
-			value='취소' onclick="history.back()">
+		<input type='submit' value='정보수정' class="BBUTTON"> 
+		<input type='button' value='취소' onclick="history.back()" class="BBUTTON">
 	</DIV>
 </FORM>
 

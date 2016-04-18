@@ -124,7 +124,7 @@ VALUES((SELECT NVL(MAX(bookid),0) + 1 AS bookid FROM T_BOOKINFO),
 '8931001991','9788931001990',
 30,12000,'문예출판사','20080710','하퍼 리','김욱동', sysdate);
 
-
+INSERT INTO T_BOOKINFO(bookid, bookname, sale_price, bookfront_photo, book_explain, ISBN10, ISBN13,stock_cnt, cur_price, publisher, pub_date, BOOK_CATE_CD, writer, traductor, input_date)VALUES((SELECT NVL(MAX(bookid),0) + 1 AS bookid FROM T_BOOKINFO),'<b>법륜</b> 스님의 행복',12600,'https://t1.search.daumcdn.net/thumb/R110x160/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbook%2FKOR9788954637169%3Fmoddttm=20160417063017','당신은 행복해질 권리가 있다 법륜 스님은 지난 30년 동안 우리나라 전국방방곡곡은 물론 세계 115개 도시의 강연장과 길 위에서 수많은 사람들을 만나왔다. 그들은 법륜 스님에게...',8954637167,9788954637169,30,14000,'나무의마음','20160125',1101,'법륜','', sysdate);
 
 
 --한국소설 예제

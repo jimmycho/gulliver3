@@ -34,6 +34,7 @@
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoUpdate.jsp" />
 	</definition>
 
+
 <!-- 관리자용 끝-->
 
 	<definition name="/home" extends="main">

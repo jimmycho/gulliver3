@@ -31,7 +31,20 @@ public class BookinfoController {
 	
 	//////////////// 관리자용 시작
 	
-	//관리자 책정보 삭제
+	//책정보 검색(다음 서비스)
+	@RequestMapping("/adm/bookinfo/searchBook")
+	public String adminSearchBook(){
+		
+		return "/admin/bookinfo/searchBook";
+		
+	}
+	@RequestMapping("/adm/bookinfo/tempServer")
+	public String adminTempServer(){
+		
+		return "/admin/bookinfo/tempServer";
+		
+	}
+	//	관리자 책정보 삭제
 	@RequestMapping("/adm/bookinfo/admin_bookinfoDelete")
 	public String adminDelete(int bookid){
 		

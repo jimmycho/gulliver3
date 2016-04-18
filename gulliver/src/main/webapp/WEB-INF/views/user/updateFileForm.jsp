@@ -28,7 +28,7 @@ function inputCheck(f){
 <body leftmargin="0" topmargin="0">
 <!-- *********************************************** -->
  
-<DIV class="title">사진 수정</DIV>
+<div  height="23" colspan="10" align="center" ><img style="width: 753px; " src="../images/userInfo.jpg">
  
 <FORM name='frm' 
  method='POST' 

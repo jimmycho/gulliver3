@@ -7,9 +7,9 @@
   request.setCharacterEncoding("utf-8");
   String str = request.getParameter("str");
   String pageno = request.getParameter("pageno");  
-  str = URLEncoder.encode(str,"utf-8");
+  //str = URLEncoder.encode(str,"utf-8");
   System.out.println(str); //검색어
-  String url = "http://apis.daum.net/search/book?result=3&q="+str+"&apikey=b3db9e526249b7b3d7a74a760507ac2e&output=json&pageno="+pageno;
+  String url = "http://apis.daum.net/search/book?result=10&q="+str+"&apikey=b3db9e526249b7b3d7a74a760507ac2e&output=json&pageno="+pageno;
 %>
 <c:import url= "<%=url%>" charEncoding="utf-8">
 </c:import>

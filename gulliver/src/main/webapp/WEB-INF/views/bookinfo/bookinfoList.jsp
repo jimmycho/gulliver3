@@ -40,7 +40,6 @@ function read(bookid){
 									<span class="author">${dto.writer}|${dto.publisher}<br> </span>
 									<span class="br2010_p"><s><fmt:formatNumber value="${dto.cur_price}" pattern="#,###" />원</s> | 
 									<fmt:formatNumber value="${dto.sale_price}" pattern="#,###" />원<br>
-									<span class="author">${(Status.index +1)}</span>
 								
 							</td>
 							<c:if test="${(Status.index+1) % 5 eq 0 }">
