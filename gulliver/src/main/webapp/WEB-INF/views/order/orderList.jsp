@@ -47,7 +47,7 @@ function read(orderno){
 			<c:otherwise>
 				<c:forEach var="dto" items="${list}">
 					<tr class="BTD4">
-						<td><a href="javascript:read('${dto.orderno}')">${dto.orderno}</a></td> 
+						<td><a href="javascript:read('${dto.orderno}')" style="cursor: auto;">${dto.orderno}</a></td> 
 						<td>${dto.recipient}</td> 
 						<td>${dto.order_date}</td> 
 						<td style="text-align: center;" >${dto.bookname}</td> 

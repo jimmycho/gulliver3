@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -19,38 +20,38 @@ function listB(){
 <body>
 	<br>
 	<br>
-	<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 800px;">
+	<table class="BTABLE" style="width: 800px;">
 
 		<tr>
-			<td>주문번호</td>
+			<td class="BTD2" height="20">주문번호</td>
 			<td>${dto.orderno}</td>
 		</tr>
 		<tr>
-			<td>주문상품</td>
+			<td class="BTD2" height="20">주문상품</td>
 			<td><img src="${dto.bookfront_photo}"><br>${dto.bookname}</td>
 		</tr>
 		<tr>
-			<td>수량</td>
+			<td class="BTD2" height="20">수량</td>
 			<td>${dto.order_cnt }&nbsp;권</td>
 		</tr>
 		<tr>
-			<td>주문인</td>
+			<td class="BTD2" height="20">주문인</td>
 			<td>${userdto.name}</td>
 		</tr>
 		<tr>
-			<td>수령인</td>
+			<td class="BTD2" height="20">수령인</td>
 			<td>${dto.recipient}</td>
 		</tr>
 		<tr>
-			<td>우편번호</td>
+			<td class="BTD2" height="20">우편번호</td>
 			<td>${dto.del_zipcode}</td>
 		</tr>
 		<tr>
-			<td>주소</td>
+			<td class="BTD2" height="20">주소</td>
 			<td>${dto.del_address1}</td>
 		</tr>
 		<tr>
-			<td>상세주소</td>
+			<td class="BTD2" height="20">상세주소</td>
 			<td>${dto.del_address2}</td>
 		</tr>
 <!-- 		<tr>
@@ -62,11 +63,11 @@ function listB(){
 			<td>02-123-123</td>
 		</tr> -->
 		<tr>
-			<td>배송방법</td>
+			<td class="BTD2" height="20">배송방법</td>
 			<td>${dto.del_method}</td>
 		</tr>
 		<tr>
-			<td>배달원에게 남기는말</td>
+			<td class="BTD2" height="20">배달원에게 남기는말</td>
 			<td>${dto.order_comment}</td>
 		</tr>
 	</table>
@@ -74,7 +75,7 @@ function listB(){
 	<p style="text-align: center;">
 		<input type="button" value="목록" onclick="listB()" class="BBUTTON"/>&nbsp; 
 		<input name="submit" type="submit" value="삭제" class="BBUTTON"/>&nbsp; 
-		<input type="button" value="수정" class="BBUTTON"/>
+		<!-- <input type="button" value="수정" class="BBUTTON"/> -->
 	</p>
 </body>
 </html>

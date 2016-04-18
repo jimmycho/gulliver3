@@ -3,20 +3,20 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="spring.model.bookcate.BookcateDAO,java.util.List" %>
 <%@ page import="java.net.URLDecoder" %>
-<% String root =request.getContextPath(); 
-String userid = (String)session.getAttribute("userid");
-String grade = (String)session.getAttribute("grade") ; 
+<% 	String root =request.getContextPath(); 
+	String userid = (String)session.getAttribute("userid");
+	String grade = (String)session.getAttribute("grade") ; 
 %>
 <% 
 /* 	Cookie[] cookies=request.getCookies();
 	if(cookies!=null){
 		for(int i=0;i<cookies.length;i++){
-			out.println("i:"+(i+1));
+			//out.println("i:"+(i+1));
 			if(cookies[i].getName().equals("ListHTML")) {
 				out.println(cookies[i].getName());
 			}
 	   }
-	} */
+	}  */
 %>
 <!DOCTYPE html>
 <html>
@@ -205,39 +205,39 @@ function inputCheck(){
 
 	<FORM name='frm1' method='POST' action='${pageContext.request.contextPath}/user/login'
 	onsubmit="return inputCheck()">
-		<TABLE class="LTABLE">
-		<% if(userid==null){%>
-		<TR>
-			<!-- <TD style="font-size: small; ">아이디</TD> -->
-			<!-- <TD><input type="text" name="userid" size="4" > </TD> -->
-			<TD><input style="height: 30px; font-size: large;" type="text" name="userid" size="9" autocomplete="off"   autocapitalize="off" placeholder="ID 입력"> </TD>
-			<td rowspan="2">
-			<c:choose>
-					<c:when test="${c_id eq 'Y'}">
-						<div style="font-size: x-small;">ID 저장</div>
-						<input type='checkbox' name='c_id' value='Y' checked='checked'>
-					</c:when>
-					<c:otherwise>
-						<div style="font-size: x-small;">
-							ID 저장 <input type='checkbox' name='c_id' value='Y'>
-						</div>
-					</c:otherwise>
-				</c:choose>
-			<input type='submit' value='로그인' style=" height:60px; width: 60px;">
-			</td>
-		</TR>
-		<TR>
-			<!-- <TD style="font-size: small; ">비밀번호</TD> -->
-			<!-- <TD><input type="password" name="passwd" size="4"></TD> -->
-			<TD><input style="height: 30px; font-size: large;" type="password" name="passwd" size="9" placeholder="비밀번호입력"></TD>
-		</TR>
+	<TABLE class="LTABLE">
+	<% if(userid==null){%>
+	<TR>
+		<!-- <TD style="font-size: small; ">아이디</TD> -->
+		<!-- <TD><input type="text" name="userid" size="4" > </TD> -->
+		<TD><input style="height: 30px; font-size: small;" type="text" name="userid" size="9" autocomplete="off"   autocapitalize="off" placeholder="ID 입력"> </TD>
+		<td rowspan="2">
+		<c:choose>
+				<c:when test="${c_id eq 'Y'}">
+					<div style="font-size: x-small;">ID 저장</div>
+					<input type='checkbox' name='c_id' value='Y' checked='checked'>
+				</c:when>
+				<c:otherwise>
+					<div style="font-size: x-small;">
+						ID 저장 <input type='checkbox' name='c_id' value='Y'>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		<input type='submit' value='로그인' style=" height:60px; width: 60px;">
+		</td>
+	</TR>
+	<TR>
+		<!-- <TD style="font-size: small; ">비밀번호</TD> -->
+		<!-- <TD><input type="password" name="passwd" size="4"></TD> -->
+		<TD><input style="height: 30px; font-size: small;" type="password" name="passwd" size="9" placeholder="비밀번호입력"></TD>
+	</TR>
 
 
-		<%} else {%>
-		<td align="center" style="font-size: small; "><div style="text-align: center;">${userid }님 환영합니다</div></td>
-		<td><input type="button" name="logout" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/user/logout'"></td>
-		<%} %>
-		</TABLE>
+	<%} else {%>
+	<td align="center" style="font-size: small; "><div style="text-align: center;">${userid }님 환영합니다</div></td>
+	<td><input type="button" name="logout" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/user/logout'"></td>
+	<%} %>
+	</TABLE>
 		  <input type="hidden" name="faqno" value="${faqno}"> <!-- setter로 저장된 값 -->
 		  <input type="hidden" name="nowPage" value="${nowPage}"> <!-- setter로 저장된 값 -->
 	</FORM>

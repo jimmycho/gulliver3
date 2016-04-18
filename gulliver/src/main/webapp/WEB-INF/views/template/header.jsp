@@ -30,13 +30,6 @@
 <td>
 	<form action="<%=root%>/bookinfo/mainList"
 		style="text-align: center; padding-bottom: 5px; padding-right: 10px;">
-<!-- 		<select name="col" style="font-size: large;"> -->
-<%-- 			<c:forEach var="dto" items="${topCateList}"> --%>
-<!-- 				<option -->
-<%-- 					<c:if test="${col == dto.BOOK_CATE_CD }">selected='selected'</c:if> --%>
-<%-- 					value="${dto.BOOK_CATE_CD}">${dto.BOOK_CATE_NAME}</option> --%>
-<%-- 			</c:forEach> --%>
-<!-- 		</select>  -->
 		<select name="col_h" style="font-size: large;">
 			<option value="1000">국내도서</option>
 			<option value="2000">영미도서</option>
@@ -52,17 +45,14 @@
 				if (userid == null) {
 			%>
 			<a href="<%=root%>/user/agree">회원가입&nbsp;&nbsp;</a>
-			<!-- <a href="#">ID/PW찾기&nbsp; &nbsp; </a> -->
 			<%
 				} else {
 					if (grade.equals("M")) {
 			%>
-			<%-- <a href="<%=root%>/user/logout">로그아웃</a> /  --%>
 			<a href="<%=root%>/user/MyPage">마이페이지&nbsp;</a>
 			<%
 				} else if (grade.equals("A")) {
 			%>
-			<%-- <a href="<%=root%>/user/logout">로그아웃</a> /  --%>
 			<a href="<%=root%>/adm/adminPage">관리자메뉴</a>
 			<%
 				}

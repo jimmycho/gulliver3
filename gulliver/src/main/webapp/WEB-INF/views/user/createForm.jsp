@@ -6,16 +6,6 @@
 <head> 
 <meta charset="UTF-8"> 
 <title></title> 
-<!-- <style type="text/css">
-td {
-	border-color: #AAAAAA; /* 테이블 외곽선 색깔 */
-	border-width: 1px; /* 테이블 외곽선 두께 */
-	border-style: solid; /* 테이블 외곽선 스타일 */
-	color: black; /* 글자 색 */
-	background-color: #FFD549; /* 배경 색 */
-	padding: 5px; /* 셀 내부 간격 */
-}
-</style> -->
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"> 
@@ -65,10 +55,6 @@ td {
       return false; 
     } 
  
- 
-
- 
-   
   if(f.callphone.value == ""){ 
       alert("핸드폰번호를 입력해 주세요"); 
       f.callphone.focus(); 
@@ -86,14 +72,12 @@ td {
       f.zipcode.focus(); 
       return false; 
     }
-  
   // 우편번호 검색 
   function zipCheck(){ 
     url="zipCheck"; 
     wr = window.open(url,"우편번호 검색","width=550 ,height=450"); 
     wr.moveTo((window.screen.width-550)/2, (window.screen.height - 450)/2);// x, y 
   } 
- 
   
 	if(f.userphotoMF.value==''){
 		alert("파일을 선택하세요");
@@ -109,8 +93,6 @@ td {
 	   }
 	}
   }
-
-
 
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -283,7 +265,7 @@ function emailCheck(email){
 </html> 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=	a672872a4be165f31fc21dc3b98bd97d&libraries=services"></script>
-<script>
+<script>											
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표

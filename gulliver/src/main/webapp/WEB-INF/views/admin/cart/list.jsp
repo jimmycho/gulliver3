@@ -8,8 +8,8 @@
 <link href="../css/style1.css" rel="stylesheet" type="text/css">
 <title></title>
 <script type="text/javascript">
-function read(faqno){
-	var url = "read?faqno="+faqno;
+function read(cartno){
+	var url = "read?cartno="+cartno;
 	url = url +"&col=${col}";
 	url = url +"&word=${word}";
 	url = url +"&nowPage=${nowPage}";	
@@ -56,7 +56,7 @@ function read(faqno){
 <c:otherwise>
 	<c:forEach var="dto" items="${list}" >
 		<TR>
-			<TD valign="top"><a href="javascript:read('${dto.cartno }')">${dto.cartno }</TD>
+			<TD valign="top">${dto.cartno }</TD>
 			<TD valign="top">${dto.userid }</TD>
 			<TD valign="top"> 
           		 ${dto.bookname }</a>          		
