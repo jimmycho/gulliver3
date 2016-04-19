@@ -21,6 +21,13 @@
 		<put-attribute name="title" value="책등록"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate.jsp" />
 	</definition>
+	
+	<definition name="/adm/bookinfo/admin_bookinfoCreate2" extends="main2">
+		<put-attribute name="title" value="책등록"></put-attribute>
+		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoCreate2.jsp" />
+	</definition>
+	
+	
 	<definition name="/adm/bookinfo/admin_bookinfoList" extends="main2">
 		<put-attribute name="title" value="온라인서점 걸리버"></put-attribute>
 		<put-attribute name="body"	value="/WEB-INF/views/admin/bookinfo/admin_bookinfoList.jsp" />

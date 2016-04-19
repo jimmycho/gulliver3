@@ -22,66 +22,62 @@ function daumSearchBook(){
 
 </head>
 <body>
-<br>
-	<div style="text-align: center;">
-		<h3> DAUM 책검색 API서비스</h3>
-		<input type="button" value="도서검색" onclick="daumSearchBook()" class="BBUTTON"/> 
-	</div>
-	
-	<br>
+<div align="center">
+서적 신규 등록 (직접입력, DAUM API서비스
+		<input type="button" value="도서검색" onclick="daumSearchBook()" class="BBUTTON"/> )</div>
 	<form action="./admin_bookinfoCreate" method="post">
 		<table align="center" border="1" style="width: 600px" class="BTABLE">
 			<tr>
 				<td align="center" class="BTD2">책이름</td>
-				<td><input name="bookname" size="30" type="text" /></td>
+				<td><input name="bookname" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">책표지사진명</td>
-				<td><input name="bookfront_photo" size="30" type="text" /></td>
+				<td><input name="bookfront_photo" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">정가</td>
-				<td><input name="cur_price" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
+				<td><input name="cur_price" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">할인가</td>
-				<td><input name="sale_price" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
+				<td><input name="sale_price" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">수량</td>
-				<td><input name="stock_cnt" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
+				<td><input name="stock_cnt" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">출판사</td>
-				<td><input name="publisher" size="30" type="text" /></td>
+				<td><input name="publisher" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2" >출판일시</td>
-				<td><input name="pub_date" size="30" type="text" /></td>
+				<td><input name="pub_date" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">저자</td>
-				<td><input name="writer" size="30" type="text" /></td>
+				<td><input name="writer" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">번역자</td>
-				<td><input name="traductor" size="30" type="text" /></td>
+				<td><input name="traductor" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">ISBN10</td>
-				<td><input name="ISBN10" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
+				<td><input name="ISBN10" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">ISBN13</td>
-				<td><input name="ISBN13" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
+				<td><input name="ISBN13" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">책 분류코드</td>
-				<td><input name="BOOK_CATE_CD" size="30" type="text" onkeydown="return showKeyCode(event)"/></td>
+				<td><input name="BOOK_CATE_CD" size="50" type="text" /></td>
 			</tr>
 			<tr>
 				<td align="center" class="BTD2">책설명</td>
-				<td><input name="book_explain" size="30" type="text" /></td>
+				<td><input name="book_explain" size="50" style="height: 80px;"  type="text" /></td>
 			</tr>
 		</table>
 	

@@ -75,6 +75,12 @@ public class BookinfoController {
 		return "/adm/bookinfo/admin_bookinfoCreate";
 	}
 	
+	//Daum책검색 API를 활용하여 책정보 검색 및 등록
+	@RequestMapping(value="/adm/bookinfo/admin_bookinfoCreate2", method = RequestMethod.GET)
+	public String adminCreate2(){
+		return "/adm/bookinfo/admin_bookinfoCreate2";
+	}
+	
 	
 	//관리자 책정보 읽기
 	@RequestMapping("/adm/bookinfo/admin_bookinfoRead")

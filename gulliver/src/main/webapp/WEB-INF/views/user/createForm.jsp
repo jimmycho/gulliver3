@@ -165,9 +165,7 @@ function emailCheck(email){
 </script>
  <link href="../css/style1.css" rel="stylesheet" type="text/css">
 </head> 
-<!-- *********************************************** -->
 <body leftmargin="0" topmargin="0">
-<!-- *********************************************** -->
  
 <img style="width: 753px; " src="../images/0012-1.jpg">
  
@@ -234,7 +232,7 @@ function emailCheck(email){
 <tr>
 	<td align="center" class="BTD2" height="23" width="100px">우편번호</td>
 	<td style="background-color: #FAFAFA">
-		<input type="text" id="sample5_postcode" name="zipcode" placeholder="우편번호" value="우편번호"> 
+		<input type="text" id="sample5_postcode" name="zipcode" placeholder="우편번호" > 
 		<input type="button" onclick="sample5_execDaumPostcode()" value="우편번호 찾기" class="BBUTTON"><br>
 	</td>
 </tr>

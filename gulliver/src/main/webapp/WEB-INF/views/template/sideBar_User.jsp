@@ -50,7 +50,8 @@
 					<li><a href="<%=root%>/adm/user/list" class="bk3">회원관리</a></li>
 					<li><a href="<%=root%>/adm/cart/list" class="bk3">장바구니관리</a></li>
 					<li><a href="<%=root%>/order/list" class="bk3">전체주문조회</a></li>
-					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoCreate" class="bk3">서적등록</a></li>
+					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoCreate" class="bk3">서적 직접등록</a></li>
+					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoCreate2" class="bk3">DAUM책검색등록</a></li>
 					<li><a href="<%=root%>/adm/bookinfo/admin_bookinfoList" class="bk3">서적관리</a></li>
 				</ul>
 				</li>
