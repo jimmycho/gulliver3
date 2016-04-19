@@ -15,7 +15,7 @@ function daumSearchBook(){
 	
 	url="./searchBook";
 	//alert("url:"+url);
-	wr=window.open(url,"DAUM 책 검색서비스","width=800,height=800");
+	wr=window.open(url,"DAUM 책 검색서비스","width=800,height=600");
 	wr.moveTo((window.screen.width-500)/2, (window.screen.height-400)/2);// x, y 
 }
 </script>
@@ -24,22 +24,9 @@ function daumSearchBook(){
 <body>
 <br>
 	<div style="text-align: center;">
-		<div > 다음 책검색API서비스
+		<h3> DAUM 책검색 API서비스</h3>
 		<input type="button" value="도서검색" onclick="daumSearchBook()" class="BBUTTON"/> 
 	</div>
-	<!-- <div id="searchDiv">
-	도서검색
-		<input type="text" id="searchStr" name="searchStr" onkeydown="if(event.keyCode == 13)searchBook(0);" /> enter키를 누르면  검색
-		<input type="button" value="도서검색" onclick="searchBook(0);" /> searchBook에 0을 넘겨준다
-	</div>
-	<br>
-	<table id="reDiv"></table>
-	<div id="reDiv" style=""></div>
-	<div id="pageDiv">
-		<a href="javascript:searchBook(-1);">이전</a> 
-		<a href="javascript:searchBook(1);">이후</a>
-	</div>
-	</div> -->
 	
 	<br>
 	<form action="./admin_bookinfoCreate" method="post">
@@ -69,7 +56,7 @@ function daumSearchBook(){
 				<td><input name="publisher" size="30" type="text" /></td>
 			</tr>
 			<tr>
-				<td align="center" class="BTD2">출판일시</td>
+				<td align="center" class="BTD2" >출판일시</td>
 				<td><input name="pub_date" size="30" type="text" /></td>
 			</tr>
 			<tr>
