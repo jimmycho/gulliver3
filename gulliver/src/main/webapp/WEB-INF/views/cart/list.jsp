@@ -90,7 +90,7 @@
 				<td>${dto.cartno }</td>
 				<td>${dto.input_date }</td>
 				<td>${dto.bookname}</td>
-				<td><fmt:formatNumber value="${dto.cur_price }" pattern="#,###"/></td>
+				<td><fmt:formatNumber value="${dto.sale_price }" pattern="#,###"/></td>
 				<td align="right">
 				<input id="${status.index }" style="border:none;  ;" size="1"type="text" 
 				value="${dto.cart_cnt }" readonly="readonly">권

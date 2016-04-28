@@ -10,6 +10,14 @@ public class CartDTO {
 	private int bookid;
 	private String bookname;
 	private int cur_price;
+	
+	public int getSale_price() {
+		return sale_price;
+	}
+	public void setSale_price(int sale_price) {
+		this.sale_price = sale_price;
+	}
+	private int sale_price;
 	private String name;
 	
 	public String getName() {

@@ -17,39 +17,32 @@ function use(){
 <head> 
 <meta charset="UTF-8"> 
 <title></title> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style>
- 
-<link href='../css/style.css' rel='Stylesheet' type='text/css'> 
+
+<link href='../css/style1.css' rel='Stylesheet' type='text/css'> 
  
 </head> 
 <body> 
  
-<DIV class='title'>아이디 중복 확인</DIV> 
-  
-<DIV class='content'>
-  입력된 ID: <%=userid %><br><br>
+
+<DIV class='BTEXT'>
+  입력하신 아이디는 <%=userid %> 이며<br>
   
   <%
   if (cnt == 1){
     out.println("중복되어 사용할 수 없습니다.<br><br>");
   }else{
-    out.println("중복 아님, 사용 가능합니니다.<br><br>");
+    out.println("사용이 가능한 아이디입니다.<br><br>");
   }
   %>
  
 </DIV>
  
-<DIV class="bottom"> 
+<DIV align="center"> 
 <%if(cnt!=1){ %>
-  <input type='button' value='사용' onclick='use()'>
+  <input type='button' value='사용' onclick='use()' class="BBUTTON">
 <%} %>
-  <input type='button' value='다시시도' onclick="location.href='idForm'">
-  <input type='button' value='닫기' onclick="window.close();">
+  <input type='button' value='다시시도' onclick="location.href='idForm'" class="BBUTTON">
+  <input type='button' value='닫기' onclick="window.close();" class="BBUTTON">
  
 </DIV> 
  

@@ -146,7 +146,7 @@ function idCheck(userid){
     f.userid.focus(); // 커서 이동 
   }else{ 
     url="./checkId?userid=" + userid;  // GET 
-    wr = window.open(url,"아이디검색","width=500,height=400"); 
+    wr = window.open(url,"아이디검색","width=300,height=200"); 
     wr.moveTo((window.screen.width-500)/2, (window.screen.height-400)/2);// x, y 
   } 
 } 
@@ -158,7 +158,7 @@ function emailCheck(email){
     f.email.focus(); 
   }else{ 
     url="./checkEmail?email=" + email;  // GET 
-    wr = window.open(url,"이메일검색","width=500,height=400"); 
+    wr = window.open(url,"이메일검색","width=300,height=200"); 
     wr.moveTo((window.screen.width-500)/2, (window.screen.height - 400)/2);// x, y 
   } 
 } 

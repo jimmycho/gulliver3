@@ -13,7 +13,7 @@ int cnt=(Integer)request.getAttribute("cnt");
 
 </style>
 
-<link href='../css/style.css' rel='Stylesheet' type='text/css'>
+<link href='../css/style1.css' rel='Stylesheet' type='text/css'>
 <script type="text/javascript">
 function use(){
 	opener.frm.email.value='<%=email %>';
@@ -24,29 +24,21 @@ function use(){
 </head>
 <body>
 
-	<DIV class='title'>Email 중복 확인</DIV>
-
-	<DIV class='content'>
-		입력된 Email:
-		<%=email %><br>
-		<br>
-
-		<%
+	<DIV class='BTEXT' align="center">
+		입력된 주소는 <%=email %> 이며,<br>
+	<%
   if (cnt == 1){
     out.println("중복되어 사용할 수 없습니다.<br>");
   }else{
-    out.println("중복 아님, 사용 가능합니니다.<br>");
+    out.println("사용 가능 합니니다.");
   }
-  %>
-
-	</DIV>
-
-	<DIV class="bottom">
+  	%>
+<br><br>
 	<%if (cnt!=1){ %>
-		<input type='button' value='사용' onclick='use()'>
+		<input type='button' value='사용' onclick='use()' class="BBUTTON">
 	<%} %> 
-		<input type='button' value='다시시도' onclick="location.href='emailForm'">
-		<input type='button' value='닫기' onclick="window.close();">
+		<input type='button' value='다시시도' onclick="location.href='emailForm'" class="BBUTTON">
+		<input type='button' value='닫기' onclick="window.close();" class="BBUTTON">
 	</DIV>
 
 </body>

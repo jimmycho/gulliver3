@@ -33,7 +33,22 @@
 					<li><a  href="<%=root %>/user/read" class="bk3">나의정보</a></li>
 					<li><a  href="<%=root %>/cart/list" class="bk3">장바구니보기</a></li>
 					<li><a  href="<%=root%>/order/list" class="bk3">주문이력</a></li>
-				</ul>
+				</ul><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 			</ul>
 			</div>
 			<%} %>

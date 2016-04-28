@@ -36,10 +36,10 @@ function emailCheck(email){
     window.alert("이메일을 입력해 주세요."); 
     f.email.focus(); 
   }else{ 
-    url="emailCheck?email=" + email;  // GET 
+    url="./checkEmail?email=" + email;  // GET 
     // http://localhost:8000/jsp_member/member/id_proc.jsp?id=user1 
-    wr = window.open(url,"이메일검색","width=450,height=400"); 
-    wr.moveTo((window.screen.width-450)/2, (window.screen.height - 400)/2);// x, y 
+    wr = window.open(url,"이메일검색","width=300,height=200"); 
+    wr.moveTo((window.screen.width-500)/2, (window.screen.height - 400)/2);// x, y 
   } 
 } 
  

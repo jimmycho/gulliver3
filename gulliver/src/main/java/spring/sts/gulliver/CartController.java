@@ -105,7 +105,7 @@ public class CartController {
 			CartDTO dto =(CartDTO) list.get(i);
 			//price.add(String.format("%,d", dto.getCur_price()));
 			totalCart_cnt+=dto.getCart_cnt();
-			totalPrice +=dto.getCur_price()*dto.getCart_cnt();
+			totalPrice +=dto.getSale_price()*dto.getCart_cnt();
 			//Object priceStr=price.get(i);
 			//String priceS=(String)priceStr;
 			//System.out.println("가격:"+priceS);

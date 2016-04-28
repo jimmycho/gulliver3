@@ -11,10 +11,10 @@
 
 <!--2. Read (2-1) 회원개인의 장바구니 내용 보여주기 -->
  <select id="cartOfUser" parameterType="String" resultType="CartDTO">
-SELECT cartno, userid, name, bookid, bookname, input_date, cur_price, cart_cnt , order_whether
+SELECT cartno, userid, name, bookid, bookname, input_date, sale_price, cart_cnt , order_whether
 from
 (
-	SELECT C.cartno, U.userid, U.name, B.bookid,B.bookname, C.input_date, B.cur_price, C.cart_cnt, C.order_whether
+	SELECT C.cartno, U.userid, U.name, B.bookid,B.bookname, C.input_date, B.sale_price, C.cart_cnt, C.order_whether
 	FROM T_CART C, T_USER U, T_BOOKINFO B
 	WHERE B.bookid=C.bookid AND U.userid=C.userid
 )
