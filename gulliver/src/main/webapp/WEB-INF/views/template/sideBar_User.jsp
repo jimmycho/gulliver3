@@ -30,7 +30,7 @@
 			</table>
 			<div class="BTABLE3">
 				<ul ><%-- <a  href="<%=root %>/user/MyPage"><strong>&nbsp;마이페이지</a><br></strong> --%>
-					<li><a  href="<%=root %>/user/read" class="bk3">나의정보</a></li>
+					<li><a  href="<%=root %>/user_secu/read" class="bk3">나의정보</a></li>
 					<li><a  href="<%=root %>/cart/list" class="bk3">장바구니보기</a></li>
 					<li><a  href="<%=root%>/order/list" class="bk3">주문이력</a></li>
 				</ul><br>

@@ -241,7 +241,7 @@ public class UserController {
 		return "redirect:/";
 	}//logout method
 	
-	@RequestMapping("/user/read")
+	@RequestMapping("/user_secu/read")
 	public String read(String userid, Model model, HttpSession session){
 		if(userid==null){
 	        userid = (String)session.getAttribute("userid");
@@ -251,7 +251,7 @@ public class UserController {
 		System.out.println("dto.name"+dto.getName());
 	    model.addAttribute("dto",dto);
 		
-		return "/user/read";
+		return "/user_secu/read";
 	}//read method
 	
 	@RequestMapping(value="/adm/user/read",method=RequestMethod.GET)
@@ -306,7 +306,7 @@ public class UserController {
 		return "/admin/user/list"; //관리자용 faq 목록
 	}//admin/user/list메소드
 	
-	@RequestMapping("/user/MyPage")
+	@RequestMapping("/user_secu/MyPage")
 	public String MyPage(String userid, Model model, HttpSession session){
 		
 		if(userid==null){
@@ -316,7 +316,7 @@ public class UserController {
 		UserDTO dto = dao.read(userid);
 	    model.addAttribute("dto",dto);
 		
-		return "/user/read";
+		return "/user_secu/read";
 		
 	}
 	@RequestMapping("/adm/adminPage")
@@ -333,20 +333,20 @@ public class UserController {
 		
 	}//method AdminPage
 	
-	@RequestMapping(value="/user/update", method=RequestMethod.GET)
+	@RequestMapping(value="/user_secu/update", method=RequestMethod.GET)
 	public String update(String id, HttpSession session, Model model){//model에 저장해서 view 페이지로 넘긴다
 		
 		UserDTO dto=dao.read(id);
 		model.addAttribute("dto",dto);
-		return "/user/update";
+		return "/user_secu/update";
 	}
 	
-	@RequestMapping(value="/user/update", method=RequestMethod.POST)
+	@RequestMapping(value="/user_secu/update", method=RequestMethod.POST)
 	public String update(UserDTO dto,HttpServletRequest request, HttpServletResponse response){//model에 저장해서 view 페이지로 넘긴다
 		int cnt=dao.update(dto);
 		System.out.println(dto.getPhone());
 		if(cnt==1){
-					return "redirect:/user/read";
+					return "redirect:/user_secu/read";
 				}else{
 					return "/user/error";
 				}
@@ -373,7 +373,7 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/user/updateFile", method=RequestMethod.POST)
+	@RequestMapping(value="/user_secu/updateFile", method=RequestMethod.POST)
 	public String updateFile(String userid, String userphoto, MultipartFile fname,HttpServletRequest request){
 		
 		String basePath=request.getRealPath("/storage");
@@ -394,16 +394,16 @@ public class UserController {
 		}
 		
 		if(cnt==1){
-			return "redirect:/user/read";
+			return "redirect:/user_secu/read";
 		}else{
 		
 		return "/user/error";
 		}
 	}
-	@RequestMapping(value="/user/updateFile", method=RequestMethod.GET)
+	@RequestMapping(value="/user_secu/updateFile", method=RequestMethod.GET)
 	public String updateFile(){
 		
-		return "/user/updateFile";
+		return "/user_secu/updateFile";
 		
 	}
 	

@@ -14,9 +14,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/user/createForm.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
 	
-	<definition name="/user/update" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+	<definition name="/user_secu/update" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
 		<put-attribute name="title" value="회원가입"></put-attribute>
-		<put-attribute name="body" value="/WEB-INF/views/user/updateForm.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+		<put-attribute name="body" value="/WEB-INF/views/user_secu/updateForm.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
 	
 	<definition name="/admin/user/update" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
@@ -24,9 +24,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/user/updateForm.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
 	
-	<definition name="/user/updateFile" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
+	<definition name="/user_secu/updateFile" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
 		<put-attribute name="title" value="회원가입"></put-attribute>
-		<put-attribute name="body" value="/WEB-INF/views/user/updateFileForm.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
+		<put-attribute name="body" value="/WEB-INF/views/user_secu/updateFileForm.jsp" /> <!-- 실행될 페이지 명시(실제 위치)-->
 	</definition>
 	
 	<definition name="/user/delete" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
@@ -43,9 +43,9 @@
         <put-attribute name="title" value="나의정보" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/user/MyPage.jsp" />
     </definition> 
-    <definition name="/user/read" extends="main2"> 
+    <definition name="/user_secu/read" extends="main2"> 
         <put-attribute name="title" value="나의정보" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/user/read.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/user_secu/read.jsp" />
     </definition> 
     <definition name="/admin/user/list" extends="main2"> <!-- 뷰 리졸버가 /board/list 이 이름을 검색한다  main에 연결되어진 헤더와 푸터와 함께 연결되겠다. -->
 		<put-attribute name="title" value="회원목록"></put-attribute>

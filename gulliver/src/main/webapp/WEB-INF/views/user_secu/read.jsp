@@ -79,7 +79,7 @@ function updatePW(userid){
 
 		<DIV class='bottom'>
 		<input type='button' value='정보수정'
-			onclick="location.href='update?id=${dto.userid}'" class="BBUTTON">
+			onclick="location.href='../user_secu/update?id=${dto.userid}'" class="BBUTTON">
 		<input type='button' value='사진수정'
 			onclick="updateFile('${dto.userid}','${dto.userphoto}')" class="BBUTTON">
 		<%-- <input type='button' value='비번수정'

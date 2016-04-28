@@ -49,7 +49,7 @@
 				} else {
 					if (grade.equals("M")) {
 			%>
-			<a href="<%=root%>/user/MyPage">마이페이지&nbsp;</a>
+			<a href="<%=root%>/user_secu/MyPage">마이페이지&nbsp;</a>
 			<%
 				} else if (grade.equals("A")) {
 			%>

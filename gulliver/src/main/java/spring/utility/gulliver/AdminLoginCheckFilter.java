@@ -43,7 +43,8 @@ public class AdminLoginCheckFilter implements Filter { //Filter는 인터페이�
         } else {
             // 로그인이 안되었다면 로그인 페이지로 이동
             RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/bookinfo/list");
+                /*request.getRequestDispatcher("/bookinfo/list");*/
+            		request.getRequestDispatcher("/");
             dispatcher.forward(request, response);//forward : "/member/loginForm.jsp" 로 대신 요청했기 때문에 url 상 loginForm은 안나온다
         }
     }
