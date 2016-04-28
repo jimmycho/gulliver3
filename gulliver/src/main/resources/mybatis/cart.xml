@@ -65,10 +65,10 @@ WHERE userid=#{userid}
 <select id="read" parameterType="int" resultType="CartDTO">
 <!-- SELECT * FROM T_CART 
 WHERE cartno=#{cartno}  -->
-SELECT cartno, bookid, bookname, input_date, cur_price, cart_cnt , order_whether
+SELECT cartno, bookid, bookname, input_date, sale_price, cart_cnt , order_whether
 FROM
 (
-SELECT C.cartno, B.bookid, B.bookname, C.input_date, B.cur_price, C.cart_cnt, C.order_whether
+SELECT C.cartno, B.bookid, B.bookname, C.input_date, B.sale_price, C.cart_cnt, C.order_whether
 FROM T_CART C, T_BOOKINFO B
 WHERE B.BOOKID=C.BOOKID
 )

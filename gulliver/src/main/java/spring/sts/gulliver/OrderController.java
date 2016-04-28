@@ -140,6 +140,7 @@ public class OrderController {
 		List<CartDTO> list = new ArrayList();
 		for(int i=0; i<orderItem.length; i++){
 			dto = cartdao.read(Integer.parseInt(orderItem[i]));
+	
 			System.out.println("orderItem:"+orderItem[i]);
 			list.add(dto);
 		}

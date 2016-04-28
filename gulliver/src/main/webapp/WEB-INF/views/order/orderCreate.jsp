@@ -41,11 +41,11 @@
 							<tr>
 								<td align="right">${cartdto.bookname}</td>
 								<td align="right">${cartdto.cart_cnt}</td>
-								<td align="right"><fmt:formatNumber value="${cartdto.cur_price * cartdto.cart_cnt}" pattern="#,###"/>원</td>
+								<td align="right"><fmt:formatNumber value="${cartdto.sale_price * cartdto.cart_cnt}" pattern="#,###"/>원</td>
 								
 <%-- 								<td>${cartdto.bookid}</td> --%>
 							</tr>
-							<c:set var="sum" value="${cartdto.cur_price * cartdto.cart_cnt}" />
+							<c:set var="sum" value="${cartdto.sale_price * cartdto.cart_cnt}" />
 							<c:set var="total" value="${total + sum}" />
 							<input type="hidden" name="total" value="${total}"> 
 							<input type="hidden" name="userid" value="${userdto.userid}"> 
@@ -55,10 +55,12 @@
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
-		<tr><td align="right" colspan="3" bgcolor="silver">주문 총 금액:
+		<tr>
+		<td align="right" colspan="3" bgcolor="silver">주문 총 금액:
 		<fmt:formatNumber value="${total}" pattern="#,###" />원&nbsp;&nbsp;
 			<input type="button" name="cart" value="장바구니로 돌아가기" onclick="location.href='../cart/list'" class="BBUTTON"/>
-		</td></tr>
+		</td>
+		</tr>
 		</table>
 		<br><br>
 
